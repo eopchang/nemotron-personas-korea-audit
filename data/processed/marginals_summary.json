@@ -1,0 +1,331 @@
+{
+  "n_rows": 1000000,
+  "columns": {
+    "sex": {
+      "dtype": "String",
+      "n_unique": 2,
+      "top5": [
+        {
+          "sex": "여자",
+          "count": 504442,
+          "share": 0.504442
+        },
+        {
+          "sex": "남자",
+          "count": 495558,
+          "share": 0.495558
+        }
+      ]
+    },
+    "age": {
+      "dtype": "Int64",
+      "n_unique": 81,
+      "top5": [
+        {
+          "age": 19,
+          "count": 10491,
+          "share": 0.010491
+        },
+        {
+          "age": 20,
+          "count": 11881,
+          "share": 0.011881
+        },
+        {
+          "age": 21,
+          "count": 11930,
+          "share": 0.01193
+        },
+        {
+          "age": 22,
+          "count": 12101,
+          "share": 0.012100999999999999
+        },
+        {
+          "age": 23,
+          "count": 12097,
+          "share": 0.012097
+        }
+      ]
+    },
+    "marital_status": {
+      "dtype": "String",
+      "n_unique": 4,
+      "top5": [
+        {
+          "marital_status": "배우자있음",
+          "count": 592538,
+          "share": 0.592538
+        },
+        {
+          "marital_status": "미혼",
+          "count": 256962,
+          "share": 0.25696199999999997
+        },
+        {
+          "marital_status": "사별",
+          "count": 87888,
+          "share": 0.087888
+        },
+        {
+          "marital_status": "이혼",
+          "count": 62612,
+          "share": 0.062612
+        }
+      ]
+    },
+    "military_status": {
+      "dtype": "String",
+      "n_unique": 2,
+      "top5": [
+        {
+          "military_status": "비현역",
+          "count": 994718,
+          "share": 0.994718
+        },
+        {
+          "military_status": "현역",
+          "count": 5282,
+          "share": 0.005281999999999999
+        }
+      ]
+    },
+    "family_type": {
+      "dtype": "String",
+      "n_unique": 39,
+      "top5": [
+        {
+          "family_type": "배우자·자녀와 거주",
+          "count": 270355,
+          "share": 0.270355
+        },
+        {
+          "family_type": "배우자와 거주",
+          "count": 206341,
+          "share": 0.206341
+        },
+        {
+          "family_type": "혼자 거주",
+          "count": 140240,
+          "share": 0.14024
+        },
+        {
+          "family_type": "부모와 동거",
+          "count": 92053,
+          "share": 0.092053
+        },
+        {
+          "family_type": "기타2세대",
+          "count": 39718,
+          "share": 0.039717999999999996
+        }
+      ]
+    },
+    "housing_type": {
+      "dtype": "String",
+      "n_unique": 6,
+      "top5": [
+        {
+          "housing_type": "아파트",
+          "count": 620556,
+          "share": 0.620556
+        },
+        {
+          "housing_type": "단독주택",
+          "count": 169153,
+          "share": 0.169153
+        },
+        {
+          "housing_type": "다세대주택",
+          "count": 114369,
+          "share": 0.114369
+        },
+        {
+          "housing_type": "주택 이외의 거처",
+          "count": 60264,
+          "share": 0.060264
+        },
+        {
+          "housing_type": "연립주택",
+          "count": 25744,
+          "share": 0.025744
+        }
+      ]
+    },
+    "education_level": {
+      "dtype": "String",
+      "n_unique": 7,
+      "top5": [
+        {
+          "education_level": "고등학교",
+          "count": 331377,
+          "share": 0.331377
+        },
+        {
+          "education_level": "4년제 대학교",
+          "count": 271256,
+          "share": 0.271256
+        },
+        {
+          "education_level": "2~3년제 전문대학",
+          "count": 150235,
+          "share": 0.15023499999999998
+        },
+        {
+          "education_level": "중학교",
+          "count": 85255,
+          "share": 0.085255
+        },
+        {
+          "education_level": "초등학교",
+          "count": 81239,
+          "share": 0.08123899999999999
+        }
+      ]
+    },
+    "bachelors_field": {
+      "dtype": "String",
+      "n_unique": 11,
+      "top5": [
+        {
+          "bachelors_field": "해당없음",
+          "count": 674421,
+          "share": 0.6744209999999999
+        },
+        {
+          "bachelors_field": "공학·제조·건설",
+          "count": 67871,
+          "share": 0.067871
+        },
+        {
+          "bachelors_field": "경영·행정·법",
+          "count": 54913,
+          "share": 0.054913
+        },
+        {
+          "bachelors_field": "예술·인문",
+          "count": 49031,
+          "share": 0.049031
+        },
+        {
+          "bachelors_field": "보건·복지",
+          "count": 34547,
+          "share": 0.034547
+        }
+      ]
+    },
+    "occupation": {
+      "dtype": "String",
+      "n_unique": 2120,
+      "top5": [
+        {
+          "occupation": "무직",
+          "count": 367349,
+          "share": 0.367349
+        },
+        {
+          "occupation": "건물 청소원",
+          "count": 18253,
+          "share": 0.018253
+        },
+        {
+          "occupation": "건물 경비원",
+          "count": 17473,
+          "share": 0.017473
+        },
+        {
+          "occupation": "경리 사무원",
+          "count": 16146,
+          "share": 0.016146
+        },
+        {
+          "occupation": "사무 보조원",
+          "count": 13630,
+          "share": 0.01363
+        }
+      ]
+    },
+    "district": {
+      "dtype": "String",
+      "n_unique": 252,
+      "top5": [
+        {
+          "district": "경기-화성시",
+          "count": 17672,
+          "share": 0.017672
+        },
+        {
+          "district": "경기-남양주시",
+          "count": 13851,
+          "share": 0.013850999999999999
+        },
+        {
+          "district": "서울-송파구",
+          "count": 12479,
+          "share": 0.012478999999999999
+        },
+        {
+          "district": "인천-서구",
+          "count": 11737,
+          "share": 0.011737
+        },
+        {
+          "district": "경기-평택시",
+          "count": 11076,
+          "share": 0.011075999999999999
+        }
+      ]
+    },
+    "province": {
+      "dtype": "String",
+      "n_unique": 17,
+      "top5": [
+        {
+          "province": "경기",
+          "count": 262154,
+          "share": 0.262154
+        },
+        {
+          "province": "서울",
+          "count": 185228,
+          "share": 0.185228
+        },
+        {
+          "province": "부산",
+          "count": 65285,
+          "share": 0.065285
+        },
+        {
+          "province": "경상남",
+          "count": 62416,
+          "share": 0.062416
+        },
+        {
+          "province": "인천",
+          "count": 58991,
+          "share": 0.058990999999999995
+        }
+      ]
+    },
+    "country": {
+      "dtype": "String",
+      "n_unique": 1,
+      "top5": [
+        {
+          "country": "대한민국",
+          "count": 1000000,
+          "share": 1.0
+        }
+      ]
+    }
+  },
+  "age_stats": {
+    "mean": 50.660031,
+    "std": 17.612992882998544,
+    "min": 19.0,
+    "p25": 36.0,
+    "p50": 51.0,
+    "p75": 64.0,
+    "max": 99.0
+  }
+}

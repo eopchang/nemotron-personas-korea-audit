@@ -1,0 +1,94 @@
+{
+  "_motivation": "External review (GPT-5.5 Pro, 2026-05) raised that military_status definition is undefined in the data card; this script empirically decides between competing readings.",
+  "n_total_rows": 1000000,
+  "n_military_active": 5282,
+  "n_military_inactive": 994718,
+  "active_share_pct": 0.5282,
+  "active_rank_distribution": [
+    {
+      "rank": "부사관",
+      "n": 2636,
+      "share": 0.49905338886785305
+    },
+    {
+      "rank": "장교",
+      "n": 1958,
+      "share": 0.3706929193487315
+    },
+    {
+      "rank": "병사",
+      "n": 688,
+      "share": 0.13025369178341537
+    }
+  ],
+  "active_age_stats_by_rank": [
+    {
+      "rank": "부사관",
+      "mean_age": 40.58,
+      "min_age": 19,
+      "p25_age": 33.0,
+      "p50_age": 41.0,
+      "p75_age": 48.0,
+      "max_age": 55,
+      "n": 2636
+    },
+    {
+      "rank": "장교",
+      "mean_age": 46.66,
+      "min_age": 22,
+      "p25_age": 38.0,
+      "p50_age": 48.0,
+      "p75_age": 57.0,
+      "max_age": 63,
+      "n": 1958
+    },
+    {
+      "rank": "병사",
+      "mean_age": 25.35,
+      "min_age": 19,
+      "p25_age": 23.0,
+      "p50_age": 26.0,
+      "p75_age": 28.0,
+      "max_age": 30,
+      "n": 688
+    }
+  ],
+  "active_sex_by_rank": [
+    {
+      "rank": "병사",
+      "sex": "남자",
+      "n": 688
+    },
+    {
+      "rank": "부사관",
+      "sex": "남자",
+      "n": 2332
+    },
+    {
+      "rank": "부사관",
+      "sex": "여자",
+      "n": 304
+    },
+    {
+      "rank": "장교",
+      "sex": "남자",
+      "n": 1744
+    },
+    {
+      "rank": "장교",
+      "sex": "여자",
+      "n": 214
+    }
+  ],
+  "consistency_check": {
+    "n_active_with_military_occupation": 5282,
+    "n_active_with_NON_military_occupation": 0,
+    "n_inactive_with_military_occupation": 187,
+    "interpretation": "If 'active' meant a determined occupation function only, both off-diagonal cells should be 0. The two values measure how strict the PGM constraint is."
+  },
+  "interpretation": {
+    "career_military_share": 0.8697,
+    "conscript_share": 0.1303,
+    "verdict": "Reading (b) — 'currently in active military service: career + conscripts': 직업군인(부사관·장교) 비중과 50대 분포를 고려할 때 한국군 현역 인력 구성과 일치. 현역 평균 연령 ~40세는 부사관·장교 정년(53-60세)과 의무복무 사병 19-22세의 가중평균으로 자연스러움."
+  }
+}

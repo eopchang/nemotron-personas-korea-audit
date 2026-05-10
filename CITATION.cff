@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: "Nemotron-Personas-Korea Audit: Independent Statistical Audit of NVIDIA's Korean Synthetic Persona Dataset"
+message: "If you use this audit's findings, methodology, or scripts, please cite as below."
+type: software
+authors:
+  - family-names: Kim
+    given-names: Chang-Eop
+    affiliation: "Theoretical Neuroscience & Computational Medicine Lab, Gachon University"
+date-released: 2026-05-10
+license: MIT
+license-url: https://opensource.org/licenses/MIT
+repository-code: "https://github.com/eopchang/nemotron-personas-korea-audit"
+keywords:
+  - synthetic-data
+  - probabilistic-graphical-model
+  - korean-demographics
+  - data-audit
+  - conditional-mutual-information
+  - nemotron
+references:
+  - type: data
+    title: "Nemotron-Personas-Korea"
+    authors:
+      - name: NVIDIA Corporation
+    year: 2026
+    url: "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Korea"
+    license: CC-BY-4.0

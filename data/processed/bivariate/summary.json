@@ -1,0 +1,26 @@
+{
+  "n_rows": 1000000,
+  "vars": [
+    "age_bin",
+    "sex",
+    "marital_status",
+    "military_status",
+    "family_type",
+    "housing_type",
+    "education_level",
+    "bachelors_field",
+    "occupation",
+    "district",
+    "province"
+  ],
+  "n_pairs": 55,
+  "outputs": {
+    "long": "data/processed/bivariate/metrics_long.csv",
+    "matrices": [
+      "data/processed/bivariate/matrix_cramers_v.csv",
+      "data/processed/bivariate/matrix_nmi.csv",
+      "data/processed/bivariate/matrix_theils_u.csv",
+      "data/processed/bivariate/matrix_tvd_indep.csv"
+    ]
+  }
+}

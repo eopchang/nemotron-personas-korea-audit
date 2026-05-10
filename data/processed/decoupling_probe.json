@@ -1,0 +1,139 @@
+[
+  {
+    "question": "Q1 housing decoupled from person attrs given district?",
+    "target": "housing_type",
+    "baseline_features": [
+      "district"
+    ],
+    "full_features": [
+      "district",
+      "age_bin",
+      "sex",
+      "marital_status",
+      "family_type",
+      "education_level",
+      "bachelors_field",
+      "occupation"
+    ],
+    "CE_null": 1.1531472120682433,
+    "CE_baseline": 1.000658609297788,
+    "CE_full": 1.0083107145963908,
+    "acc_baseline": 0.6535166666666666,
+    "acc_full": 0.6529333333333334,
+    "info_in_baseline": 0.15248860277045528,
+    "info_added_by_extras": -0.007652105298602718,
+    "info_total": 0.14483649747185257,
+    "fraction_added": -0.052832714351504
+  },
+  {
+    "question": "Control: family_type SHOULD improve with marital/age (tested edge)",
+    "target": "family_type",
+    "baseline_features": [
+      "district"
+    ],
+    "full_features": [
+      "district",
+      "age_bin",
+      "sex",
+      "marital_status",
+      "education_level"
+    ],
+    "CE_null": 2.3696888331832726,
+    "CE_baseline": 2.3363710584864723,
+    "CE_full": 1.5188974721531452,
+    "acc_baseline": 0.29025,
+    "acc_full": 0.54425,
+    "info_in_baseline": 0.033317774696800306,
+    "info_added_by_extras": 0.8174735863333271,
+    "info_total": 0.8507913610301274,
+    "fraction_added": 0.9608390773309456
+  },
+  {
+    "question": "Control: occupation IS modeled with sex/edu/field",
+    "target": "occupation",
+    "baseline_features": [
+      "district",
+      "province"
+    ],
+    "full_features": [
+      "district",
+      "province",
+      "age_bin",
+      "sex",
+      "education_level",
+      "bachelors_field"
+    ],
+    "CE_null": 4.355506868595341,
+    "CE_baseline": 3.4804376355704334,
+    "CE_full": 3.2995269396213462,
+    "acc_baseline": 0.3683666666666667,
+    "acc_full": 0.36928333333333335,
+    "info_in_baseline": 0.8750692330249072,
+    "info_added_by_extras": 0.18091069594908715,
+    "info_total": 1.0559799289739944,
+    "fraction_added": 0.1713202031452081
+  },
+  {
+    "question": "Q2 military depends on sex but does it on age?",
+    "target": "military_status",
+    "baseline_features": [
+      "age_bin"
+    ],
+    "full_features": [
+      "age_bin",
+      "sex"
+    ],
+    "CE_null": 0.03307563501181216,
+    "CE_baseline": 0.03117692481771968,
+    "CE_full": 0.02920044519343334,
+    "acc_baseline": 0.99475,
+    "acc_full": 0.99475,
+    "info_in_baseline": 0.001898710194092483,
+    "info_added_by_extras": 0.0019764796242863376,
+    "info_total": 0.0038751898183788207,
+    "fraction_added": 0.5100342736535147
+  },
+  {
+    "question": "Q3 if we add occupation, military becomes determined?",
+    "target": "military_status",
+    "baseline_features": [
+      "sex"
+    ],
+    "full_features": [
+      "sex",
+      "age_bin",
+      "occupation"
+    ],
+    "CE_null": 0.03307563501181216,
+    "CE_baseline": 0.03066660219565211,
+    "CE_full": 0.008208124245931167,
+    "acc_baseline": 0.99475,
+    "acc_full": 0.9984,
+    "info_in_baseline": 0.002409032816160051,
+    "info_added_by_extras": 0.022458477949720945,
+    "info_total": 0.024867510765880993,
+    "fraction_added": 0.9031252931248223
+  },
+  {
+    "question": "Control: marital should improve with family_type (direct edge)",
+    "target": "marital_status",
+    "baseline_features": [
+      "age_bin"
+    ],
+    "full_features": [
+      "age_bin",
+      "sex",
+      "education_level",
+      "family_type"
+    ],
+    "CE_null": 1.0482782233284051,
+    "CE_baseline": 0.7354355803505886,
+    "CE_full": 0.18246373214841055,
+    "acc_baseline": 0.72755,
+    "acc_full": 0.9214166666666667,
+    "info_in_baseline": 0.3128426429778165,
+    "info_added_by_extras": 0.5529718482021782,
+    "info_total": 0.8658144911799945,
+    "fraction_added": 0.6386724336855902
+  }
+]

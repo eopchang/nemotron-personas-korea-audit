@@ -1,0 +1,293 @@
+{
+  "_meta": {
+    "purpose": "Phase 1 비교용 KOSIS 등 공식 통계 reference. Nemotron은 19세 이상 성인 인구가 모집단이지만, 공개 통계는 기준이 다른 경우가 많아 그대로 비교하지 말고 caveat를 함께 표기할 것.",
+    "license_note": "통계청 공표 수치는 공공누리 / 출처표시 조건으로 활용 가능"
+  },
+  "results": {
+    "marital_status": {
+      "TVD": 0.05403800000000006,
+      "L_inf": 0.05403800000000003,
+      "chi2": 15274.252096744316,
+      "chi2_df": 3,
+      "chi2_pvalue": 0.0,
+      "reference_meta": {
+        "population": "15세 이상 인구",
+        "year": 2020,
+        "source": "통계청, 2020 인구주택총조사",
+        "caveat": "Nemotron 모집단은 19세 이상이라, 미혼은 본 수치보다 낮고 배우자있음/사별은 높은 방향으로 자연스럽게 차이가 발생함."
+      },
+      "per_category": [
+        {
+          "category": "배우자있음",
+          "synth": 0.5925,
+          "reference": 0.559,
+          "diff_pp": 3.3538
+        },
+        {
+          "category": "미혼",
+          "synth": 0.257,
+          "reference": 0.311,
+          "diff_pp": -5.4038
+        },
+        {
+          "category": "사별",
+          "synth": 0.0879,
+          "reference": 0.072,
+          "diff_pp": 1.5888
+        },
+        {
+          "category": "이혼",
+          "synth": 0.0626,
+          "reference": 0.058,
+          "diff_pp": 0.4612
+        }
+      ]
+    },
+    "housing_type": {
+      "TVD": 0.11923129829829834,
+      "L_inf": 0.11513128428428424,
+      "chi2": 69813.8071233926,
+      "chi2_df": 4,
+      "chi2_pvalue": 0.0,
+      "reference_meta": {
+        "population": "일반가구(가구 기준)",
+        "year": 2023,
+        "source": "통계청, 2023년 인구주택총조사(등록센서스)",
+        "caveat": "Nemotron은 개인 기준이고 본 수치는 가구 기준. 또한 Nemotron은 '연립주택'과 '다세대주택'을 분리, 본 수치는 합계."
+      },
+      "per_category": [
+        {
+          "category": "아파트",
+          "synth": 0.6206,
+          "reference": 0.5315,
+          "diff_pp": 8.9024
+        },
+        {
+          "category": "단독주택",
+          "synth": 0.1692,
+          "reference": 0.2843,
+          "diff_pp": -11.5131
+        },
+        {
+          "category": "연립·다세대주택",
+          "synth": 0.1401,
+          "reference": 0.1121,
+          "diff_pp": 2.8001
+        },
+        {
+          "category": "주택 이외의 거처",
+          "synth": 0.0603,
+          "reference": 0.0581,
+          "diff_pp": 0.2206
+        },
+        {
+          "category": "비주거용 건물 내 주택",
+          "synth": 0.0099,
+          "reference": 0.014,
+          "diff_pp": -0.41
+        }
+      ]
+    },
+    "province": {
+      "TVD": 0.005476412002424677,
+      "L_inf": 0.0023627747019600853,
+      "chi2": 285.86702729453816,
+      "chi2_df": 16,
+      "chi2_pvalue": 0.0,
+      "reference_meta": {
+        "population": "총인구(주민등록인구)",
+        "year": 2024,
+        "source": "행정안전부, 주민등록인구현황 2024.12 (KOSIS)",
+        "caveat": "본 수치는 전 연령 합계. 19세+ 분포는 시도별 고령화 차이로 미세하게 다를 수 있으나(특히 세종/경기 청년층 비중이 높아 19+ 비중은 약간 낮을 수 있음) 큰 그림은 동일."
+      },
+      "per_category": [
+        {
+          "category": "경기",
+          "synth": 0.2622,
+          "reference": 0.2631,
+          "diff_pp": -0.0929
+        },
+        {
+          "category": "서울",
+          "synth": 0.1852,
+          "reference": 0.1829,
+          "diff_pp": 0.2363
+        },
+        {
+          "category": "부산",
+          "synth": 0.0653,
+          "reference": 0.0648,
+          "diff_pp": 0.0524
+        },
+        {
+          "category": "경상남",
+          "synth": 0.0624,
+          "reference": 0.0634,
+          "diff_pp": -0.1031
+        },
+        {
+          "category": "인천",
+          "synth": 0.059,
+          "reference": 0.0592,
+          "diff_pp": -0.0213
+        },
+        {
+          "category": "경상북",
+          "synth": 0.0503,
+          "reference": 0.0499,
+          "diff_pp": 0.0389
+        },
+        {
+          "category": "대구",
+          "synth": 0.0469,
+          "reference": 0.046,
+          "diff_pp": 0.0965
+        },
+        {
+          "category": "충청남",
+          "synth": 0.0415,
+          "reference": 0.0417,
+          "diff_pp": -0.027
+        },
+        {
+          "category": "전라남",
+          "synth": 0.0344,
+          "reference": 0.0358,
+          "diff_pp": -0.1374
+        },
+        {
+          "category": "전북",
+          "synth": 0.0342,
+          "reference": 0.0342,
+          "diff_pp": -0.0061
+        },
+        {
+          "category": "충청북",
+          "synth": 0.0313,
+          "reference": 0.0309,
+          "diff_pp": 0.0381
+        },
+        {
+          "category": "강원",
+          "synth": 0.0302,
+          "reference": 0.03,
+          "diff_pp": 0.0194
+        },
+        {
+          "category": "대전",
+          "synth": 0.0286,
+          "reference": 0.028,
+          "diff_pp": 0.0661
+        },
+        {
+          "category": "광주",
+          "synth": 0.0276,
+          "reference": 0.0277,
+          "diff_pp": -0.0088
+        },
+        {
+          "category": "울산",
+          "synth": 0.0213,
+          "reference": 0.0214,
+          "diff_pp": -0.0101
+        },
+        {
+          "category": "제주",
+          "synth": 0.0127,
+          "reference": 0.0131,
+          "diff_pp": -0.0461
+        },
+        {
+          "category": "세종",
+          "synth": 0.0069,
+          "reference": 0.0079,
+          "diff_pp": -0.0947
+        }
+      ]
+    },
+    "sex_adult": {
+      "TVD": 0.0005580000000000307,
+      "L_inf": 0.0005580000000000584,
+      "chi2": 1.2455805580559343,
+      "chi2_df": 1,
+      "chi2_pvalue": 0.2643982484660644,
+      "reference_meta": {
+        "population": "19세 이상 인구",
+        "year": 2024,
+        "source": "통계청 추계인구",
+        "caveat": "고령층 여성 우세로 성인 인구는 여성이 약간 많음."
+      },
+      "per_category": [
+        {
+          "category": "여자",
+          "synth": 0.5044,
+          "reference": 0.505,
+          "diff_pp": -0.0558
+        },
+        {
+          "category": "남자",
+          "synth": 0.4956,
+          "reference": 0.495,
+          "diff_pp": 0.0558
+        }
+      ]
+    },
+    "education_level": {
+      "TVD": 0.04386800000000022,
+      "L_inf": 0.023761000000000032,
+      "chi2": 11706.618598944528,
+      "chi2_df": 6,
+      "chi2_pvalue": 0.0,
+      "reference_meta": {
+        "population": "25세 이상 인구",
+        "year": 2020,
+        "source": "통계청, 2020 인구주택총조사 표본집계 (학력별 인구)",
+        "caveat": "Nemotron은 19세+ 모집단이라 (1) 학교 재학 중인 19~24세가 다수 포함되어 '학생' 시점의 학력으로 잡혀 4년제/대학원 비중이 다소 낮게, 고등학교 졸업이 다소 높게 나오는 게 자연스러움. (2) 또한 본 수치 합이 1.0이 아닐 수 있음(반올림)."
+      },
+      "per_category": [
+        {
+          "category": "고등학교",
+          "synth": 0.3314,
+          "reference": 0.317,
+          "diff_pp": 1.4377
+        },
+        {
+          "category": "4년제 대학교",
+          "synth": 0.2713,
+          "reference": 0.257,
+          "diff_pp": 1.4256
+        },
+        {
+          "category": "2~3년제 전문대학",
+          "synth": 0.1502,
+          "reference": 0.135,
+          "diff_pp": 1.5235
+        },
+        {
+          "category": "초등학교",
+          "synth": 0.0812,
+          "reference": 0.105,
+          "diff_pp": -2.3761
+        },
+        {
+          "category": "중학교",
+          "synth": 0.0853,
+          "reference": 0.097,
+          "diff_pp": -1.1745
+        },
+        {
+          "category": "대학원",
+          "synth": 0.0543,
+          "reference": 0.055,
+          "diff_pp": -0.0677
+        },
+        {
+          "category": "무학",
+          "synth": 0.0263,
+          "reference": 0.034,
+          "diff_pp": -0.7685
+        }
+      ]
+    }
+  }
+}

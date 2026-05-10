@@ -1,0 +1,12 @@
+node,degree
+occupation,9
+district,7
+age_bin,5
+marital_status,5
+family_type,5
+sex,4
+education_level,4
+bachelors_field,3
+housing_type,2
+province,1
+military_status,1

@@ -1,0 +1,782 @@
+{
+  "_meta": {
+    "generated_by": "scripts/build_review_packet.py",
+    "purpose": "Single structured dump of all key numbers for external verification"
+  },
+  "dataset_basics": {
+    "n_rows": 1000000,
+    "age_stats": {
+      "mean": 50.660031,
+      "std": 17.612992882998544,
+      "min": 19.0,
+      "p25": 36.0,
+      "p50": 51.0,
+      "p75": 64.0,
+      "max": 99.0
+    },
+    "n_unique_per_var": {
+      "sex": 2,
+      "age": 81,
+      "marital_status": 4,
+      "military_status": 2,
+      "family_type": 39,
+      "housing_type": 6,
+      "education_level": 7,
+      "bachelors_field": 11,
+      "occupation": 2120,
+      "district": 252,
+      "province": 17,
+      "country": 1
+    }
+  },
+  "phase1_kosis_comparison": {
+    "marital_status": {
+      "TVD": 0.05403800000000006,
+      "L_inf": 0.05403800000000003,
+      "reference": {
+        "population": "15세 이상 인구",
+        "year": 2020,
+        "source": "통계청, 2020 인구주택총조사",
+        "caveat": "Nemotron 모집단은 19세 이상이라, 미혼은 본 수치보다 낮고 배우자있음/사별은 높은 방향으로 자연스럽게 차이가 발생함."
+      }
+    },
+    "housing_type": {
+      "TVD": 0.11923129829829834,
+      "L_inf": 0.11513128428428424,
+      "reference": {
+        "population": "일반가구(가구 기준)",
+        "year": 2023,
+        "source": "통계청, 2023년 인구주택총조사(등록센서스)",
+        "caveat": "Nemotron은 개인 기준이고 본 수치는 가구 기준. 또한 Nemotron은 '연립주택'과 '다세대주택'을 분리, 본 수치는 합계."
+      }
+    },
+    "province": {
+      "TVD": 0.005476412002424677,
+      "L_inf": 0.0023627747019600853,
+      "reference": {
+        "population": "총인구(주민등록인구)",
+        "year": 2024,
+        "source": "행정안전부, 주민등록인구현황 2024.12 (KOSIS)",
+        "caveat": "본 수치는 전 연령 합계. 19세+ 분포는 시도별 고령화 차이로 미세하게 다를 수 있으나(특히 세종/경기 청년층 비중이 높아 19+ 비중은 약간 낮을 수 있음) 큰 그림은 동일."
+      }
+    },
+    "sex_adult": {
+      "TVD": 0.0005580000000000307,
+      "L_inf": 0.0005580000000000584,
+      "reference": {
+        "population": "19세 이상 인구",
+        "year": 2024,
+        "source": "통계청 추계인구",
+        "caveat": "고령층 여성 우세로 성인 인구는 여성이 약간 많음."
+      }
+    },
+    "education_level": {
+      "TVD": 0.04386800000000022,
+      "L_inf": 0.023761000000000032,
+      "reference": {
+        "population": "25세 이상 인구",
+        "year": 2020,
+        "source": "통계청, 2020 인구주택총조사 표본집계 (학력별 인구)",
+        "caveat": "Nemotron은 19세+ 모집단이라 (1) 학교 재학 중인 19~24세가 다수 포함되어 '학생' 시점의 학력으로 잡혀 4년제/대학원 비중이 다소 낮게, 고등학교 졸업이 다소 높게 나오는 게 자연스러움. (2) 또한 본 수치 합이 1.0이 아닐 수 있음(반올림)."
+      }
+    }
+  },
+  "phase2_top15_pairs_by_nmi": [
+    {
+      "x": "district",
+      "y": "province",
+      "V": 1.0,
+      "NMI": 0.6347,
+      "U_y_given_x": 1.0,
+      "U_x_given_y": 0.4649,
+      "TVD_indep": 0.8724
+    },
+    {
+      "x": "marital_status",
+      "y": "family_type",
+      "V": 0.6936,
+      "NMI": 0.4398,
+      "U_y_given_x": 0.3172,
+      "U_x_given_y": 0.7171,
+      "TVD_indep": 0.4941
+    },
+    {
+      "x": "education_level",
+      "y": "bachelors_field",
+      "V": 0.4083,
+      "NMI": 0.4208,
+      "U_y_given_x": 0.4756,
+      "U_x_given_y": 0.3773,
+      "TVD_indep": 0.4392
+    },
+    {
+      "x": "age_bin",
+      "y": "marital_status",
+      "V": 0.483,
+      "NMI": 0.2103,
+      "U_y_given_x": 0.3012,
+      "U_x_given_y": 0.1616,
+      "TVD_indep": 0.2834
+    },
+    {
+      "x": "age_bin",
+      "y": "family_type",
+      "V": 0.3365,
+      "NMI": 0.153,
+      "U_y_given_x": 0.1396,
+      "U_x_given_y": 0.1693,
+      "TVD_indep": 0.3089
+    },
+    {
+      "x": "age_bin",
+      "y": "education_level",
+      "V": 0.3326,
+      "NMI": 0.1522,
+      "U_y_given_x": 0.1649,
+      "U_x_given_y": 0.1414,
+      "TVD_indep": 0.2815
+    },
+    {
+      "x": "education_level",
+      "y": "occupation",
+      "V": 0.3334,
+      "NMI": 0.1041,
+      "U_y_given_x": 0.072,
+      "U_x_given_y": 0.1877,
+      "TVD_indep": 0.2882
+    },
+    {
+      "x": "bachelors_field",
+      "y": "occupation",
+      "V": 0.2609,
+      "NMI": 0.0826,
+      "U_y_given_x": 0.0538,
+      "U_x_given_y": 0.177,
+      "TVD_indep": 0.2204
+    },
+    {
+      "x": "marital_status",
+      "y": "education_level",
+      "V": 0.2884,
+      "NMI": 0.0769,
+      "U_y_given_x": 0.0625,
+      "U_x_given_y": 0.0999,
+      "TVD_indep": 0.1457
+    },
+    {
+      "x": "age_bin",
+      "y": "occupation",
+      "V": 0.2105,
+      "NMI": 0.0526,
+      "U_y_given_x": 0.0381,
+      "U_x_given_y": 0.0851,
+      "TVD_indep": 0.2299
+    },
+    {
+      "x": "housing_type",
+      "y": "district",
+      "V": 0.2656,
+      "NMI": 0.0488,
+      "U_y_given_x": 0.0298,
+      "U_x_given_y": 0.1346,
+      "TVD_indep": 0.194
+    },
+    {
+      "x": "sex",
+      "y": "occupation",
+      "V": 0.4544,
+      "NMI": 0.0463,
+      "U_y_given_x": 0.0269,
+      "U_x_given_y": 0.169,
+      "TVD_indep": 0.1864
+    },
+    {
+      "x": "family_type",
+      "y": "education_level",
+      "V": 0.183,
+      "NMI": 0.0445,
+      "U_y_given_x": 0.0538,
+      "U_x_given_y": 0.038,
+      "TVD_indep": 0.1439
+    },
+    {
+      "x": "housing_type",
+      "y": "province",
+      "V": 0.1761,
+      "NMI": 0.042,
+      "U_y_given_x": 0.031,
+      "U_x_given_y": 0.0652,
+      "TVD_indep": 0.1296
+    },
+    {
+      "x": "occupation",
+      "y": "district",
+      "V": 0.0509,
+      "NMI": 0.04,
+      "U_y_given_x": 0.0368,
+      "U_x_given_y": 0.044,
+      "TVD_indep": 0.1713
+    }
+  ],
+  "phase2_bottom5_pairs_by_nmi": [
+    {
+      "x": "military_status",
+      "y": "district",
+      "V": 0.038574,
+      "NMI": 0.000216,
+      "TVD_indep": 0.001832
+    },
+    {
+      "x": "military_status",
+      "y": "province",
+      "V": 0.022919,
+      "NMI": 0.000167,
+      "TVD_indep": 0.001014
+    },
+    {
+      "x": "sex",
+      "y": "province",
+      "V": 0.020141,
+      "NMI": 0.00013,
+      "TVD_indep": 0.008818
+    },
+    {
+      "x": "military_status",
+      "y": "housing_type",
+      "V": 0.006239,
+      "NMI": 3.2e-05,
+      "TVD_indep": 0.000328
+    },
+    {
+      "x": "sex",
+      "y": "housing_type",
+      "V": 0.00481,
+      "NMI": 1.3e-05,
+      "TVD_indep": 0.00154
+    }
+  ],
+  "phase3_skeleton": {
+    "epsilon_nats": 0.005,
+    "n_pairs": 55,
+    "n_direct": 23,
+    "n_mediated": 14,
+    "n_no_edge_marginal": 18,
+    "direct_edges": [
+      {
+        "x": "age_bin",
+        "y": "marital_status",
+        "mi_xy": 0.3152473619150616,
+        "cmi_min_any": 0.05889805285210499,
+        "drop_max_any": 0.813168768505114,
+        "z_star_pair": "family_type+education_level"
+      },
+      {
+        "x": "age_bin",
+        "y": "family_type",
+        "mi_xy": 0.3302719891726565,
+        "cmi_min_any": 0.09000460986026254,
+        "drop_max_any": 0.7274833688266226,
+        "z_star_pair": "marital_status+education_level"
+      },
+      {
+        "x": "age_bin",
+        "y": "education_level",
+        "mi_xy": 0.2758507854536633,
+        "cmi_min_any": 0.13393388947394108,
+        "drop_max_any": 0.5144697911456955,
+        "z_star_pair": "marital_status+bachelors_field"
+      },
+      {
+        "x": "age_bin",
+        "y": "occupation",
+        "mi_xy": 0.1659744868425882,
+        "cmi_min_any": 0.08935856117482836,
+        "drop_max_any": 0.46161266785794086,
+        "z_star_pair": "education_level+military_status"
+      },
+      {
+        "x": "age_bin",
+        "y": "district",
+        "mi_xy": 0.0217517629146075,
+        "cmi_min_any": 0.0146613214822463,
+        "drop_max_any": 0.32597088613905323,
+        "z_star_pair": "province+military_status"
+      },
+      {
+        "x": "sex",
+        "y": "marital_status",
+        "mi_xy": 0.0279241450114458,
+        "cmi_min_any": 0.008715819275650379,
+        "drop_max_any": 0.6878751606511906,
+        "z_star_pair": "family_type+education_level"
+      },
+      {
+        "x": "sex",
+        "y": "family_type",
+        "mi_xy": 0.0175808129232077,
+        "cmi_min_any": 0.0077201820044217,
+        "drop_max_any": 0.56087457171957,
+        "z_star_pair": "marital_status+military_status"
+      },
+      {
+        "x": "sex",
+        "y": "bachelors_field",
+        "mi_xy": 0.037483679710861,
+        "cmi_min_any": 0.025032821139134517,
+        "drop_max_any": 0.3321674570844978,
+        "z_star_pair": "occupation+education_level"
+      },
+      {
+        "x": "sex",
+        "y": "occupation",
+        "mi_xy": 0.1171140063231909,
+        "cmi_min_any": 0.10566087121109781,
+        "drop_max_any": 0.09779475121435699,
+        "z_star_pair": "bachelors_field+military_status"
+      },
+      {
+        "x": "marital_status",
+        "y": "family_type",
+        "mi_xy": 0.7504626506021759,
+        "cmi_min_any": 0.5215295379737027,
+        "drop_max_any": 0.3050559710663493,
+        "z_star_pair": "age_bin+sex"
+      },
+      {
+        "x": "marital_status",
+        "y": "occupation",
+        "mi_xy": 0.0499321689233223,
+        "cmi_min_any": 0.018391217311305406,
+        "drop_max_any": 0.6316759774736074,
+        "z_star_pair": "age_bin+military_status"
+      },
+      {
+        "x": "marital_status",
+        "y": "district",
+        "mi_xy": 0.015792683044747,
+        "cmi_min_any": 0.00877546875498813,
+        "drop_max_any": 0.4443332567288464,
+        "z_star_pair": "province+family_type"
+      },
+      {
+        "x": "military_status",
+        "y": "occupation",
+        "mi_xy": 0.0329639309687438,
+        "cmi_min_any": 0.029513727440079525,
+        "drop_max_any": 0.10466602214207221,
+        "z_star_pair": "sex+age_bin"
+      },
+      {
+        "x": "family_type",
+        "y": "occupation",
+        "mi_xy": 0.0696139491050686,
+        "cmi_min_any": 0.05806782724658111,
+        "drop_max_any": 0.16585931421676536,
+        "z_star_pair": "marital_status+military_status"
+      },
+      {
+        "x": "family_type",
+        "y": "district",
+        "mi_xy": 0.0488022440349181,
+        "cmi_min_any": 0.030119483863387843,
+        "drop_max_any": 0.3828258421510844,
+        "z_star_pair": "province+marital_status"
+      },
+      {
+        "x": "housing_type",
+        "y": "occupation",
+        "mi_xy": 0.0096685913558513,
+        "cmi_min_any": 0.0096494708810358,
+        "drop_max_any": 0.0019775864044485614,
+        "z_star_pair": "military_status+sex"
+      },
+      {
+        "x": "housing_type",
+        "y": "district",
+        "mi_xy": 0.1553263695389767,
+        "cmi_min_any": 0.0800740929071006,
+        "drop_max_any": 0.48447843630950715,
+        "z_star_pair": "province+military_status"
+      },
+      {
+        "x": "education_level",
+        "y": "bachelors_field",
+        "mi_xy": 0.631028622067252,
+        "cmi_min_any": 0.42029751282982925,
+        "drop_max_any": 0.3339485751804203,
+        "z_star_pair": "occupation+district"
+      },
+      {
+        "x": "education_level",
+        "y": "occupation",
+        "mi_xy": 0.313982082661922,
+        "cmi_min_any": 0.0997936030759093,
+        "drop_max_any": 0.6821678414581339,
+        "z_star_pair": "bachelors_field+age_bin"
+      },
+      {
+        "x": "education_level",
+        "y": "district",
+        "mi_xy": 0.0523478015461186,
+        "cmi_min_any": 0.018119218288610857,
+        "drop_max_any": 0.6538685913553073,
+        "z_star_pair": "bachelors_field+province"
+      },
+      {
+        "x": "bachelors_field",
+        "y": "occupation",
+        "mi_xy": 0.2347991672146094,
+        "cmi_min_any": 0.05861681061919905,
+        "drop_max_any": 0.7503534134530275,
+        "z_star_pair": "education_level+sex"
+      },
+      {
+        "x": "occupation",
+        "y": "district",
+        "mi_xy": 0.1917946674507536,
+        "cmi_min_any": 0.14230486273579532,
+        "drop_max_any": 0.2580353529780258,
+        "z_star_pair": "province+military_status"
+      },
+      {
+        "x": "district",
+        "y": "province",
+        "mi_xy": 2.425605651865646,
+        "cmi_min_any": 2.2709818012387655,
+        "drop_max_any": 0.06374649172999414,
+        "z_star_pair": "housing_type+occupation"
+      }
+    ],
+    "mediated_edges": [
+      {
+        "x": "age_bin",
+        "y": "bachelors_field",
+        "mi_xy": 0.0650921186215516,
+        "cmi_min_any": 0.0004440823072715,
+        "drop_max_any": 0.9931776332269439,
+        "z_star_pair": "education_level"
+      },
+      {
+        "x": "age_bin",
+        "y": "province",
+        "mi_xy": 0.0070904414323612,
+        "cmi_min_any": 9.528600131147868e-18,
+        "drop_max_any": 0.9999999999999987,
+        "z_star_pair": "district"
+      },
+      {
+        "x": "sex",
+        "y": "education_level",
+        "mi_xy": 0.013636062445642,
+        "cmi_min_any": 0.0049984667129446,
+        "drop_max_any": 0.6334376780049082,
+        "z_star_pair": "marital_status"
+      },
+      {
+        "x": "marital_status",
+        "y": "education_level",
+        "mi_xy": 0.104547090477114,
+        "cmi_min_any": 0.0042717540184276,
+        "drop_max_any": 0.9591403835445549,
+        "z_star_pair": "age_bin"
+      },
+      {
+        "x": "marital_status",
+        "y": "bachelors_field",
+        "mi_xy": 0.0247240023032375,
+        "cmi_min_any": 0.0003095158128956,
+        "drop_max_any": 0.9874811606511188,
+        "z_star_pair": "education_level"
+      },
+      {
+        "x": "marital_status",
+        "y": "province",
+        "mi_xy": 0.0063987826199206,
+        "cmi_min_any": 3.3598124282718803e-17,
+        "drop_max_any": 0.9999999999999948,
+        "z_star_pair": "district"
+      },
+      {
+        "x": "family_type",
+        "y": "education_level",
+        "mi_xy": 0.089898483840149,
+        "cmi_min_any": 0.0038291427262804032,
+        "drop_max_any": 0.9574059254092748,
+        "z_star_pair": "age_bin+marital_status"
+      },
+      {
+        "x": "family_type",
+        "y": "bachelors_field",
+        "mi_xy": 0.0186137650996343,
+        "cmi_min_any": 0.000983461411104,
+        "drop_max_any": 0.9471648317339451,
+        "z_star_pair": "education_level"
+      },
+      {
+        "x": "family_type",
+        "y": "province",
+        "mi_xy": 0.0180643285016919,
+        "cmi_min_any": 2.3022916906256793e-17,
+        "drop_max_any": 0.9999999999999988,
+        "z_star_pair": "district"
+      },
+      {
+        "x": "housing_type",
+        "y": "province",
+        "mi_xy": 0.0752522766318763,
+        "cmi_min_any": 2.3416796279818185e-17,
+        "drop_max_any": 0.9999999999999997,
+        "z_star_pair": "district"
+      },
+      {
+        "x": "education_level",
+        "y": "province",
+        "mi_xy": 0.017933827648729,
+        "cmi_min_any": 1.4230394640435408e-17,
+        "drop_max_any": 0.9999999999999992,
+        "z_star_pair": "district"
+      },
+      {
+        "x": "bachelors_field",
+        "y": "district",
+        "mi_xy": 0.0309382676300534,
+        "cmi_min_any": 0.0031837338897005,
+        "drop_max_any": 0.8970939831612348,
+        "z_star_pair": "education_level"
+      },
+      {
+        "x": "bachelors_field",
+        "y": "province",
+        "mi_xy": 0.0120145730603197,
+        "cmi_min_any": 2.7017277304253183e-18,
+        "drop_max_any": 0.9999999999999998,
+        "z_star_pair": "district"
+      },
+      {
+        "x": "occupation",
+        "y": "province",
+        "mi_xy": 0.0491286630940047,
+        "cmi_min_any": 2.260469589288051e-17,
+        "drop_max_any": 0.9999999999999996,
+        "z_star_pair": "district"
+      }
+    ]
+  },
+  "phase3_decoupling_probe": [
+    {
+      "question": "Q1 housing decoupled from person attrs given district?",
+      "target": "housing_type",
+      "baseline_features": [
+        "district"
+      ],
+      "full_features": [
+        "district",
+        "age_bin",
+        "sex",
+        "marital_status",
+        "family_type",
+        "education_level",
+        "bachelors_field",
+        "occupation"
+      ],
+      "CE_null": 1.1531472120682433,
+      "CE_baseline": 1.000658609297788,
+      "CE_full": 1.0083107145963908,
+      "acc_baseline": 0.6535166666666666,
+      "acc_full": 0.6529333333333334,
+      "info_in_baseline": 0.15248860277045528,
+      "info_added_by_extras": -0.007652105298602718,
+      "info_total": 0.14483649747185257,
+      "fraction_added": -0.052832714351504
+    },
+    {
+      "question": "Control: family_type SHOULD improve with marital/age (tested edge)",
+      "target": "family_type",
+      "baseline_features": [
+        "district"
+      ],
+      "full_features": [
+        "district",
+        "age_bin",
+        "sex",
+        "marital_status",
+        "education_level"
+      ],
+      "CE_null": 2.3696888331832726,
+      "CE_baseline": 2.3363710584864723,
+      "CE_full": 1.5188974721531452,
+      "acc_baseline": 0.29025,
+      "acc_full": 0.54425,
+      "info_in_baseline": 0.033317774696800306,
+      "info_added_by_extras": 0.8174735863333271,
+      "info_total": 0.8507913610301274,
+      "fraction_added": 0.9608390773309456
+    },
+    {
+      "question": "Control: occupation IS modeled with sex/edu/field",
+      "target": "occupation",
+      "baseline_features": [
+        "district",
+        "province"
+      ],
+      "full_features": [
+        "district",
+        "province",
+        "age_bin",
+        "sex",
+        "education_level",
+        "bachelors_field"
+      ],
+      "CE_null": 4.355506868595341,
+      "CE_baseline": 3.4804376355704334,
+      "CE_full": 3.2995269396213462,
+      "acc_baseline": 0.3683666666666667,
+      "acc_full": 0.36928333333333335,
+      "info_in_baseline": 0.8750692330249072,
+      "info_added_by_extras": 0.18091069594908715,
+      "info_total": 1.0559799289739944,
+      "fraction_added": 0.1713202031452081
+    },
+    {
+      "question": "Q2 military depends on sex but does it on age?",
+      "target": "military_status",
+      "baseline_features": [
+        "age_bin"
+      ],
+      "full_features": [
+        "age_bin",
+        "sex"
+      ],
+      "CE_null": 0.03307563501181216,
+      "CE_baseline": 0.03117692481771968,
+      "CE_full": 0.02920044519343334,
+      "acc_baseline": 0.99475,
+      "acc_full": 0.99475,
+      "info_in_baseline": 0.001898710194092483,
+      "info_added_by_extras": 0.0019764796242863376,
+      "info_total": 0.0038751898183788207,
+      "fraction_added": 0.5100342736535147
+    },
+    {
+      "question": "Q3 if we add occupation, military becomes determined?",
+      "target": "military_status",
+      "baseline_features": [
+        "sex"
+      ],
+      "full_features": [
+        "sex",
+        "age_bin",
+        "occupation"
+      ],
+      "CE_null": 0.03307563501181216,
+      "CE_baseline": 0.03066660219565211,
+      "CE_full": 0.008208124245931167,
+      "acc_baseline": 0.99475,
+      "acc_full": 0.9984,
+      "info_in_baseline": 0.002409032816160051,
+      "info_added_by_extras": 0.022458477949720945,
+      "info_total": 0.024867510765880993,
+      "fraction_added": 0.9031252931248223
+    },
+    {
+      "question": "Control: marital should improve with family_type (direct edge)",
+      "target": "marital_status",
+      "baseline_features": [
+        "age_bin"
+      ],
+      "full_features": [
+        "age_bin",
+        "sex",
+        "education_level",
+        "family_type"
+      ],
+      "CE_null": 1.0482782233284051,
+      "CE_baseline": 0.7354355803505886,
+      "CE_full": 0.18246373214841055,
+      "acc_baseline": 0.72755,
+      "acc_full": 0.9214166666666667,
+      "info_in_baseline": 0.3128426429778165,
+      "info_added_by_extras": 0.5529718482021782,
+      "info_total": 0.8658144911799945,
+      "fraction_added": 0.6386724336855902
+    }
+  ],
+  "phase3_stability": {
+    "n_seeds": 5,
+    "n_per_seed": 200000,
+    "n_pairs_total": 55,
+    "n_pairs_stable": 52,
+    "unstable_pairs": [
+      {
+        "x": "family_type",
+        "y": "education_level",
+        "edge_class": "mediated",
+        "p_direct": 1.0,
+        "p_mediated": 0.0,
+        "p_no_edge_marginal": 0.0
+      },
+      {
+        "x": "bachelors_field",
+        "y": "district",
+        "edge_class": "mediated",
+        "p_direct": 1.0,
+        "p_mediated": 0.0,
+        "p_no_edge_marginal": 0.0
+      },
+      {
+        "x": "sex",
+        "y": "education_level",
+        "edge_class": "mediated",
+        "p_direct": 0.4,
+        "p_mediated": 0.6,
+        "p_no_edge_marginal": 0.0
+      }
+    ]
+  },
+  "phase3_node_degrees_in_skeleton": [
+    {
+      "node": "occupation",
+      "degree": 9
+    },
+    {
+      "node": "district",
+      "degree": 7
+    },
+    {
+      "node": "age_bin",
+      "degree": 5
+    },
+    {
+      "node": "marital_status",
+      "degree": 5
+    },
+    {
+      "node": "family_type",
+      "degree": 5
+    },
+    {
+      "node": "sex",
+      "degree": 4
+    },
+    {
+      "node": "education_level",
+      "degree": 4
+    },
+    {
+      "node": "bachelors_field",
+      "degree": 3
+    },
+    {
+      "node": "housing_type",
+      "degree": 2
+    },
+    {
+      "node": "province",
+      "degree": 1
+    },
+    {
+      "node": "military_status",
+      "degree": 1
+    }
+  ]
+}

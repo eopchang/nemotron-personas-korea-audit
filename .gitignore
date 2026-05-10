@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# 큰 원본/중간 산출물은 추적하지 않음 (재현 스크립트로 받기)
+data/raw/
+data/processed/*.parquet
+
+# 작은 집계 산출물(JSON/CSV)과 그림은 커밋
+!data/processed/*.json
+!data/processed/*.csv

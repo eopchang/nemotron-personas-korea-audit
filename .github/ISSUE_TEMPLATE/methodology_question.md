@@ -1,0 +1,21 @@
+---
+name: 방법론 질문 / 의문
+about: CMI, PC, decoupling probe, 임계 등 방법론적 의문 또는 개선 제안
+title: "[METHOD] "
+labels: methodology
+---
+
+### 어떤 분석에 대한 질문인가요?
+[ ] Phase 1 (단변량/marginal)
+[ ] Phase 2 (이변량/bivariate)
+[ ] Phase 3 (CMI / skeleton / decoupling probe)
+[ ] 그 외:
+
+### 의문 / 제안
+구체적으로 어떤 부분이 의심스럽거나 개선할 점이 있나요?
+
+### 영향 받는 결론
+이 의문이 옳다면, 본 리포의 어떤 결론이 영향을 받나요?
+
+### (선택) 대안 / 검증 방법
+다른 방법, 다른 임계, 다른 데이터로 검증할 수 있다면 적어주세요.
