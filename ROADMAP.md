@@ -4,16 +4,6 @@
 
 ---
 
-## P4 — CMI permutation null + bootstrap CI
-
-고카디널리티 변수 (occupation 2,120, district 252) 의 plug-in MI bias 통제.
-- Permutation null: Z strata 안에서 X(또는 Y) 를 shuffle 해 I(X;Y|Z) null distribution
-- Block bootstrap: row bootstrap 으로 CMI 의 95% CI
-
-이게 들어가면 임계 ε 를 임의로 정하는 대신 데이터 기반 threshold 가능.
-
----
-
 ## P5 — occupation KSCO 대분류 재코딩
 
 2,120개 occupation 문자열을 KSCO (한국표준직업분류) 7차 대분류 10개로 재매핑한 뒤
