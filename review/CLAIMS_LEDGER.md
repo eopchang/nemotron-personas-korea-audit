@@ -89,7 +89,8 @@
 
 [**C17**] (★★) PC-style 추론 결과: **23 direct + 14 mediated + 18 no-edge marginal** 의 skeleton.
 - Caveat: |Z| ≤ 2 conditioning 만 수행. 더 깊은 conditioning 으로 일부 'direct' 가 실제 'mediated' 일 가능성 있음.
-- Caveat: ε = 0.005 nats 임계는 임의. sensitivity 분석 미실시.
+- Caveat: ε = 0.005 nats 임계는 임의 — sensitivity 분석 (C29) 으로 검증.
+- **Caveat (P4 추가)**: permutation null 로 bias 보정 시 23 direct 중 12개만 ratio > 2 로 견고. 11개 (모두 occupation/district 포함) 는 plug-in MI 의 카디널리티 bias 가능성 — 하단 C31 참조.
 - Evidence: [`data/processed/cmi/skeleton.json`](../data/processed/cmi/skeleton.json)
 
 [**C18**] (★★★) `housing_type` 의 직접 edge 는 단 2개 — district, occupation. 사람 속성 (age, sex, marital, family, education, bachelors_field) 과 모두 mediated 또는 no-edge.
@@ -149,6 +150,18 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 - Evidence: [`data/processed/cmi/epsilon_counts.csv`](../data/processed/cmi/epsilon_counts.csv), [`data/processed/cmi/epsilon_boundary.csv`](../data/processed/cmi/epsilon_boundary.csv), [Phase 3 §2.5](../reports/PHASE3_REPORT.md#25-ε-threshold-sensitivity--위-결과는-임계-의존성이-얼마나-큰가)
 
 [**C30**] (★★) Decoupling probe 는 단일 모델 (HGB) · 단일 seed 한정. 다른 모델 / seed 로 결과 다를 가능성.
+
+[**C31**] (★★★) Permutation null (100회, N=100K subsample, stratified shuffle) 결과:
+- 55 marginal pairs 중 28개 ratio_obs/null_p95 ≥ 10 (강건), 17개 2-10 (유의), 10개 < 2 (bias-suspect).
+- 23 'direct edges' 중 12개만 conditional ratio > 2 (4개 ★★★ ratio≥10 + 8개 ★★ ratio 2-10), 11개는 < 2 (모두 occupation/district 포함).
+- 가장 결정적: `occupation × district` marginal MI 0.597 중 97%가 카디널리티 bias (ratio 1.03). **Housing × district 는 conditional ratio 9.84 로 견고** — housing decoupling 결론에 영향 없음.
+- Evidence: [`data/processed/cmi/permutation_null_marginal.csv`](../data/processed/cmi/permutation_null_marginal.csv), [`permutation_null_conditional.csv`](../data/processed/cmi/permutation_null_conditional.csv), [Phase 3 §2.5](../reports/PHASE3_REPORT.md#25-permutation-null--bootstrap-ci--어느-edge-가-bias-가-아닌가)
+- 시각화: [`reports/figures/perm_null_*.png`](../reports/figures), [`forest_*.png`](../reports/figures)
+
+[**C32**] (★★★) Bootstrap 95% CI (100 resamples, N=100K) — MI/CMI 추정의 정밀도:
+- 모든 페어에서 SE 매우 작음 (예: district~province SE=0.004 nats). 추정치 자체는 정밀하게 측정됨.
+- CI 폭은 N 의존이므로 풀 1M 데이터에서는 더 좁아짐. **추정치의 흔들림이 아니라 *해석* 의 견고성이 본 리포의 핵심 한계.**
+- Evidence: [`data/processed/cmi/bootstrap_*.csv`](../data/processed/cmi)
 - Evidence: [Phase 3 §6](../reports/PHASE3_REPORT.md#6-한계)
 
 ---

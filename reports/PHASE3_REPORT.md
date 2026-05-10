@@ -2,11 +2,12 @@
 
 > **한 문단 요약**: Conditional MI 와 PC-style 알고리즘으로 PGM이 생성한
 > 데이터에서 *관찰되는 조건부 의존 skeleton* 을 추정. 결과: **23 direct + 14 mediated
-> + 18 no-edge** (단, ε=0.005 nats, |Z|≤2 한계 하). 가장 결정적 발견: **`housing_type`
-> 은 사람 속성과 통계적으로 분리됨** — 분류기로 person-attrs 추가 정보 = -0.008
-> nats (실질 0). 1인 가구도 4인 가족도 모두 같은 주거 분포. `military_status` 는
-> occupation 라벨에서 거의 결정적으로 파생되는 부수 변수이며, 변수 의미는
-> "현역 군 인력 신분 (직업군인 + 의무복무 통합)" 으로 한국군 인력 구성과 부합.
+> + 18 no-edge** (단, ε=0.005 nats, |Z|≤2 한계 하; permutation null 로 bias 보정 시
+> 12개만 ratio>2 로 견고). 가장 결정적 발견: **`housing_type` 은 사람 속성과
+> 통계적으로 분리됨** — 분류기로 person-attrs 추가 정보 = -0.008 nats (실질 0).
+> 1인 가구도 4인 가족도 모두 같은 주거 분포. `military_status` 는 occupation 라벨에서
+> 거의 결정적으로 파생되는 부수 변수이며, 변수 의미는 "현역 군 인력 신분
+> (직업군인 + 의무복무 통합)" 으로 한국군 인력 구성과 부합.
 
 NVIDIA `Nemotron-Personas-Korea` 가 사용한 PGM이 생성한 데이터에서 **관찰되는 조건부 의존 skeleton**을 역공학적으로 추정한다.
 
@@ -124,7 +125,92 @@ Info_added(features → target | baseline) = CE(target | baseline) − CE(target
 - 우: 추론된 skeleton. **23개 직접 edge.**
 - 노드 차수: occupation 9 (최대 hub) — 사실상 모든 사람 속성의 sink. district 7. age, marital, family 5. 반면 housing 2, military 1, province 1.
 
-### 2.5 ε threshold sensitivity — 위 결과는 임계 의존성이 얼마나 큰가
+### 2.5 Permutation null + bootstrap CI — 어느 edge 가 bias 가 아닌가?
+
+**왜 필요한가**: plug-in MI 추정량은 contingency table 의 카디널리티에 비례하는
+upward bias 를 가짐. 대략 `bias ≈ (k-1)(m-1)/(2N)` (Miller-Madow). occupation
+(2,120 levels) × district (252 levels) 의 경우 bias 만 약 0.27 nats — 우리 임계
+ε=0.005 의 53배. 따라서 단순 MI/CMI 값으로는 "진짜 신호" 와 "카디널리티 bias" 를
+구분 불가.
+
+**방법**:
+- **Permutation null**: H0 (X⊥Y 또는 X⊥Y\|Z) 하에서 Y 를 (Z-stratified) 셔플 → null 분포 100회
+- **Bootstrap CI**: 같은 N 으로 resample 100회 → 추정치의 95% CI
+- 100K subsample × 100 perms / boots
+- 핵심 metric: **ratio = observed / null_p95** (효과크기 / bias 우월성)
+
+산출물: [`data/processed/cmi/permutation_null_{marginal,conditional}.csv`](../data/processed/cmi),
+[`bootstrap_{marginal,conditional}.csv`](../data/processed/cmi)
+시각화: [`figures/perm_null_{marginal,conditional}.png`](figures), [`forest_{marginal,conditional}.png`](figures)
+
+#### 결과 1 — Marginal: 모든 페어가 p<0.01 이지만, 효과 강도는 천차만별
+
+55개 페어 모두 p<0.01 로 "통계적으로 유의" 하지만, **N 이 크면 거의 모든 차이가 유의해지므로 효과크기 우월성** (ratio_obs/null_p95) 이 더 정보적:
+
+| ratio | n_pairs | 의미 |
+|---|---:|---|
+| ≥ 10 | 28 | 강건 — bias 무관 |
+| 2 – 10 | 17 | 유의 — 신호 > 2× bias floor |
+| < 2 | 10 | bias-suspect — 신호가 bias 와 같은 자릿수 |
+
+ratio < 2 인 10개 페어는 모두 **occupation / district / family_type 같은 high-cardinality 변수**를 포함:
+
+| pair | observed | null_p95 | ratio | 해석 |
+|---|---:|---:|---:|---|
+| `military × housing` | 0.000027 | 0.000062 | **0.44** | obs < null — 사실상 독립 |
+| `sex × housing` | 0.000028 | 0.000047 | **0.60** | obs < null — 사실상 독립 |
+| `occupation × district` | 0.597 | 0.579 | **1.03** | obs MI 의 97%가 bias |
+| `housing × occupation` | 0.037 | 0.034 | 1.09 | bias 우월 |
+| `military × district` | 0.0019 | 0.0015 | 1.25 | |
+| `occupation × province` | 0.125 | 0.098 | 1.27 | |
+| `sex × district` | 0.0018 | 0.0014 | 1.30 | |
+| `family × occupation` | 0.163 | 0.124 | 1.32 | |
+| `family × district` | 0.086 | 0.045 | 1.90 | |
+| `military × family` | 0.0005 | 0.0003 | 1.96 | |
+
+**가장 충격적**: `occupation × district` 의 marginal MI = 0.597 nats 중 97% 가 카디널리티 bias. 진짜 신호는 약 0.018 nats.
+
+#### 결과 2 — Conditional: 23개 'direct edge' 중 11개는 bias-suspect
+
+조건부 permutation null (Y 를 Z 안에서 셔플) 결과, **23개 direct edge 중 12개만 ratio > 2** 로 견고하고 11개는 의심:
+
+| 분류 | n | 페어 |
+|---|---:|---|
+| ★★★ ratio ≥ 10 (가장 견고) | 4 | `marital×family` (80), `age×education` (65), `sex×family` (14), `age×marital` (11) |
+| ★★ ratio 2–10 (유의) | 8 | `housing×district` (9.8), `age×family` (8.0), `sex×marital` (7.5), `sex×occupation` (3.8), `military×occupation` (3.6), `education×bachelors_field` (2.3), `age×district` (2.2), `district×province` (2.1) |
+| ⚠️ ratio < 2 (bias-suspect) | 11 | `occupation×district` (1.01), `housing×occupation` (1.05), `marital×occupation` (1.06), `family×occupation` (1.16), `marital×district` (1.17), `family×district` (1.30), `bachelors_field×occupation` (1.46), `age×occupation` (1.53), `education×occupation` (1.57), `sex×bachelors_field` (1.84), `education×district` (1.94) |
+
+⚠️ **모든 bias-suspect 페어가 occupation 또는 district 를 포함** — 정확히 GPT-5.5 Pro 가 지적한 high-cardinality 변수 문제 패턴.
+
+#### 결과 3 — 핵심 결론들의 robustness check
+
+| 결론 | Permutation null | 견고? |
+|---|---|:---:|
+| **Housing × person-attrs decoupled** | 모든 housing × person-attr 페어 ratio < 2 (no_edge_marginal) | ✅ |
+| **Housing × district direct edge** | conditional ratio = **9.8** | ✅ |
+| **Marital → family 결정성** | conditional ratio = **80** | ✅ |
+| **Sex×bachelors_field 직접 edge** | conditional ratio = 1.84 | ⚠️ borderline |
+| **Education chain (age→edu→field, edu→occupation)** | age×edu ratio=65, edu×field=2.3, edu×occupation=1.6 | 일부 ⚠️ |
+| **Military as occupation function** | conditional ratio = 3.6 + occ→military 결정성 | ✅ |
+| **occupation×district direct edge** | conditional ratio = **1.01** | ❌ **bias artifact 가능성 높음** |
+
+→ **Skeleton 의 23 direct edges 를 bias-corrected 하면 12개로 줄어든다.** 11개는 high-cardinality bias 의 결과일 수 있어 단언 약화 필요.
+
+#### Bootstrap CI — 추정 정밀도
+
+Bootstrap (N=100K × 100회) 으로 본 CI 폭:
+- 강한 신호 (district~province MI=2.43): SE = 0.004 nats (CI ±0.7%)
+- 중간 (housing~province MI=0.075): SE = 0.001 (CI ±2%)
+- 약한 (marital~military MI=0.0005): SE = 0.0001 (CI ±18%)
+
+→ 추정치 자체는 모든 페어에서 정밀하게 측정됨. 흔들리는 것은 *해석* 이지 *측정* 이 아님.
+
+![perm marginal](figures/perm_null_marginal.png)
+![perm conditional](figures/perm_null_conditional.png)
+
+---
+
+### 2.6 ε threshold sensitivity — 위 결과는 임계 의존성이 얼마나 큰가
 
 ε=0.005 nats 는 임의 선택이므로, ε ∈ {0.0005, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05} grid 로 분류를 재계산:
 
@@ -306,7 +392,9 @@ PGM은 다음 4개 군집으로 잘 분리됨:
 
 1. **단일 데이터셋, 단일 시점** — 시계열·생애주기 분석 불가
 2. **PC 추론은 |Z|≤2 까지만** — 3변수 이상 conditional independence는 완전 검증 안 됨. 대부분의 실제 PGM은 conditional dependency가 |Z|=3 이상으로도 잡혀, 우리가 'direct'로 판정한 일부 edge가 사실 매개일 수 있음.
-3. **CMI 임계 ε=0.005 nats** — 임의 선택이지만 §2.5 sensitivity 분석으로 의존성 정량화. ε 100배 변동 시 direct edge 수 32→13 변화하나, 핵심 결론 (housing decoupling, demographic chain 강건성) 은 ε-stable.
+3. **CMI 임계 ε=0.005 nats** — 임의 선택이지만 §2.6 sensitivity 분석으로 의존성 정량화. ε 100배 변동 시 direct edge 수 32→13 변화하나, 핵심 결론 (housing decoupling, demographic chain 강건성) 은 ε-stable.
+
+8. **High-cardinality variable bias** — §2.5 permutation null 결과, 23 'direct edges' 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect. 이들의 "direct" 분류는 plug-in MI 의 카디널리티 bias 일 가능성 — bias-corrected 결론에서는 12개 direct edge 만 견고.
 4. **방향성 미해결** — skeleton은 무방향. 본래 생성 PGM은 DAG일 텐데 d-separation 방향은 추가 가정 (예: 시간 순서, 도메인 지식) 없이는 식별 불가.
 5. **Decoupling probe** 는 1개 모델 (HGB) 의 학습 능력 한계. 다른 모델 (LightGBM, RF, NN) 에서 미세 차이 발생 가능. 또한 단일 random seed (42) 사용 — 표본 변동의 표준오차 미산출.
 6. **고카디널리티 변수의 plug-in MI bias** — occupation (2,120 unique), district (252) 가 들어가는 페어는 작은 CMI 가 실제 의존인지 추정 bias 인지 분간이 필요. permutation null / bootstrap CI 추가 작업 필요.
