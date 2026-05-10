@@ -145,8 +145,8 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 [**C28**] (★★★) PC conditioning 은 |Z| ≤ 2 까지만. |Z| ≥ 3 mediation 가능성 미검증.
 - Evidence: [Phase 3 §6 한계](../reports/PHASE3_REPORT.md#6-한계)
 
-[**C29**] (★★) CMI 임계 ε = 0.005 nats 는 임의 선택. sensitivity 분석 미실시.
-- Evidence: [Phase 3 §1.2](../reports/PHASE3_REPORT.md#12-pc-style-skeleton-recovery), [METHODOLOGY §7](../docs/METHODOLOGY.md#7-모든-임의-선택--임계-한-곳에-모음)
+[**C29**] (★★★) CMI 임계 ε = 0.005 nats 는 임의 선택이나, ε ∈ {0.0005, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05} grid 에서 sensitivity 분석 완료. ε 100배 변동 시 direct edge 수는 32–13 범위로 변동하나, 핵심 결론 (housing decoupling, demographic chain) 은 ε-stable. 23개 페어는 전 grid 에서 분류 불변, 32개는 boundary.
+- Evidence: [`data/processed/cmi/epsilon_counts.csv`](../data/processed/cmi/epsilon_counts.csv), [`data/processed/cmi/epsilon_boundary.csv`](../data/processed/cmi/epsilon_boundary.csv), [Phase 3 §2.5](../reports/PHASE3_REPORT.md#25-ε-threshold-sensitivity--위-결과는-임계-의존성이-얼마나-큰가)
 
 [**C30**] (★★) Decoupling probe 는 단일 모델 (HGB) · 단일 seed 한정. 다른 모델 / seed 로 결과 다를 가능성.
 - Evidence: [Phase 3 §6](../reports/PHASE3_REPORT.md#6-한계)

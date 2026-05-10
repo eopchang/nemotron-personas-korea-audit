@@ -4,22 +4,6 @@
 
 ---
 
-## P3 — ε sensitivity analysis
-
-CMI 임계 ε = 0.005 nats 가 임의 선택이라는 점이 가장 큰 약점.
-ε 를 {0.001, 0.002, 0.005, 0.01, 0.02} 로 변화시키며 direct/mediated/no-edge 분류 수가 어떻게 바뀌는지 표 + 그림.
-
-특히 다음 페어들이 임계 경계 근처:
-- `housing_type ~ occupation` (min CMI = 0.0096)
-- `sex ~ family_type` (0.0077)
-- `sex ~ marital_status` (0.0087)
-- `marital_status ~ district` (0.0088)
-- `sex ~ education_level` (0.005 경계)
-
-산출물: `scripts/14_epsilon_sensitivity.py`, `reports/figures/epsilon_sensitivity.png`
-
----
-
 ## P4 — CMI permutation null + bootstrap CI
 
 고카디널리티 변수 (occupation 2,120, district 252) 의 plug-in MI bias 통제.
