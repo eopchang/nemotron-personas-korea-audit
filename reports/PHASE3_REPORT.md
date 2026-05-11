@@ -224,6 +224,14 @@ Bootstrap (N=100K × 100회) 으로 본 CI 폭:
 ![perm marginal](figures/perm_null_marginal.png)
 ![perm conditional](figures/perm_null_conditional.png)
 
+#### Bias-corrected skeleton — 한 장에 정리
+
+위 검증의 결과를 §2.4 의 skeleton 그림에 직접 반영. 23 direct edge 를 ratio tier 로 재분류 + 가장 강한 6개에만 label:
+
+![bias_corrected_skeleton](figures/skeleton_bias_corrected.png)
+
+(A) 신뢰 가능한 dependency 만 (robust + significant 12개) — 후속 분석에서 사용 권장. (B) 23개 모든 edge 를 ratio 순으로 정렬 — bias-suspect 11개 (빨강) 가 모두 occupation/district 포함 페어임이 한눈에.
+
 ---
 
 ### 2.6 외부 검증 — KOSIS / 통계청 cross-tab 비교 (P7 v1)
