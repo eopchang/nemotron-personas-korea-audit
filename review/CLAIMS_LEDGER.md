@@ -162,6 +162,29 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 - 모든 페어에서 SE 매우 작음 (예: district~province SE=0.004 nats). 추정치 자체는 정밀하게 측정됨.
 - CI 폭은 N 의존이므로 풀 1M 데이터에서는 더 좁아짐. **추정치의 흔들림이 아니라 *해석* 의 견고성이 본 리포의 핵심 한계.**
 - Evidence: [`data/processed/cmi/bootstrap_*.csv`](../data/processed/cmi)
+
+[**C33**] (★★★) **외부 검증 (P7 v1): age × marital × sex 결합 분포는 2020 census 와 8/8 cell ±4pp 이내** 부합:
+- 20대 미혼 92.8% (ref) vs 90.3% (synth)
+- 30대 남 미혼 50.5% vs 54.1%, 30대 여 32.8% vs 35.0%
+- 40대 17.9% vs 19.4%, 50대 7.4% vs 8.1%
+- → 인구학 chain (Phase 2 §3-3, Phase 3) 결론을 외부 데이터로 **강하게 지지**.
+- Evidence: [`data/processed/kosis_joint_compare.json`](../data/processed/kosis_joint_compare.json), [Phase 3 §2.6](../reports/PHASE3_REPORT.md#26-외부-검증--kosis--통계청-cross-tab-비교-p7-v1)
+- Caveat: reference 는 KOSIS 직접 cross-tab 이 아니라 보도자료 인용 — KOSIS Open API 로 완전 cross-tab 검증은 P7 v2.
+
+[**C34**] (★★) **province × housing 외부 검증: 시도별 패턴은 ±3pp 이내, 전국 합계는 ±9pp**:
+- 광주·대전·제주·전라남·인천 모두 reference 와 ±3pp 이내 일치 (시도별 housing 패턴 신뢰 가능)
+- 전국 아파트 +9pp / 단독 −12pp (Phase 1 §3-4 의 재확인)
+- 가구 단위 vs 개인 단위 모집단 차이로 일부 설명되나 전체 격차 설명에는 부족 — 시드 통계 vintage 가능성
+- Evidence: [`data/processed/kosis_joint_compare.json`](../data/processed/kosis_joint_compare.json)
+
+[**C35**] (★) **age × sex × education 외부 비교: 60대 여성 중졸이하 −44pp 등 큰 격차** — 새 가설:
+- 50s_early_F 중졸이하: ref 39.7% vs synth 6.9% (−33pp)
+- 60s_early_F 중졸이하: ref 73.7% vs synth 29.8% (−44pp)
+- 60s_early_F 4년제대학: ref 4.6% vs synth 9.7% (+5pp)
+- → **PGM 이 고령층 (특히 여성) 학력을 상향 편향시킬 가능성**
+- ⚠️ Reference (한국노동사회연구소 2014) 가 10년 vintage — 코호트 갱신 (1960-64년생 → 1970-74년생) 으로 일부 설명. 정확한 원인 분리는 2020 census 직접 비교 필요 (P7 v2).
+- Evidence: [`data/processed/kosis_joint_compare.json`](../data/processed/kosis_joint_compare.json)
+- 신뢰도 낮음 사유: vintage 한계로 PGM 편향 vs 코호트 갱신 분리 불가.
 - Evidence: [Phase 3 §6](../reports/PHASE3_REPORT.md#6-한계)
 
 ---

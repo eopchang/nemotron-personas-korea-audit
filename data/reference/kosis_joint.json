@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "purpose": "P7 외부 검증을 위한 KOSIS / 통계청 cross-tab reference. KOSIS 직접 접근 (SSO redirect, JS 동적 로딩) 이 어려워 공식 보도자료·정책브리핑·뉴스 기사에 인용된 값을 사용. 수치는 인용 출처에 명시. 향후 KOSIS Open API 키로 완전 cross-tab 으로 확장 예정 (P7 v2).",
+    "_caveat_general": "공개 자료가 cross-tab 의 일부 cell 만 제공 — 우리는 동일 cell 만 비교. 모집단·연도가 다를 수 있어 직접 비교 시 caveat 필요."
+  },
+
+  "age_marital_decade": {
+    "_description": "연령대 (20대/30대/40대/50대) × 미혼 비율",
+    "_population": "15세 이상 인구",
+    "_year": 2020,
+    "_sources": [
+      "통계청, 2020 인구주택총조사 (newsis.com 인용 NISX20210927_0001593733)",
+      "통계청, '한국의 사회동향 2024' (metroseoul.co.kr 인용 20241219500409)"
+    ],
+    "_cells_per_age": ["unmarried_overall", "unmarried_M", "unmarried_F"],
+    "data": {
+      "20대": {"unmarried_overall": 0.928},
+      "30대": {"unmarried_overall": 0.425, "unmarried_M": 0.505, "unmarried_F": 0.328},
+      "40대": {"unmarried_overall": 0.179, "unmarried_M": 0.236, "unmarried_F": 0.119},
+      "50대": {"unmarried_overall": 0.074}
+    },
+    "_caveat": "60대+ 데이터 미수집. 미혼 외 다른 marital state (배우자있음/사별/이혼) 의 연령별 분포는 이 자료에 없음 (별도 KOSIS 표 필요)."
+  },
+
+  "age_sex_education": {
+    "_description": "성별 × 연령대 × 학력 (중졸이하 / 4년제 대학)",
+    "_population": "50대 초반·60대 초반 (50-54, 60-64)",
+    "_sources": [
+      "한국노동사회연구소 이슈페이퍼 2014-01 (klsi.org); 2010 인구주택총조사 가공 (mediatoday.co.kr 인용)"
+    ],
+    "_VINTAGE_WARNING": "Reference 는 2014년 시점 (50대 초반 = 1960-1964년 출생). 본 데이터셋(2024년 시점, 50대 초반 = 1970-1974년 출생) 과 약 10년 코호트 차이. 한국 교육 확장기 영향으로 reference 는 현재 50대보다 학력 수준 낮음. 따라서 ref 와의 차이는 'PGM 편향' + '코호트 갱신' 의 합. 정확한 검증은 2020 census 의 5세별 학력 표 (KOSIS DT_1IN1502) 필요 — P7 v2 에서 처리.",
+    "data": {
+      "50s_early_M": {"middle_or_below": 0.216, "univ_4yr": 0.254},
+      "50s_early_F": {"middle_or_below": 0.397, "univ_4yr": 0.106},
+      "60s_early_M": {"middle_or_below": 0.489, "univ_4yr": 0.133},
+      "60s_early_F": {"middle_or_below": 0.737, "univ_4yr": 0.046}
+    },
+    "_caveat": "위 _VINTAGE_WARNING 참조."
+  },
+
+  "province_housing_apt_pct": {
+    "_description": "시도별 아파트 거주 비율 (가구 기준)",
+    "_population": "일반가구",
+    "_year": 2023,
+    "_source": "통계청, 2023 인구주택총조사(등록센서스); 정책브리핑 (korea.kr) newsId=156643294",
+    "_full_breakdown_note": "17개 시도 모든 cell 의 완전 cross-tab 은 KOSIS 또는 PDF 보도자료 직접 접근 필요 (현재 미수집). 아래는 보도자료 본문에서 명시된 4개 시도 + 전국 평균.",
+    "data": {
+      "전국": 0.531,
+      "세종": 0.780,
+      "광주": 0.815,
+      "대전": 0.756,
+      "제주": 0.257
+    },
+    "_caveat": "본 데이터셋(개인 단위)과 reference (가구 단위) 모집단 차이로 직접 비교는 +5~10pp 정도 다를 수 있음 (아파트 평균 가구원수 약간 큼)."
+  },
+
+  "province_housing_detached_pct": {
+    "_description": "시도별 단독주택 거주 비율 (가구 기준)",
+    "_population": "일반가구",
+    "_year": 2023,
+    "_source": "통계청, 2023 인구주택총조사(등록센서스); 정책브리핑 (korea.kr) newsId=156643294",
+    "data": {
+      "전국": 0.284,
+      "전라남": 0.479,
+      "인천": 0.082
+    },
+    "_caveat": "보도자료에 명시된 최고/최저 + 전국 평균만. 17개 완전 cross-tab 미수집."
+  }
+}

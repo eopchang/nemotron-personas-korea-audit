@@ -1,0 +1,249 @@
+{
+  "_meta": {
+    "purpose": "P7 외부 검증을 위한 KOSIS / 통계청 cross-tab reference. KOSIS 직접 접근 (SSO redirect, JS 동적 로딩) 이 어려워 공식 보도자료·정책브리핑·뉴스 기사에 인용된 값을 사용. 수치는 인용 출처에 명시. 향후 KOSIS Open API 키로 완전 cross-tab 으로 확장 예정 (P7 v2).",
+    "_caveat_general": "공개 자료가 cross-tab 의 일부 cell 만 제공 — 우리는 동일 cell 만 비교. 모집단·연도가 다를 수 있어 직접 비교 시 caveat 필요."
+  },
+  "age_marital": {
+    "comparison_cells": [
+      {
+        "decade": "20대",
+        "sex": "all",
+        "metric": "unmarried_share",
+        "reference": 0.928,
+        "synth": 0.9028523601780596,
+        "diff_pp": -2.514763982194046,
+        "n_synth": 135011
+      },
+      {
+        "decade": "30대",
+        "sex": "all",
+        "metric": "unmarried_share",
+        "reference": 0.425,
+        "synth": 0.45015000768413527,
+        "diff_pp": 2.515000768413528,
+        "n_synth": 149659
+      },
+      {
+        "decade": "30대",
+        "sex": "남자",
+        "metric": "unmarried_share",
+        "reference": 0.505,
+        "synth": 0.5411015600127348,
+        "diff_pp": 3.610156001273479,
+        "n_synth": 78525
+      },
+      {
+        "decade": "30대",
+        "sex": "여자",
+        "metric": "unmarried_share",
+        "reference": 0.328,
+        "synth": 0.3497483622459021,
+        "diff_pp": 2.1748362245902095,
+        "n_synth": 71134
+      },
+      {
+        "decade": "40대",
+        "sex": "all",
+        "metric": "unmarried_share",
+        "reference": 0.179,
+        "synth": 0.1940824494582885,
+        "diff_pp": 1.5082449458288516,
+        "n_synth": 175647
+      },
+      {
+        "decade": "40대",
+        "sex": "남자",
+        "metric": "unmarried_share",
+        "reference": 0.236,
+        "synth": 0.2563805233757401,
+        "diff_pp": 2.038052337574009,
+        "n_synth": 89687
+      },
+      {
+        "decade": "40대",
+        "sex": "여자",
+        "metric": "unmarried_share",
+        "reference": 0.119,
+        "synth": 0.12908329455560727,
+        "diff_pp": 1.0083294555607276,
+        "n_synth": 85960
+      },
+      {
+        "decade": "50대",
+        "sex": "all",
+        "metric": "unmarried_share",
+        "reference": 0.074,
+        "synth": 0.08071446540880503,
+        "diff_pp": 0.6714465408805035,
+        "n_synth": 198750
+      }
+    ],
+    "reference_meta": {
+      "_description": "연령대 (20대/30대/40대/50대) × 미혼 비율",
+      "_population": "15세 이상 인구",
+      "_year": 2020,
+      "_sources": [
+        "통계청, 2020 인구주택총조사 (newsis.com 인용 NISX20210927_0001593733)",
+        "통계청, '한국의 사회동향 2024' (metroseoul.co.kr 인용 20241219500409)"
+      ],
+      "_cells_per_age": [
+        "unmarried_overall",
+        "unmarried_M",
+        "unmarried_F"
+      ],
+      "_caveat": "60대+ 데이터 미수집. 미혼 외 다른 marital state (배우자있음/사별/이혼) 의 연령별 분포는 이 자료에 없음 (별도 KOSIS 표 필요)."
+    }
+  },
+  "age_sex_education": {
+    "comparison_cells": [
+      {
+        "cell": "50s_early_M",
+        "metric": "middle_or_below",
+        "reference": 0.216,
+        "synth": 0.04788311407389928,
+        "diff_pp": -16.81168859261007,
+        "n_synth": 50853
+      },
+      {
+        "cell": "50s_early_M",
+        "metric": "univ_4yr",
+        "reference": 0.254,
+        "synth": 0.2953021453994848,
+        "diff_pp": 4.130214539948479,
+        "n_synth": 50853
+      },
+      {
+        "cell": "50s_early_F",
+        "metric": "middle_or_below",
+        "reference": 0.397,
+        "synth": 0.06929730587628458,
+        "diff_pp": -32.77026941237155,
+        "n_synth": 50406
+      },
+      {
+        "cell": "50s_early_F",
+        "metric": "univ_4yr",
+        "reference": 0.106,
+        "synth": 0.22630242431456574,
+        "diff_pp": 12.030242431456575,
+        "n_synth": 50406
+      },
+      {
+        "cell": "60s_early_M",
+        "metric": "middle_or_below",
+        "reference": 0.489,
+        "synth": 0.19521845273171143,
+        "diff_pp": -29.378154726828853,
+        "n_synth": 47516
+      },
+      {
+        "cell": "60s_early_M",
+        "metric": "univ_4yr",
+        "reference": 0.133,
+        "synth": 0.18221230743328562,
+        "diff_pp": 4.921230743328561,
+        "n_synth": 47516
+      },
+      {
+        "cell": "60s_early_F",
+        "metric": "middle_or_below",
+        "reference": 0.737,
+        "synth": 0.29745628958534037,
+        "diff_pp": -43.95437104146596,
+        "n_synth": 48787
+      },
+      {
+        "cell": "60s_early_F",
+        "metric": "univ_4yr",
+        "reference": 0.046,
+        "synth": 0.0969725541640191,
+        "diff_pp": 5.097255416401911,
+        "n_synth": 48787
+      }
+    ],
+    "reference_meta": {
+      "_description": "성별 × 연령대 × 학력 (중졸이하 / 4년제 대학)",
+      "_population": "50대 초반·60대 초반 (50-54, 60-64)",
+      "_sources": [
+        "한국노동사회연구소 이슈페이퍼 2014-01 (klsi.org); 2010 인구주택총조사 가공 (mediatoday.co.kr 인용)"
+      ],
+      "_VINTAGE_WARNING": "Reference 는 2014년 시점 (50대 초반 = 1960-1964년 출생). 본 데이터셋(2024년 시점, 50대 초반 = 1970-1974년 출생) 과 약 10년 코호트 차이. 한국 교육 확장기 영향으로 reference 는 현재 50대보다 학력 수준 낮음. 따라서 ref 와의 차이는 'PGM 편향' + '코호트 갱신' 의 합. 정확한 검증은 2020 census 의 5세별 학력 표 (KOSIS DT_1IN1502) 필요 — P7 v2 에서 처리.",
+      "_caveat": "위 _VINTAGE_WARNING 참조."
+    }
+  },
+  "province_housing": {
+    "comparison_cells": [
+      {
+        "province": "전국",
+        "housing_type": "아파트",
+        "reference_household_pct": 0.531,
+        "synth_person_pct": 0.620556,
+        "diff_pp": 8.955599999999997
+      },
+      {
+        "province": "세종",
+        "housing_type": "아파트",
+        "reference_household_pct": 0.78,
+        "synth_person_pct": 0.8605221404875234,
+        "diff_pp": 8.052214048752337
+      },
+      {
+        "province": "광주",
+        "housing_type": "아파트",
+        "reference_household_pct": 0.815,
+        "synth_person_pct": 0.7842284554613321,
+        "diff_pp": -3.0771544538667817
+      },
+      {
+        "province": "대전",
+        "housing_type": "아파트",
+        "reference_household_pct": 0.756,
+        "synth_person_pct": 0.7409411436151644,
+        "diff_pp": -1.5058856384835617
+      },
+      {
+        "province": "제주",
+        "housing_type": "아파트",
+        "reference_household_pct": 0.257,
+        "synth_person_pct": 0.2920381914306005,
+        "diff_pp": 3.5038191430600496
+      },
+      {
+        "province": "전국",
+        "housing_type": "단독주택",
+        "reference_household_pct": 0.284,
+        "synth_person_pct": 0.169153,
+        "diff_pp": -11.484699999999998
+      },
+      {
+        "province": "전라남",
+        "housing_type": "단독주택",
+        "reference_household_pct": 0.479,
+        "synth_person_pct": 0.44514553226134745,
+        "diff_pp": -3.3854467738652527
+      },
+      {
+        "province": "인천",
+        "housing_type": "단독주택",
+        "reference_household_pct": 0.082,
+        "synth_person_pct": 0.0684341679239206,
+        "diff_pp": -1.3565832076079407
+      }
+    ],
+    "reference_meta_apt": {
+      "_description": "시도별 아파트 거주 비율 (가구 기준)",
+      "_population": "일반가구",
+      "_year": 2023,
+      "_source": "통계청, 2023 인구주택총조사(등록센서스); 정책브리핑 (korea.kr) newsId=156643294",
+      "_full_breakdown_note": "17개 시도 모든 cell 의 완전 cross-tab 은 KOSIS 또는 PDF 보도자료 직접 접근 필요 (현재 미수집). 아래는 보도자료 본문에서 명시된 4개 시도 + 전국 평균.",
+      "_caveat": "본 데이터셋(개인 단위)과 reference (가구 단위) 모집단 차이로 직접 비교는 +5~10pp 정도 다를 수 있음 (아파트 평균 가구원수 약간 큼)."
+    },
+    "reference_meta_det": {
+      "_description": "시도별 단독주택 거주 비율 (가구 기준)",
+      "_population": "일반가구",
+      "_year": 2023,
+      "_source": "통계청, 2023 인구주택총조사(등록센서스); 정책브리핑 (korea.kr) newsId=156643294",
+      "_caveat": "보도자료에 명시된 최고/최저 + 전국 평균만. 17개 완전 cross-tab 미수집."
+    }
+  }
+}

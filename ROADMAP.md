@@ -12,17 +12,17 @@ KSCO 호환 결과는 통계청 공식 직업통계와 직접 비교 가능.
 
 ---
 
-## P7 — KOSIS joint distribution 외부 비교
+## P7 v2 — KOSIS joint distribution 완전 외부 비교 (남은 작업)
 
-현재 KOSIS reference 는 marginal 만. Joint cross-tab 으로 확장:
-- age × marital_status
-- age × education_level
-- sex × bachelors_field
-- province × housing_type
-- sex × occupation 대분류
-- education × occupation 대분류
+P7 v1 완료 (보도자료 인용 cell 기반 부분 검증, [Phase 3 §2.6](reports/PHASE3_REPORT.md#26-외부-검증--kosis--통계청-cross-tab-비교-p7-v1)).
+v2 는 다음을 추가:
 
-이게 들어가면 "내부적으로 그럴듯하다" → "실제 한국 joint distribution 과 비교했다" 로 격상.
+- **KOSIS Open API 키 등록 후 완전 cross-tab 다운로드** (DT_1IN1502 등)
+- 17개 시도 × 6 housing_type 완전 cross-tab (현재 5 cell 만)
+- 5세별 학력 표 (age × edu vintage 문제 해결)
+- 추가: sex × bachelors_field (교육부/KEDI), sex × occupation 대분류 (P5 후), edu × occupation 대분류 (P5 후)
+
+P7 v1 이 발견한 가설 (60대 여성 중졸이하 −44pp = PGM 고령층 학력 상향 편향?) 의 정밀 검증 필요.
 
 ---
 
