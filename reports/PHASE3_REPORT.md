@@ -43,6 +43,22 @@ I(X; Y | Z) = Σ_{x,y,z} p(x,y,z) · log [ p(x,y,z) · p(z) / (p(x,z) · p(y,z))
 
 ε = **0.005 nats** (효과크기 임계, N=1M 에서 χ² p-value는 의미 없음)
 
+### 1.3.1 Leakage check — 위 probe 결과는 데이터 누수에 영향받았나?
+
+`scripts/11_decoupling_probe.py` 의 잠재적 leakage 6가지 (encoder 전체 fit, cap_high_card 전체 빈도 기반, target encoding, 단일 split, HGB 내부 split, 합성 데이터 row 중복성) 을 식별 후, **train-only encoder + train-only cap + 5-fold CV** 로 재실행 ([`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py)).
+
+| Case | 원본 info_added | Leakage-corrected | 차이 |
+|---|---:|---:|---:|
+| **Q1 housing decoupled** | **−0.0077** | **−0.0082** | −0.0006 |
+| C1 family_type control | +0.8175 | +0.8159 | −0.0015 |
+| C2 occupation control | +0.1809 | +0.1769 | −0.0041 |
+| Q2 military\|age+sex | +0.0020 | +0.0019 | −0.0001 |
+| Q3 military\|sex+age+occ | +0.0225 | +0.0236 | +0.0012 |
+| C3 marital control | +0.5530 | +0.5518 | −0.0012 |
+
+→ **모든 차이 < 0.005 nats** (측정 신호의 1% 이하). 5-fold CV 표준오차 SE < 0.02 nats.
+**결론 변화 없음** — leakage 우려는 valid 했으나 실제 영향은 무의미.
+
 ### 1.3 Decoupling probe (예측 기반 conditional-independence)
 
 > 용어 주의: 본 probe 는 합성 데이터를 train/test split 한 **within-synthetic** 비교다. 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르므로 "predictive conditional-independence probe" 또는 "decoupling probe" 명칭을 사용.

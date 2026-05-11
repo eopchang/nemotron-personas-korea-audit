@@ -1,0 +1,157 @@
+[
+  {
+    "question": "Q1 housing decoupled?",
+    "target": "housing_type",
+    "baseline_features": [
+      "district"
+    ],
+    "full_features": [
+      "district",
+      "age_bin",
+      "sex",
+      "marital_status",
+      "family_type",
+      "education_level",
+      "bachelors_field",
+      "occupation"
+    ],
+    "CE_null": 1.1531472120682433,
+    "CE_baseline_mean": 1.0019844218927663,
+    "CE_baseline_std": 0.0034196193194717573,
+    "CE_full_mean": 1.0101866472419139,
+    "CE_full_std": 0.003256336462332334,
+    "acc_baseline_mean": 0.6527033333333334,
+    "acc_full_mean": 0.6523233333333334,
+    "info_in_baseline": 0.15116279017547707,
+    "info_added_by_extras": -0.008202225349147607,
+    "info_total": 0.14296056482632946,
+    "fraction_added": -0.057374041289720616,
+    "n_folds": 5
+  },
+  {
+    "question": "Control: family_type",
+    "target": "family_type",
+    "baseline_features": [
+      "district"
+    ],
+    "full_features": [
+      "district",
+      "age_bin",
+      "sex",
+      "marital_status",
+      "education_level"
+    ],
+    "CE_null": 2.3696888331832726,
+    "CE_baseline_mean": 2.3389601010227024,
+    "CE_baseline_std": 0.0033970338136141763,
+    "CE_full_mean": 1.5230268022146232,
+    "CE_full_std": 0.005565727233039125,
+    "acc_baseline_mean": 0.2885333333333333,
+    "acc_full_mean": 0.54127,
+    "info_in_baseline": 0.03072873216057026,
+    "info_added_by_extras": 0.8159332988080792,
+    "info_total": 0.8466620309686494,
+    "fraction_added": 0.9637060231395825,
+    "n_folds": 5
+  },
+  {
+    "question": "Control: occupation",
+    "target": "occupation",
+    "baseline_features": [
+      "district",
+      "province"
+    ],
+    "full_features": [
+      "district",
+      "province",
+      "age_bin",
+      "sex",
+      "education_level",
+      "bachelors_field"
+    ],
+    "CE_null": 4.355506868595341,
+    "CE_baseline_mean": 3.485156710432215,
+    "CE_baseline_std": 0.016323483920394292,
+    "CE_full_mean": 3.308298749144442,
+    "CE_full_std": 0.018472604260987947,
+    "acc_baseline_mean": 0.36794333333333334,
+    "acc_full_mean": 0.36839666666666665,
+    "info_in_baseline": 0.8703501581631254,
+    "info_added_by_extras": 0.17685796128777298,
+    "info_total": 1.0472081194508984,
+    "fraction_added": 0.1688852082053261,
+    "n_folds": 5
+  },
+  {
+    "question": "Q2 military|age+sex",
+    "target": "military_status",
+    "baseline_features": [
+      "age_bin"
+    ],
+    "full_features": [
+      "age_bin",
+      "sex"
+    ],
+    "CE_null": 0.03307563501181216,
+    "CE_baseline_mean": 0.03147596027767794,
+    "CE_baseline_std": 0.0021784165667131923,
+    "CE_full_mean": 0.029565318254648466,
+    "CE_full_std": 0.0019990710491957745,
+    "acc_baseline_mean": 0.9946966666666667,
+    "acc_full_mean": 0.9946966666666667,
+    "info_in_baseline": 0.001599674734134221,
+    "info_added_by_extras": 0.0019106420230294748,
+    "info_total": 0.0035103167571636958,
+    "fraction_added": 0.5442933373833923,
+    "n_folds": 5
+  },
+  {
+    "question": "Q3 military|sex+age+occupation",
+    "target": "military_status",
+    "baseline_features": [
+      "sex"
+    ],
+    "full_features": [
+      "sex",
+      "age_bin",
+      "occupation"
+    ],
+    "CE_null": 0.03307563501181216,
+    "CE_baseline_mean": 0.031011923161541877,
+    "CE_baseline_std": 0.002141851296051211,
+    "CE_full_mean": 0.007384567505111286,
+    "CE_full_std": 0.0007504487391357769,
+    "acc_baseline_mean": 0.9946966666666667,
+    "acc_full_mean": 0.9985833333333332,
+    "info_in_baseline": 0.002063711850270284,
+    "info_added_by_extras": 0.023627355656430593,
+    "info_total": 0.025691067506700874,
+    "fraction_added": 0.9196720085791681,
+    "n_folds": 5
+  },
+  {
+    "question": "Control: marital",
+    "target": "marital_status",
+    "baseline_features": [
+      "age_bin"
+    ],
+    "full_features": [
+      "age_bin",
+      "sex",
+      "education_level",
+      "family_type"
+    ],
+    "CE_null": 1.0482782233284051,
+    "CE_baseline_mean": 0.7332811774204038,
+    "CE_baseline_std": 0.0019237670159267535,
+    "CE_full_mean": 0.18149111883812663,
+    "CE_full_std": 0.0016484919117271475,
+    "acc_baseline_mean": 0.7276,
+    "acc_full_mean": 0.9217566666666667,
+    "info_in_baseline": 0.31499704590800137,
+    "info_added_by_extras": 0.5517900585822771,
+    "info_total": 0.8667871044902785,
+    "fraction_added": 0.6365923716721212,
+    "n_folds": 5
+  }
+]

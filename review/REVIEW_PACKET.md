@@ -785,6 +785,22 @@ I(X; Y | Z) = Σ_{x,y,z} p(x,y,z) · log [ p(x,y,z) · p(z) / (p(x,z) · p(y,z))
 
 ε = **0.005 nats** (효과크기 임계, N=1M 에서 χ² p-value는 의미 없음)
 
+### 1.3.1 Leakage check — 위 probe 결과는 데이터 누수에 영향받았나?
+
+`scripts/11_decoupling_probe.py` 의 잠재적 leakage 6가지 (encoder 전체 fit, cap_high_card 전체 빈도 기반, target encoding, 단일 split, HGB 내부 split, 합성 데이터 row 중복성) 을 식별 후, **train-only encoder + train-only cap + 5-fold CV** 로 재실행 ([`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py)).
+
+| Case | 원본 info_added | Leakage-corrected | 차이 |
+|---|---:|---:|---:|
+| **Q1 housing decoupled** | **−0.0077** | **−0.0082** | −0.0006 |
+| C1 family_type control | +0.8175 | +0.8159 | −0.0015 |
+| C2 occupation control | +0.1809 | +0.1769 | −0.0041 |
+| Q2 military\|age+sex | +0.0020 | +0.0019 | −0.0001 |
+| Q3 military\|sex+age+occ | +0.0225 | +0.0236 | +0.0012 |
+| C3 marital control | +0.5530 | +0.5518 | −0.0012 |
+
+→ **모든 차이 < 0.005 nats** (측정 신호의 1% 이하). 5-fold CV 표준오차 SE < 0.02 nats.
+**결론 변화 없음** — leakage 우려는 valid 했으나 실제 영향은 무의미.
+
 ### 1.3 Decoupling probe (예측 기반 conditional-independence)
 
 > 용어 주의: 본 probe 는 합성 데이터를 train/test split 한 **within-synthetic** 비교다. 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르므로 "predictive conditional-independence probe" 또는 "decoupling probe" 명칭을 사용.
@@ -1425,7 +1441,10 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 [**C29**] (★★★) CMI 임계 ε = 0.005 nats 는 임의 선택이나, ε ∈ {0.0005, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05} grid 에서 sensitivity 분석 완료. ε 100배 변동 시 direct edge 수는 32–13 범위로 변동하나, 핵심 결론 (housing decoupling, demographic chain) 은 ε-stable. 23개 페어는 전 grid 에서 분류 불변, 32개는 boundary.
 - Evidence: [`data/processed/cmi/epsilon_counts.csv`](../data/processed/cmi/epsilon_counts.csv), [`data/processed/cmi/epsilon_boundary.csv`](../data/processed/cmi/epsilon_boundary.csv), [Phase 3 §2.5](../reports/PHASE3_REPORT.md#25-ε-threshold-sensitivity--위-결과는-임계-의존성이-얼마나-큰가)
 
-[**C30**] (★★) Decoupling probe 는 단일 모델 (HGB) · 단일 seed 한정. 다른 모델 / seed 로 결과 다를 가능성.
+[**C30**] (★★) Decoupling probe 는 단일 모델 (HGB) 한정. 다른 모델 (RF, LightGBM, NN) 에서 결과 다를 가능성. 5-fold CV 는 보강 완료 (C19 caveat).
+
+[**C30b**] (★★★) **Leakage 점검 통과**: 6개 case 모두 train-only encoder + 5-fold CV 로 재실행, info_added 차이 < 0.005 nats (원본 신호의 1% 이하). 5-fold SE < 0.02 nats. Housing decoupling 결론 (Q1) 은 -0.0077 → -0.0082 로 거의 동일. 단일 split + 전체 데이터 encoder 사용으로 인한 잠재 leakage 가 결론에 영향 없음을 확인.
+- Evidence: [`data/processed/decoupling_probe_no_leakage.json`](../data/processed/decoupling_probe_no_leakage.json), [`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py), [Phase 3 §1.3.1](../reports/PHASE3_REPORT.md#131-leakage-check--위-probe-결과는-데이터-누수에-영향받았나)
 
 [**C31**] (★★★) Permutation null (100회, N=100K subsample, stratified shuffle) 결과:
 - 55 marginal pairs 중 28개 ratio_obs/null_p95 ≥ 10 (강건), 17개 2-10 (유의), 10개 < 2 (bias-suspect).
