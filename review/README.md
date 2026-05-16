@@ -1,6 +1,6 @@
 # 외부 리뷰 키트
 
-본 리포의 분석을 GPT-5.5 Pro, Gemini, 다른 Claude, 또는 사람 동료가
+본 리포의 분석을 GPT / Claude / Gemini 등의 최신 long-context 모델, 또는 사람 동료가
 **독립적으로 점검** 할 수 있도록 준비된 패키지.
 
 ---
@@ -28,7 +28,7 @@
 
 ### 옵션 A. "최고 컨텍스트 모델로 한방에 검증"
 
-추천 모델: GPT-5.5 Pro (200K), Claude Opus 4.7 (1M), Gemini 2.5 Pro (2M)
+추천: GPT / Claude / Gemini 의 최신 long-context 모델 (≥100K context 면 충분)
 
 ```
 1. REVIEW_PACKET.md 를 통째로 모델에 첨부 (또는 paste)

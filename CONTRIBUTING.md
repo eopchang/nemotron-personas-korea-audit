@@ -27,8 +27,8 @@
 
 ## 외부 모델 리뷰 결과를 공유하고 싶다면
 
-[`review/`](review/) 디렉토리의 `REVIEW_PROMPTS.md` 를 사용해 GPT-5.5 Pro,
-Gemini, 다른 Claude 등으로 검증한 결과를 issue로 남겨주세요. 라벨 `external-review`.
+[`review/`](review/) 디렉토리의 `REVIEW_PROMPTS.md` 를 사용해 GPT / Claude / Gemini
+등 최신 모델로 검증한 결과를 issue로 남겨주세요. 라벨 `external-review`.
 
 ## 행동 강령
 

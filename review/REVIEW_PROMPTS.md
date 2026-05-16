@@ -1,6 +1,6 @@
 # 외부 모델 리뷰 프롬프트
 
-GPT-5.5 Pro / Claude Opus / Gemini Pro 등에 그대로 붙여넣을 수 있는 프롬프트 모음.
+GPT / Claude / Gemini 등 최신 long-context 모델에 그대로 붙여넣을 수 있는 프롬프트 모음.
 
 **사용법**: 모델에 먼저 [`REVIEW_PACKET.md`](REVIEW_PACKET.md) 를 첨부 또는 paste 하고,
 그 다음에 아래 프롬프트 중 하나를 붙여 넣으세요.

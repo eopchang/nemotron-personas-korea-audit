@@ -173,10 +173,10 @@ HuggingFace 에서 자동으로 받습니다 (~2GB, 9개 parquet shard). 별도 
 
 ## 다른 LLM 으로 검증
 
-### Q. GPT-5.5 Pro / Gemini 등으로 검증해보고 싶은데 어디서 시작?
+### Q. GPT / Gemini / Claude 등 최신 모델로 검증해보고 싶은데 어디서 시작?
 1. [`review/REVIEW_PACKET.md`](../review/REVIEW_PACKET.md) 를 모델에 통째로 붙여넣기
 2. [`review/REVIEW_PROMPTS.md`](../review/REVIEW_PROMPTS.md) 의 미리 작성된 프롬프트 중 하나 선택 (통합 리뷰 / falsification 모드 / 방법론 / 통계 / 도메인 / 재현성)
 3. 결과를 issue (`external-review` 라벨) 로 공유
 
 ### Q. 패키지가 너무 큰가요? 모델 컨텍스트에 들어갈까요?
-`REVIEW_PACKET.md` 는 그림 제외 약 ~17,000 토큰. Claude/GPT/Gemini 의 long-context 모드 (>100K) 에 충분히 들어갑니다. 그림은 별도로 첨부 또는 모델이 figure 텍스트 설명만 보고도 검증 가능하도록 작성.
+`REVIEW_PACKET.md` 는 그림 제외 약 ~35,000 토큰. GPT / Claude / Gemini 등의 최신 long-context 모델에 충분히 들어갑니다. 그림은 별도로 첨부 또는 모델이 figure 텍스트 설명만 보고도 검증 가능하도록 작성.

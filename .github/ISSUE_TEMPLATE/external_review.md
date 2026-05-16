@@ -1,6 +1,6 @@
 ---
 name: 외부 모델 리뷰 결과
-about: GPT-5.5 Pro, Gemini, 다른 Claude 등으로 분석을 검토한 결과 공유
+about: GPT / Claude / Gemini 등 최신 모델로 분석을 검토한 결과 공유
 title: "[REVIEW] "
 labels: external-review
 ---
