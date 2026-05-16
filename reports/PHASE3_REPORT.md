@@ -43,7 +43,20 @@ I(X; Y | Z) = Σ_{x,y,z} p(x,y,z) · log [ p(x,y,z) · p(z) / (p(x,z) · p(y,z))
 
 ε = **0.005 nats** (효과크기 임계, N=1M 에서 χ² p-value는 의미 없음)
 
-### 1.3.1 Leakage check — 위 probe 결과는 데이터 누수에 영향받았나?
+### 1.3 Decoupling probe (예측 기반 conditional-independence)
+
+> 용어 주의: 본 probe 는 합성 데이터를 train/test split 한 **within-synthetic** 비교다. 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르므로 "predictive conditional-independence probe" 또는 "decoupling probe" 명칭을 사용.
+
+분류기로 정보 추가량을 측정:
+```
+Info_added(features → target | baseline) = CE(target | baseline) − CE(target | baseline + features)
+```
+- 0 에 가까우면 features는 target에 conditional independent (decoupled)
+- 큰 양수면 features가 baseline 위에 정보를 더함
+
+`HistGradientBoostingClassifier`, 200K subsample, 80/20 train/test, ε-feature 컷오프 = 250 (HGB cardinality 제한).
+
+### 1.4 Leakage check — 위 probe 결과는 데이터 누수에 영향받았나?
 
 `scripts/11_decoupling_probe.py` 의 잠재적 leakage 6가지 (encoder 전체 fit, cap_high_card 전체 빈도 기반, target encoding, 단일 split, HGB 내부 split, 합성 데이터 row 중복성) 을 식별 후, **train-only encoder + train-only cap + 5-fold CV** 로 재실행 ([`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py)).
 
@@ -59,20 +72,7 @@ I(X; Y | Z) = Σ_{x,y,z} p(x,y,z) · log [ p(x,y,z) · p(z) / (p(x,z) · p(y,z))
 → **모든 차이 < 0.005 nats** (측정 효과의 1% 이하). 5-fold CV 표준오차 SE < 0.02 nats.
 **결론 변화 없음** — leakage 우려는 valid 했으나 실제 영향은 무의미.
 
-### 1.3 Decoupling probe (예측 기반 conditional-independence)
-
-> 용어 주의: 본 probe 는 합성 데이터를 train/test split 한 **within-synthetic** 비교다. 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르므로 "predictive conditional-independence probe" 또는 "decoupling probe" 명칭을 사용.
-
-분류기로 정보 추가량을 측정:
-```
-Info_added(features → target | baseline) = CE(target | baseline) − CE(target | baseline + features)
-```
-- 0 에 가까우면 features는 target에 conditional independent (decoupled)
-- 큰 양수면 features가 baseline 위에 정보를 더함
-
-`HistGradientBoostingClassifier`, 200K subsample, 80/20 train/test, ε-feature 컷오프 = 250 (HGB cardinality 제한).
-
-### 1.4 Subsample stability
+### 1.5 Subsample stability
 
 5 seed × 200K subsample 로 단일-Z 분류 재계산. 52/55 페어 분류 일치(나머지 3개는 |Z|=2 조건 사용 여부 차이로, **데이터 자체 안정성 100%**).
 
@@ -488,7 +488,7 @@ PGM은 다음 4개 군집으로 잘 분리됨:
 
 ### 🤔 신중하게 사용 (정보 중복·다른 출처 보강 필요)
 - **현역 군 인력 구성 분석**: 계급별 연령·성비 cross-section 은 한국 현실 부합 (`military_breakdown.json` 참조). 단 military_status 와 occupation 동시 사용 시 정보 중복.
-- **지역 단위 주거 시뮬레이션** (시군구별 아파트·단독 비중): housing × district 결합 자체는 그럴듯하지만 marginal 수준의 reference mismatch (Phase 1 §3-4) 잔존.
+- **지역 단위 주거 시뮬레이션** (시군구별 아파트·단독 비중): housing × district 결합 자체는 그럴듯하고 시도별 패턴도 ±3pp 이내 (§2.6 외부 검증). 전체 marginal 도 per-person 기준 보정 후 약한 격차 (TVD ≈ 0.08, Phase 1 §3-4) — 베이스라인으로 사용 가능, 단독주택 비중만 주의.
 
 ### 💡 보완 방안
 - Housing 분석이 필요하면 KOSIS 인구주택총조사 미시 자료를 별도 사용
@@ -499,17 +499,14 @@ PGM은 다음 4개 군집으로 잘 분리됨:
 
 ## 6. 한계
 
-1. **단일 데이터셋, 단일 시점** — 시계열·생애주기 분석 불가
+1. **단일 데이터셋, 단일 시점** — 시계열·생애주기 분석 불가.
 2. **PC 추론은 |Z|≤2 까지만** — 3변수 이상 conditional independence는 완전 검증 안 됨. 대부분의 실제 PGM은 conditional dependency가 |Z|=3 이상으로도 잡혀, 우리가 'direct'로 판정한 일부 edge가 사실 매개일 수 있음.
-3. **CMI 임계 ε=0.005 nats** — 임의 선택이지만 §2.7 sensitivity 분석으로 의존성 정량화. ε 100배 변동 시 direct edge 수 32→13 변화하나, 핵심 결론 (housing decoupling, demographic chain 강건성) 은 ε-stable.
-
-8. **High-cardinality variable bias** — §2.5 permutation null 결과, 23 'direct edges' 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect. 이들의 "direct" 분류는 plug-in MI 의 카디널리티 bias 일 가능성 — bias-corrected 결론에서는 12개 direct edge 만 견고.
-
-9. **외부 검증 (§2.6) 은 부분만 완료** — KOSIS 직접 API 접근 불가로 보도자료 인용 cell 만 비교. 완전 외부 검증은 KOSIS Open API 키 등록 후 P7 v2 에서 처리 예정.
+3. **추론된 'direct edge' 의 의미 한계** — "ε=0.005, \|Z\|≤2 조건 하에서 매개되지 않은 잔존 의존" 일 뿐, 본래 생성 PGM 의 진짜 직접 edge 가 아님.
 4. **방향성 미해결** — skeleton은 무방향. 본래 생성 PGM은 DAG일 텐데 d-separation 방향은 추가 가정 (예: 시간 순서, 도메인 지식) 없이는 식별 불가.
-5. **Decoupling probe** 는 1개 모델 (HGB) 의 학습 능력 한계. 다른 모델 (LightGBM, RF, NN) 에서 미세 차이 발생 가능. 또한 단일 random seed (42) 사용 — 표본 변동의 표준오차 미산출.
-6. **고카디널리티 변수의 plug-in MI bias** — occupation (2,120 unique), district (252) 가 들어가는 페어는 작은 CMI 가 실제 의존인지 추정 bias 인지 분간이 필요. permutation null / bootstrap CI 추가 작업 필요.
-7. **추론된 'direct edge' 의 의미 한계** — "ε=0.005, \|Z\|≤2 조건 하에서 매개되지 않은 잔존 의존" 일 뿐, 본래 생성 PGM 의 진짜 직접 edge 가 아님.
+5. **CMI 임계 ε=0.005 nats** — 임의 선택이지만 §2.7 sensitivity 분석으로 의존성 정량화. ε 100배 변동 시 direct edge 수 32→13 변화하나, 핵심 결론 (housing decoupling, demographic chain 강건성) 은 ε-stable.
+6. **High-cardinality variable bias** — §2.5 permutation null 결과, 23 'direct edges' 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect. 이들의 "direct" 분류는 plug-in MI 의 카디널리티 bias 일 가능성 — bias-corrected 결론에서는 12개 direct edge 만 견고.
+7. **Decoupling probe 한계** — 1개 모델 (HGB) 의 학습 능력 한계. 다른 모델 (LightGBM, RF, NN) 에서 미세 차이 발생 가능. 5-fold CV 로 leakage·split-variance 점검 완료 (§1.4) 하나, 다중 모델 robustness 는 향후 작업 ([ROADMAP P8](../ROADMAP.md)).
+8. **외부 검증 (§2.6) 은 부분만 완료** — KOSIS 직접 API 접근 불가로 보도자료 인용 cell 만 비교. 완전 외부 검증은 KOSIS Open API 키 등록 후 [ROADMAP P7 v2](../ROADMAP.md) 에서 처리 예정.
 
 ---
 
@@ -517,36 +514,71 @@ PGM은 다음 4개 군집으로 잘 분리됨:
 
 ```
 data/processed/cmi/
-  cmi_long.csv             495 rows: x, y, z, mi_xy, cmi_xy_z, drop_ratio
-  cmi_summary.csv          55 rows: per-pair summary
-  skeleton.csv             55 rows + edge_class
-  skeleton.json            structured skeleton with direct/mediated edges
-  node_degrees.csv         skeleton node degree
-  stability.csv            5-seed subsample stability (52/55 stable)
+  cmi_long.csv                     495 rows: x, y, z, mi_xy, cmi_xy_z, drop_ratio
+  cmi_summary.csv                  55 rows: per-pair summary
+  skeleton.csv                     55 rows + edge_class
+  skeleton.json                    structured skeleton (direct/mediated)
+  node_degrees.csv                 skeleton node degree
+  stability.csv                    5-seed subsample stability (52/55 stable)
+  epsilon_counts.csv               §2.7 ε sensitivity grid 분류 수
+  epsilon_per_pair.csv             ε × pair 분류 매트릭스
+  epsilon_boundary.csv             ε 따라 분류 변경 boundary 페어
+  permutation_null_marginal.csv    §2.5 marginal permutation null + bias 측정
+  permutation_null_conditional.csv §2.5 conditional permutation null (23 direct edges)
+  bootstrap_marginal.csv           §2.5 bootstrap CI marginal
+  bootstrap_conditional.csv        §2.5 bootstrap CI conditional
 
-data/processed/decoupling_probe.json   6 decoupling probe experiments
+data/processed/
+  decoupling_probe.json            §1.3 6 decoupling probe experiments
+  decoupling_probe_no_leakage.json §1.4 leakage-corrected 재실행
+  military_breakdown.json          §3.4 현역 계급별 분해 (의무복무/직업군인)
+  housing_unit_correction.json     Phase 1 §3-4 per-person 보정
+  kosis_joint_compare.json         §2.6 외부 cross-tab 비교
 
 reports/figures/
-  cmi_drop_heatmap.png        55 pairs × 9 conditioning Z, drop ratio
-  skeleton_network.png        only direct edges, edge weights = MI
-  skeleton_compare.png        marginal vs skeleton side-by-side
-  cmi_stability.png           per-pair MI ± std across seeds
+  cmi_drop_heatmap.png             55 pairs × 9 conditioning Z, drop ratio
+  skeleton_network.png             initial network (모든 direct edges 동등)
+  skeleton_compare.png             marginal vs skeleton side-by-side (legacy)
+  skeleton_bias_corrected.png      ★ 최종 — P4 ratio tier 반영, README 메인 그림
+  cmi_stability.png                per-pair MI ± std across seeds
+  epsilon_sensitivity.png          §2.7 ε grid 분류 추이
+  epsilon_per_pair.png             ε × pair 분류 매트릭스
+  epsilon_housing.png              housing 페어 ε-stability zoom
+  perm_null_marginal.png           §2.5 marginal obs vs null scatter
+  perm_null_conditional.png        §2.5 conditional obs vs null scatter
+  forest_marginal.png              §2.5 marginal MI ± bootstrap CI + null 마커
+  forest_conditional.png           §2.5 conditional CMI ± CI + null 마커
+  kosis_joint_age_marital.png      §2.6 외부 검증: age × marital × sex
+  kosis_joint_age_sex_edu.png      §2.6 외부 검증: age × sex × education
+  kosis_joint_province_housing.png §2.6 외부 검증: province × housing
   threeway/
-    A_apt_by_age_marital.png      housing decoupling visual
-    B_alone_by_age_marital.png    family chain works (control)
-    C_active_by_sex_age.png       military age unrealistic
-    D_jobless_by_age_edu.png      occupation chain works
-    E_apt_by_district_age.png     within-district age effect on housing
-    F_married_by_age_sex.png      age × sex × marital
+    A_apt_by_age_marital.png       housing decoupling visual
+    B_alone_by_age_marital.png     family chain works (control)
+    C_active_by_sex_age.png        현역 계급별 age 분포
+    D_jobless_by_age_edu.png       occupation chain works
+    E_apt_by_district_age.png      within-district age effect on housing
+    F_married_by_age_sex.png       age × sex × marital
 ```
 
 ## 8. 재현
 
 ```bash
-python scripts/07_cmi_sweep.py            # 495 CMIs (~3 min)
-python scripts/08_skeleton_recovery.py    # PC-style with |Z|≤2 (~5 min)
+# 핵심 분석
+python scripts/07_cmi_sweep.py             # 495 CMIs (~3분)
+python scripts/08_skeleton_recovery.py     # PC-style with |Z|≤2 (~5분)
 python scripts/09_network_viz.py
 python scripts/10_three_way_viz.py
-python scripts/11_decoupling_probe.py     # 6 HGB models (~3 min)
-python scripts/12_subsample_stability.py  # 5 seeds (~6 min)
+python scripts/11_decoupling_probe.py      # 6 HGB experiments (~3분)
+python scripts/11b_decoupling_probe_no_leakage.py  # §1.4 leakage check (~15분)
+python scripts/12_subsample_stability.py   # 5 seeds (~6분)
+python scripts/13_military_breakdown.py    # §3.4 현역 계급 분해 (즉시)
+
+# Robustness
+python scripts/14_epsilon_sensitivity.py   # §2.7 ε grid (즉시)
+python scripts/15_permutation_null.py      # §2.5 perm null 100×78 (~25분)
+python scripts/16_bootstrap_ci.py          # §2.5 bootstrap 100×78 (~5분)
+python scripts/17_perm_boot_viz.py         # §2.5 4 figures
+python scripts/18_kosis_joint_compare.py   # §2.6 외부 비교 (즉시)
+python scripts/19_bias_corrected_skeleton.py  # §2.5 최종 skeleton 그림
+python scripts/20_housing_unit_correction.py  # Phase 1 §3-4 보정 (즉시)
 ```

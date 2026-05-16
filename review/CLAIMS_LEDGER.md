@@ -94,8 +94,9 @@
 - **Caveat (P4 추가)**: permutation null 로 bias 보정 시 23 direct 중 12개만 ratio > 2 로 견고. 11개 (모두 occupation/district 포함) 는 plug-in MI 의 카디널리티 bias 가능성 — 하단 C31 참조.
 - Evidence: [`data/processed/cmi/skeleton.json`](../data/processed/cmi/skeleton.json)
 
-[**C18**] (★★★) `housing_type` 의 직접 edge 는 단 2개 — district, occupation. 사람 속성 (age, sex, marital, family, education, bachelors_field) 과 모두 mediated 또는 no-edge.
+[**C18**] (★★★) `housing_type` 의 직접 edge 는 단 2개 — district (강건, ratio 9.8), occupation (bias-suspect, ratio 1.05 — C31 참조). 사람 속성 (age, sex, marital, family, education, bachelors_field) 과 모두 mediated 또는 no-edge.
 - Evidence: [`data/processed/cmi/skeleton.json`](../data/processed/cmi/skeleton.json), [`data/processed/cmi/node_degrees.csv`](../data/processed/cmi/node_degrees.csv)
+- ※ housing × district 는 P4 permutation null ratio 9.84 로 견고. housing × occupation 은 ratio 1.05 로 high-card bias artifact 가능성 — 실질적으로 housing 의 견고한 직접 edge 는 district 1개로 보는 게 안전.
 
 [**C19**] (★★) **Decoupling probe 결과: housing 예측에 person-attrs가 추가하는 정보 = −0.008 nats (실질 0).**
 baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Control (family_type) info_added = +0.82 nats (96% share). 
@@ -116,7 +117,7 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 
 [**C22**] (★★) PGM은 4개 군집으로 분리됨: Geographic core / Age-driven demographic chain / Education-Occupation / Sex-related.
 - Caveat: 이는 skeleton 의 visual interpretation. 다른 layout / 군집 알고리즘에서 다르게 보일 수 있음.
-- Evidence: [`reports/figures/skeleton_compare.png`](../reports/figures/skeleton_compare.png)
+- Evidence: [`reports/figures/skeleton_bias_corrected.png`](../reports/figures/skeleton_bias_corrected.png) (P4 bias 보정 반영본), legacy [`skeleton_compare.png`](../reports/figures/skeleton_compare.png)
 
 [**C23**] (★★★) Subsample stability: 5 시드 × 200K 에서 52/55 페어 분류 일치 (94.5%). 3개 unstable 은 \|Z\|=1 vs \|Z\|=2 방법론 mismatch이지 데이터 노이즈 아님.
 - Evidence: [`data/processed/cmi/stability.csv`](../data/processed/cmi/stability.csv)
@@ -148,12 +149,12 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 - Evidence: [Phase 3 §6 한계](../reports/PHASE3_REPORT.md#6-한계)
 
 [**C29**] (★★★) CMI 임계 ε = 0.005 nats 는 임의 선택이나, ε ∈ {0.0005, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05} grid 에서 sensitivity 분석 완료. ε 100배 변동 시 direct edge 수는 32–13 범위로 변동하나, 핵심 결론 (housing decoupling, demographic chain) 은 ε-stable. 23개 페어는 전 grid 에서 분류 불변, 32개는 boundary.
-- Evidence: [`data/processed/cmi/epsilon_counts.csv`](../data/processed/cmi/epsilon_counts.csv), [`data/processed/cmi/epsilon_boundary.csv`](../data/processed/cmi/epsilon_boundary.csv), [Phase 3 §2.5](../reports/PHASE3_REPORT.md#25-ε-threshold-sensitivity--위-결과는-임계-의존성이-얼마나-큰가)
+- Evidence: [`data/processed/cmi/epsilon_counts.csv`](../data/processed/cmi/epsilon_counts.csv), [`data/processed/cmi/epsilon_boundary.csv`](../data/processed/cmi/epsilon_boundary.csv), [Phase 3 §2.7](../reports/PHASE3_REPORT.md#27-ε-threshold-sensitivity--위-결과는-임계-의존성이-얼마나-큰가)
 
 [**C30**] (★★) Decoupling probe 는 단일 모델 (HGB) 한정. 다른 모델 (RF, LightGBM, NN) 에서 결과 다를 가능성. 5-fold CV 는 보강 완료 (C19 caveat).
 
 [**C30b**] (★★★) **Leakage 점검 통과**: 6개 case 모두 train-only encoder + 5-fold CV 로 재실행, info_added 차이 < 0.005 nats (원본 효과의 1% 이하). 5-fold SE < 0.02 nats. Housing decoupling 결론 (Q1) 은 -0.0077 → -0.0082 로 거의 동일. 단일 split + 전체 데이터 encoder 사용으로 인한 잠재 leakage 가 결론에 영향 없음을 확인.
-- Evidence: [`data/processed/decoupling_probe_no_leakage.json`](../data/processed/decoupling_probe_no_leakage.json), [`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py), [Phase 3 §1.3.1](../reports/PHASE3_REPORT.md#131-leakage-check--위-probe-결과는-데이터-누수에-영향받았나)
+- Evidence: [`data/processed/decoupling_probe_no_leakage.json`](../data/processed/decoupling_probe_no_leakage.json), [`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py), [Phase 3 §1.4](../reports/PHASE3_REPORT.md#14-leakage-check--위-probe-결과는-데이터-누수에-영향받았나)
 
 [**C31**] (★★★) Permutation null (100회, N=100K subsample, stratified shuffle) 결과:
 - 55 marginal pairs 중 28개 ratio_obs/null_p95 ≥ 10 (강건), 17개 2-10 (유의), 10개 < 2 (bias-suspect).
@@ -201,10 +202,12 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 - [?] 추가 정보 필요
 
 ```
-C1  [_]  C7  [_]  C13 [_]  C19 [_]  C25 [_]
-C2  [_]  C8  [_]  C14 [_]  C20 [_]  C26 [_]
-C3  [_]  C9  [_]  C15 [_]  C21 [_]  C27 [_]
-C4  [_]  C10 [_]  C16 [_]  C22 [_]  C28 [_]
-C5  [_]  C11 [_]  C17 [_]  C23 [_]  C29 [_]
-C6  [_]  C12 [_]  C18 [_]  C24 [_]  C30 [_]
+C1  [_]  C8  [_]  C15 [_]  C22 [_]  C29 [_]
+C2  [_]  C9  [_]  C16 [_]  C23 [_]  C30 [_]
+C3  [_]  C10 [_]  C17 [_]  C24 [_]  C30b[_]
+C4  [_]  C11 [_]  C18 [_]  C25 [_]  C31 [_]
+C5  [_]  C12 [_]  C19 [_]  C26 [_]  C32 [_]
+C6  [_]  C13 [_]  C20 [_]  C27 [_]  C33 [_]
+C7  [_]  C14 [_]  C21 [_]  C28 [_]  C34 [_]
+                                    C35 [_]
 ```
