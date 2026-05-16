@@ -6,21 +6,21 @@
 아닙니다. NVIDIA의 데이터셋은 잘 만들어진 합성 데이터의 본보기 — 시도/시군구·인구학·교육 chain은 매우 충실합니다. 본 리포의 목적은 **사용자가 어디까지 이 데이터를 신뢰해야 할지** 판단할 수 있도록 *데이터 카드에 명시되지 않은 부분*을 정량화하는 것입니다.
 
 ### Q. 단변량 12개 중 왜 5개만 KOSIS 와 비교했나요?
-선정 기준은 **선호의 우선순위** 가 아니라 **비교 가능성** 의 기술적 제약입니다.
+선정 기준은 **비교 가능성 + 우선순위** 의 조합입니다.
 
-선정된 5개 (`sex`, `province`, `marital_status`, `education_level`, `housing_type`) 는 공식 KOSIS reference 와 카테고리·모집단이 명확히 매핑되는 변수입니다.
+선정된 5개 (`sex`, `province`, `marital_status`, `education_level`, `housing_type`) 는 공식 KOSIS reference 와 카테고리·모집단이 명확히 매핑되는 변수.
 
-나머지 7개와 탈락 이유:
-| 변수 | 비교 못한 이유 |
+나머지 7개의 탈락/미수행 이유 (※ `age_bin` 은 본 분석이 `age` 를 binning 해 만든 파생 변수로, 데이터셋 12개 변수에 포함되지 않음):
+
+| 변수 | 탈락 / 미수행 이유 |
 |---|---|
-| `age` | 연속형 (19-99), 비교 단위 정해야 함 (binning 필요) |
-| `age_bin` | 본 분석이 만든 파생 변수 (reference 없음) |
+| `age` | **비교 가능하지만 본 phase 에서 미수행** — KOSIS 추계인구는 1세별/5세별 분포 공개. binning 정책 정해 1차 비교 우선순위에서 제외하고, 대신 [Phase 1 §1](../reports/PHASE1_REPORT.md#1-데이터셋-요약-실측) 에 기술통계 (평균 50.66, 중앙 51, std 17.6) 만 제시. 향후 보강 가능. |
 | `country` | 단일값 (대한민국 100%) — 비교 무의미 |
-| `district` | 252개 시군구 — Phase 1 에서 province (17) 로 충분 |
-| `family_type` | 39개 — 통계청 가구분류 (4-5개 대분류) 와 매핑 어려움 |
-| `bachelors_field` | 전공 분포 — 25세+ vs 19세+ 모집단 차이, 공식 통계 부족 |
-| `occupation` | 2,120개 직업명 — KSCO 7차 대분류 매핑 작업 필요 |
-| `military_status` | 공식 통계는 추계인구가 군인 별도 처리 — 직접 비교 어려움 |
+| `district` | 252개 시군구 — 본 phase 에서 province (17) 비교로 갈음. 시군구 단위는 [ROADMAP P7 v2](../ROADMAP.md). |
+| `family_type` | 39개 세분 카테고리 — 통계청 가구분류 (4-5개 대분류) 와 매핑 어려움 |
+| `bachelors_field` | 전공 분포 — 25세+ vs 19세+ 모집단 차이, 공식 졸업자 성비 통계 부족 |
+| `occupation` | 2,120개 직업명 — KSCO 7차 대분류 매핑 작업 필요 ([ROADMAP P5](../ROADMAP.md)) |
+| `military_status` | KOSIS 추계인구는 군인을 별도 처리 — 직접 비교 어려움 |
 
 → KSCO 매핑 후 occupation 비교 + KOSIS joint cross-tab 비교 등은 [ROADMAP P5, P7](../ROADMAP.md).
 
