@@ -26,7 +26,21 @@
     "population": "일반가구(가구 기준)",
     "year": 2023,
     "source": "통계청, 2023년 인구주택총조사(등록센서스)",
-    "caveat": "Nemotron은 개인 기준이고 본 수치는 가구 기준. 또한 Nemotron은 '연립주택'과 '다세대주택'을 분리, 본 수치는 합계."
+    "caveat": "⚠ Nemotron은 개인 단위, 본 수치는 가구 단위 — 직접 비교 불가. 본 분석의 자체 추정 per-person reference는 'values_per_person_estimated' 필드 참조 (scripts/20_housing_unit_correction.py)."
+  },
+  "housing_type_per_person_estimated": {
+    "values": {
+      "아파트": 0.586,
+      "단독주택": 0.249,
+      "연립·다세대주택": 0.110,
+      "주택 이외의 거처": 0.040,
+      "비주거용 건물 내 주택": 0.013
+    },
+    "population": "개인(가구원수 가중치 적용 자체 추정)",
+    "year": 2023,
+    "source": "통계청 일반가구 분포 + 1인가구 거처분포(2023 통계로 보는 1인가구) + 평균 가구원수 2.21 으로 본 분석이 직접 계산",
+    "method": "다인가구 분포 역산 후 가구원수 가중. 다인가구 평균 2.88명 가정.",
+    "caveat": "공식 발표 수치 아님. 다인가구 평균 가구원수 거처유형별 차이 무시한 근사. ±2pp 정도의 추정 오차 가능."
   },
   "province": {
     "values": {

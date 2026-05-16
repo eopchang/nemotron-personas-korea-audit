@@ -50,7 +50,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 | Phase | 무엇을 봤나 | 결과 |
 |---|---|---|
-| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). 단 **housing 만 격차** (TVD=0.12) |
+| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). housing 은 약한 신호 — 단위 보정 (개인 vs 가구 기준) 후 TVD ≈ 0.08, 단독주택 -8pp 잔존 (Phase1 §3-4) |
 | **2** 이변량 결합 | 55개 변수 쌍의 결합이 어떤 모양인가? | 인구학 chain (age→marital→family, age→edu→field→occupation) 견고. 성별×전공 분리 패턴 한국 현실과 부합 |
 | **3** 의존 구조 추정 | 데이터에 어떤 조건부 의존 skeleton이 남아있나? | **23 direct + 14 mediated + 18 no-edge** (ε=0.005 nats, \|Z\|≤2 조건 하; ε 100배 변동 시 direct 수 32–13 범위, 핵심 결론은 ε-stable; permutation null 로 bias 보정 시 12개만 ratio>2 로 견고). **Housing은 사람 속성과 분리, military는 occupation 함수** |
 
@@ -286,8 +286,9 @@ HGB의 categorical 한계 (255 unique). 250 초과는 top-249 + "기타" 로 캡
 
 > **한 문단 요약**: 변수 하나씩 떼어 본 분포는 KOSIS 와 잘 맞는다. 시도/시군구 인구
 > 분포는 사실상 완벽 (TVD = 0.005), 성별·학력·결혼 모두 양호 (TVD ≤ 0.05).
-> **단 한 가지 신호**: housing_type 의 아파트 비중이 +8.9pp 과대, 단독 −11.5pp
-> 과소 (TVD = 0.119). 가구 vs 개인 모집단 차이로 일부 설명되나 격차의 폭이 큼.
+> 유일한 약한 신호: housing_type — 원래 KOSIS *가구 기준* 과 비교해 TVD = 0.12 였으나,
+> *개인 기준* per-person reference 로 단위 보정 시 **TVD ≈ 0.08 로 축소** (자체 추정).
+> 보정 후에도 단독주택 -8pp 잔존하나 단언적 결론 어려움 (§3-4 참조).
 > N = 1,000,000 이라 χ² p-value 는 모두 0 — 효과크기 (TVD) 위주로 봐야 함.
 
 NVIDIA `Nemotron-Personas-Korea` (1,000,000 행, 26 변수, 2026-04-20 공개) 의
@@ -358,17 +359,35 @@ PGM이 **시도별 성별 인구 분포를 정확하게 재현**한다.
 배우자있음 +3.4pp, 사별 +1.6pp 모두 19+ 보정 방향과 부호 일치.
 **즉 marital_status는 "기준만 정렬하면 OK" 수준.**
 
-### 3-4. housing_type (★) — 신호 발견
-**가장 큰 불일치.** 합성에서 아파트 비중 62.1% — 가구 기준 공식 통계 53.1%보다
-+8.9pp 높고, 단독주택은 −11.5pp 낮다.
+### 3-4. housing_type (★) — 신호 약화됨 (단위 mismatch 보정 후)
 
-가구 vs 개인 기준 차이로 일부는 설명되지만(평균 가구원 수가 아파트가 단독보다 큰 편),
-이 격차의 폭은 그 보정만으로 메우기 어렵다. 가능한 가설:
-- 시드 통계가 가장 최근(2024) 이거나 도시 가중 표본일 가능성
-- KOSIS 외 별도 출처(예: 부동산 거래/임대 데이터) 혼합
-- PGM의 거주지(province) → 주택유형 결합 가중에서 도시 prior가 강함
+⚠ **자체 비판적 재검토 결과 — 원래 클레임은 단위 mismatch 로 과장됐었다.**
 
-→ **Phase 2 (province×housing) 비교에서 다시 확인 가능**.
+원본 비교는 잘못된 기준:
+- Nemotron: 개인 단위 (각 행 = 1명)
+- KOSIS reference: 일반가구 기준 (각 행 = 1가구)
+- → 직접 비교 불가. 가구당 평균 가구원수가 거처유형별로 다르기 때문 (아파트는 1인가구 비중↓, 단독은 1인가구 비중↑).
+
+**보정**: 본 분석이 *1인가구 비중 35.5% + 1인가구 거처분포 + 평균 가구원수 2.21* 로 per-person reference 를 직접 추정 (`scripts/20_housing_unit_correction.py`):
+
+| 거처 | Nemotron (per-person) | KOSIS 가구기준 (원본 ref) | KOSIS per-person (보정 추정) | 보정 후 격차 |
+|---|---:|---:|---:|---:|
+| 아파트 | 62.1% | 53.1% | **58.6%** | **+3.5pp** (원래 +8.9) |
+| 단독주택 | 16.9% | 28.4% | **24.9%** | **−8.0pp** (원래 −11.5) |
+| 연립·다세대 | 14.0% | 11.2% | 11.0% | +3.0pp |
+| 주택 이외의 거처 | 6.0% | 5.8% | 4.0% | +2.0pp |
+| 비주거용 건물 | 1.0% | 1.4% | 1.3% | −0.3pp |
+| **TVD** | — | **0.119** (원본) | **0.084** (보정) | **30% 감소** |
+
+→ **원래 TVD=0.12 의 약 30% 는 우리의 단위 mismatch 가 만든 환상**. 보정 후에도 단독주택 -8pp 는 남으나, 아파트 격차는 +3.5pp 로 작은 신호. 원래 "marginal-level 큰 신호" 클레임은 과했음.
+
+> Caveats: per-person reference 는 공식 발표가 없어 본 분석이 자체 추정 (±2pp 정도 오차 가능). NVIDIA 가 어느 reference (가구·인구·주택) 를 targeting 했는지 불명확. 단독주택 -8pp 잔존 격차는 진짜일 가능성도, 추정 오차일 가능성도 있음.
+
+가능한 잔존 격차의 원인 가설:
+- 시드 통계가 도시 가중 표본 (KOSIS 외 부동산/임대 데이터 혼합)
+- 다인가구 평균 가구원수가 거처유형별로 다른 효과 (본 보정에서 단일값으로 단순화)
+
+→ **Phase 3 의 housing decoupling 결론은 INTERNAL structure 분석이라 본 보정과 무관, 그대로 유효.**
 
 ### 3-5. military_status (메모)
 현역 비율 0.5%. 한국 전체 19+ 인구 대비 현역 군인 약 0.9~1.0% 수준이라
@@ -398,8 +417,7 @@ NVIDIA 데이터 카드 핵심 주장 → 본 검증 결과:
 
 - **단변량(marginal) 수준에서는 sex / province / 학력 / 혼인 모두 잘 재현**된다.
   특히 시도 17개의 비중은 ±0.24pp 이내로 매우 정확하다.
-- **눈에 띄는 1차 신호: housing_type (아파트 과대 / 단독 과소)** — 시드 출처나 결합 가중치를
-  점검할 부분.
+- **약한 신호: housing_type 단독주택 격차** — 보정 후 -8pp 잔존 (원래 -11.5pp 에서 줄어듦). 단 per-person reference 추정 오차 ±2pp 고려 시 확정적 결론 어려움. 단위 mismatch 보정 후 TVD ≈ 0.08 (원래 0.12 의 70%).
 - **N=1M 이라 chi-square의 p-value는 의미가 없다.** TVD/L∞ 같은 효과크기 위주로 봐야 한다.
 - **단변량이 맞다고 결합 분포가 맞는 것은 아니다.** 다음 단계(Phase 2)는
   province×housing, sex×bachelors_field, age×education, age×marital 같은 2차 분포에서
@@ -1347,10 +1365,14 @@ python scripts/12_subsample_stability.py  # 5 seeds (~6 min)
 - Caveat: 모집단 차이 (19+ vs 25+).
 - Evidence: [`reports/tables/kosis_comparison.md:education_level`](../reports/tables/kosis_comparison.md)
 
-[**C8**] (★★) `housing_type` 은 인구주택총조사 2023 가구 기준과 **TVD = 0.119** 로 가장 큰 차이. 아파트 +8.9pp, 단독 −11.5pp.
-- Caveat: 가구 vs 개인 모집단 차이로 일부 설명되나 격차의 폭을 충분히 메우지 못함.
-- Evidence: [`reports/tables/kosis_comparison.md:housing_type`](../reports/tables/kosis_comparison.md)
-- Could be wrong if: 적절한 개인 단위 housing reference 가 비교에 사용되면 격차가 줄어들 가능성.
+[**C8**] (★) `housing_type` 비교는 **단위 mismatch 보정 후 약화됨**.
+- 원본 비교: TVD=0.119 (vs KOSIS 가구 기준 reference). 아파트 +8.9pp, 단독 −11.5pp.
+- 보정 비교: TVD ≈ 0.084 (vs 본 분석 자체 추정 per-person reference). 아파트 +3.5pp, 단독 -8.0pp. **원래 격차의 약 30% 가 단위 mismatch 환상.**
+- 보정 방법: 1인가구 비중 35.5% + 1인가구 거처분포 + 평균 가구원수 2.21 로 다인가구 분포 역산 후 가구원수 가중. [`scripts/20_housing_unit_correction.py`](../scripts/20_housing_unit_correction.py), [`data/processed/housing_unit_correction.json`](../data/processed/housing_unit_correction.json).
+- **신뢰도 다운그레이드**: ★★ → ★. (a) per-person reference 가 공식 발표 없어 자체 추정 (±2pp 오차 가능), (b) NVIDIA targeting reference 불명확.
+- 단독주택 -8pp 잔존 격차는 **약한 신호로만** 인용해야 함 (확정적 결론 어려움).
+- Evidence: [Phase 1 §3-4 수정본](../reports/PHASE1_REPORT.md#3-4-housing_type----신호-약화됨-단위-mismatch-보정-후)
+- ※ Phase 3 의 housing decoupling 결론 (C18, C19) 은 internal structure 분석이라 본 보정과 무관, 그대로 유효.
 
 ---
 
@@ -2337,7 +2359,21 @@ C6  [_]  C12 [_]  C18 [_]  C24 [_]  C30 [_]
     "population": "일반가구(가구 기준)",
     "year": 2023,
     "source": "통계청, 2023년 인구주택총조사(등록센서스)",
-    "caveat": "Nemotron은 개인 기준이고 본 수치는 가구 기준. 또한 Nemotron은 '연립주택'과 '다세대주택'을 분리, 본 수치는 합계."
+    "caveat": "⚠ Nemotron은 개인 단위, 본 수치는 가구 단위 — 직접 비교 불가. 본 분석의 자체 추정 per-person reference는 'values_per_person_estimated' 필드 참조 (scripts/20_housing_unit_correction.py)."
+  },
+  "housing_type_per_person_estimated": {
+    "values": {
+      "아파트": 0.586,
+      "단독주택": 0.249,
+      "연립·다세대주택": 0.110,
+      "주택 이외의 거처": 0.040,
+      "비주거용 건물 내 주택": 0.013
+    },
+    "population": "개인(가구원수 가중치 적용 자체 추정)",
+    "year": 2023,
+    "source": "통계청 일반가구 분포 + 1인가구 거처분포(2023 통계로 보는 1인가구) + 평균 가구원수 2.21 으로 본 분석이 직접 계산",
+    "method": "다인가구 분포 역산 후 가구원수 가중. 다인가구 평균 2.88명 가정.",
+    "caveat": "공식 발표 수치 아님. 다인가구 평균 가구원수 거처유형별 차이 무시한 근사. ±2pp 정도의 추정 오차 가능."
   },
   "province": {
     "values": {

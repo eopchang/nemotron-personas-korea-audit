@@ -47,10 +47,14 @@
 - Caveat: 모집단 차이 (19+ vs 25+).
 - Evidence: [`reports/tables/kosis_comparison.md:education_level`](../reports/tables/kosis_comparison.md)
 
-[**C8**] (★★) `housing_type` 은 인구주택총조사 2023 가구 기준과 **TVD = 0.119** 로 가장 큰 차이. 아파트 +8.9pp, 단독 −11.5pp.
-- Caveat: 가구 vs 개인 모집단 차이로 일부 설명되나 격차의 폭을 충분히 메우지 못함.
-- Evidence: [`reports/tables/kosis_comparison.md:housing_type`](../reports/tables/kosis_comparison.md)
-- Could be wrong if: 적절한 개인 단위 housing reference 가 비교에 사용되면 격차가 줄어들 가능성.
+[**C8**] (★) `housing_type` 비교는 **단위 mismatch 보정 후 약화됨**.
+- 원본 비교: TVD=0.119 (vs KOSIS 가구 기준 reference). 아파트 +8.9pp, 단독 −11.5pp.
+- 보정 비교: TVD ≈ 0.084 (vs 본 분석 자체 추정 per-person reference). 아파트 +3.5pp, 단독 -8.0pp. **원래 격차의 약 30% 가 단위 mismatch 환상.**
+- 보정 방법: 1인가구 비중 35.5% + 1인가구 거처분포 + 평균 가구원수 2.21 로 다인가구 분포 역산 후 가구원수 가중. [`scripts/20_housing_unit_correction.py`](../scripts/20_housing_unit_correction.py), [`data/processed/housing_unit_correction.json`](../data/processed/housing_unit_correction.json).
+- **신뢰도 다운그레이드**: ★★ → ★. (a) per-person reference 가 공식 발표 없어 자체 추정 (±2pp 오차 가능), (b) NVIDIA targeting reference 불명확.
+- 단독주택 -8pp 잔존 격차는 **약한 신호로만** 인용해야 함 (확정적 결론 어려움).
+- Evidence: [Phase 1 §3-4 수정본](../reports/PHASE1_REPORT.md#3-4-housing_type----신호-약화됨-단위-mismatch-보정-후)
+- ※ Phase 3 의 housing decoupling 결론 (C18, C19) 은 internal structure 분석이라 본 보정과 무관, 그대로 유효.
 
 ---
 

@@ -1,0 +1,95 @@
+{
+  "_motivation": "원래 Phase 1 housing 비교는 Nemotron(개인 단위) vs KOSIS 일반가구(가구 단위)로 단위가 다른 비교였음. 이 보정은 1인가구 비중·1인가구 거처분포·평균 가구원수를 이용해 per-person reference 를 추정하고 TVD 를 재계산한다.",
+  "method": "(a) 다인가구 분포 = (전체가구 - 1인가구비중×1인가구분포) / (1-1인가구비중)\n(b) 다인가구 평균 가구원수 = (전체평균 - 1인가구비중) / (1-1인가구비중)\n(c) per-person share(k) = (1인가구비중·1·1인가구(k) + 다인가구비중·평균·다인가구(k)) / 평균",
+  "inputs": {
+    "household_total_2023": {
+      "아파트": 0.531,
+      "단독주택": 0.284,
+      "연립·다세대주택": 0.112,
+      "주택 이외의 거처": 0.058,
+      "비주거용 건물 내 주택": 0.014
+    },
+    "one_person_share_2023": 0.355,
+    "one_person_housing_2023": {
+      "아파트": 0.349,
+      "단독주택": 0.401,
+      "연립·다세대주택": 0.117,
+      "주택 이외의 거처": 0.117,
+      "비주거용 건물 내 주택": 0.016
+    },
+    "mean_household_size_2023": 2.21,
+    "nemotron_per_person": {
+      "아파트": 0.6206,
+      "단독주택": 0.1692,
+      "연립·다세대주택": 0.1401,
+      "주택 이외의 거처": 0.0603,
+      "비주거용 건물 내 주택": 0.0099
+    }
+  },
+  "derived": {
+    "multi_person_housing": {
+      "아파트": 0.631170542635659,
+      "단독주택": 0.21960465116279063,
+      "연립·다세대주택": 0.10924806201550387,
+      "주택 이외의 거처": 0.025527131782945738,
+      "비주거용 건물 내 주택": 0.01289922480620155
+    },
+    "multi_person_avg_size": 2.875968992248062,
+    "per_person_reference_estimated": {
+      "아파트": 0.5858445052439581,
+      "단독주택": 0.24874281805745546,
+      "연립·다세대주택": 0.11049328282296818,
+      "주택 이외의 거처": 0.04022073731102459,
+      "비주거용 건물 내 주택": 0.013397313129187275
+    }
+  },
+  "tvd_summary": {
+    "tvd_vs_household_ref": 0.11945,
+    "tvd_vs_person_ref_est": 0.08374080290434593,
+    "reduction_share": 0.29894681536755185
+  },
+  "cell_level": [
+    {
+      "category": "아파트",
+      "nemotron_per_person": 0.6206,
+      "ref_per_household": 0.531,
+      "ref_per_person_estimated": 0.5858445052439581,
+      "diff_pp_vs_household": 8.96,
+      "diff_pp_vs_person_est": 3.4755494756041894
+    },
+    {
+      "category": "단독주택",
+      "nemotron_per_person": 0.1692,
+      "ref_per_household": 0.284,
+      "ref_per_person_estimated": 0.24874281805745546,
+      "diff_pp_vs_household": -11.479999999999999,
+      "diff_pp_vs_person_est": -7.9542818057455476
+    },
+    {
+      "category": "연립·다세대주택",
+      "nemotron_per_person": 0.1401,
+      "ref_per_household": 0.112,
+      "ref_per_person_estimated": 0.11049328282296818,
+      "diff_pp_vs_household": 2.81,
+      "diff_pp_vs_person_est": 2.9606717177031823
+    },
+    {
+      "category": "주택 이외의 거처",
+      "nemotron_per_person": 0.0603,
+      "ref_per_household": 0.058,
+      "ref_per_person_estimated": 0.04022073731102459,
+      "diff_pp_vs_household": 0.22999999999999965,
+      "diff_pp_vs_person_est": 2.007926268897541
+    },
+    {
+      "category": "비주거용 건물 내 주택",
+      "nemotron_per_person": 0.0099,
+      "ref_per_household": 0.014,
+      "ref_per_person_estimated": 0.013397313129187275,
+      "diff_pp_vs_household": -0.4099999999999999,
+      "diff_pp_vs_person_est": -0.3497313129187274
+    }
+  ],
+  "interpretation": "원본 TVD=0.12 (가구기준 비교) 중 약 30% 가 단위 mismatch 로 인한 환상. Per-person 보정 후 TVD≈0.084. 아파트 격차는 +9pp → +3.5pp 로 크게 감소. 단독주택 격차는 -11.5pp → -8.0pp 로 여전히 큰 폭. 즉 housing marginal 신호는 약화되지만 단독주택에 한해 진짜 격차로 남음.",
+  "caveat": "1) Per-person reference 는 공식 발표가 없어 본 분석이 자체 추정. 2) 다인가구 평균을 단일 값(2.88)으로 단순화 (실제로는 거처유형별 다름). 3) NVIDIA 가 어느 reference(가구·인구·주택)를 targeting했는지 불명확. 4) Phase 3 의 housing decoupling 결론은 internal structure 분석이라 본 보정과 무관."
+}

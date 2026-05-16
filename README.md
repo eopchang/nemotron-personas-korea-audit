@@ -21,7 +21,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 | Phase | 무엇을 봤나 | 결과 |
 |---|---|---|
-| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). 단 **housing 만 격차** (TVD=0.12) |
+| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). housing 은 약한 신호 — 단위 보정 (개인 vs 가구 기준) 후 TVD ≈ 0.08, 단독주택 -8pp 잔존 (Phase1 §3-4) |
 | **2** 이변량 결합 | 55개 변수 쌍의 결합이 어떤 모양인가? | 인구학 chain (age→marital→family, age→edu→field→occupation) 견고. 성별×전공 분리 패턴 한국 현실과 부합 |
 | **3** 의존 구조 추정 | 데이터에 어떤 조건부 의존 skeleton이 남아있나? | **23 direct + 14 mediated + 18 no-edge** (ε=0.005 nats, \|Z\|≤2 조건 하; ε 100배 변동 시 direct 수 32–13 범위, 핵심 결론은 ε-stable; permutation null 로 bias 보정 시 12개만 ratio>2 로 견고). **Housing은 사람 속성과 분리, military는 occupation 함수** |
 
