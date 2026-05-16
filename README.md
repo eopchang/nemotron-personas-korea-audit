@@ -266,6 +266,6 @@ GitHub의 "Cite this repository" 버튼 (`CITATION.cff`) 도 사용 가능.
 
 ## 🙏 사사
 
-- NVIDIA Corporation: 이 데이터셋을 CC BY 4.0 으로 공개해 외부 검증을 가능케 한 점
+- NVIDIA Corporation: 이 데이터셋을 CC BY 4.0 으로 공개해 외부 검증을 가능케 함
 - 통계청 / 행정안전부 / 국민건강보험공단 / 한국농촌경제연구원: 시드 공공 통계
-- 본 분석은 [Theoretical Neuroscience & Computational Medicine Lab, 가천대학교](https://www.gachon.ac.kr) 에서 수행
+- 본 분석은 [Theoretical Neuroscience & Computational Medicine Lab, 가천대학교](https://sites.google.com/view/nnsm/) 에서 수행
