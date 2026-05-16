@@ -134,7 +134,7 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 - **현역 군 인력 cross-section 구성 분석**: 사용 가능 🤔 (계급별 연령·성비는 한국군 현실 부합)
 - 단 두 경우 모두 military_status 와 occupation 동시 입력 시 정보 중복 주의.
 
-[**C26**] (★) 인구통계 시뮬레이션, 인구학 chain 분석, 노동 분리 (sex × field × occupation), LLM 학습용 페르소나 등에는 **사용 가능**.
+[**C26**] (★) 인구통계 시뮬레이션, 인구학 chain 분석, 노동 분리 (sex × field × occupation), LLM 학습 / 합성 데이터 다양성 확대 / 모델 편향 완화 (NVIDIA 명시 용도) 등에는 **사용 가능**.
 - Reason: C4 ~ C15 의 부합도.
 
 ---
