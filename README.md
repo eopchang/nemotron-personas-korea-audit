@@ -52,7 +52,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 | 자주 묻는 질문 | [`docs/FAQ.md`](docs/FAQ.md) |
 | 어느 보고서를 어디서 보나 | [`docs/READING_GUIDE.md`](docs/READING_GUIDE.md) |
 | 분석 방법론을 자세히 확인하고 싶다 | [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) |
-| 직접 재현하고 싶다 | [`#재현`](#재현) |
+| 직접 재현하고 싶다 | [본 페이지 § 재현](#-재현) 또는 [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) |
 | **이 분석 자체를 의심한다 / 다른 LLM으로 검증하고 싶다** | [`review/`](review/) |
 
 ---
