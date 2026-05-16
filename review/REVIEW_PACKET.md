@@ -48,13 +48,13 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 본 리포는 3단계로 정량 검증을 수행했습니다.
 
-| Phase | 무엇을 봤나 | 결과 |
-|---|---|---|
-| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). housing 은 약한 격차 (TVD ≈ 0.08, 단독주택 -8pp 잔존; [Phase1 §3-4](reports/PHASE1_REPORT.md#3-4-housing_type----약한-격차)) |
-| **2** 이변량 결합 | 55개 변수 쌍의 결합이 어떤 모양인가? | 인구학 chain (age→marital→family, age→edu→field→occupation) 견고. 성별×전공 분리 패턴 한국 현실과 부합 |
-| **3** 의존 구조 추정 | 데이터에 어떤 조건부 의존 skeleton이 남아있나? | **23 direct + 14 mediated + 18 no-edge** (ε=0.005 nats, \|Z\|≤2 조건 하; ε 100배 변동 시 direct 수 32–13 범위, 핵심 결론은 ε-stable; permutation null 로 bias 보정 시 12개만 ratio>2 로 견고). **Housing은 사람 속성과 분리, military는 occupation 함수** |
+| Phase | 무엇을 봤나 |
+|---|---|
+| **1** 단변량 충실도 | 12개 변수 각각의 분포가 KOSIS · 통계청 공식 통계와 얼마나 일치하는가? |
+| **2** 이변량 결합 | 55개 변수 쌍의 결합 분포가 어떤 모양인가? PGM 이 어떤 결합을 인코딩했는가? |
+| **3** 의존 구조 추정 | 데이터에 남아있는 조건부 의존 skeleton 은? 어떤 변수가 어떤 변수와 직접 vs 매개로 연결되어 있나? |
 
-### ⭐ 7개 결정적 발견
+### 6가지 핵심 결과
 
 1. ✅ **시도/시군구별 인구 분포는 KOSIS 와 매우 가까움** — TVD = 0.005, 17개 시도 모두 ±0.24pp 이내.
 2. ✅ **인구학 chain (나이→결혼→가족, 나이→학력) 한국 현실과 정량적으로 부합** — 20-50대 미혼 비율이 2020 census 와 8/8 cell 모두 ±4pp 이내 (P7 외부 검증). 25-34 4년제 51.6%, 75-84 사별 42.6% 등 KOSIS 와 일치.
@@ -62,7 +62,6 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 4. ⚠️ **`housing_type` 이 사람 속성과 통계적으로 분리됨** — 1인 가구도 4인 가족도 청년도 노년도 모두 아파트 ~62%. 예측 기반 conditional-independence probe 로 이중 확인 (info_added = −0.008 nats).
 5. ⚠️ **`military_status` 는 occupation 라벨에서 거의 결정적으로 파생되는 부수 변수** (정보 중복). 단 변수 의미는 *의무복무 이행* 이 아니라 *현역 군 인력 신분 (직업군인 + 의무복무 통합)* 으로 한국군 인력 구성과 부합 (병사 평균 25세, 부사관 41세, 장교 47세, 여성 11%).
 6. ⚠️ **`occupation` 의 "무직" 카테고리가 36.7% 로 거대** — 가정주부·학생·은퇴자·실업자가 한 라벨에 통합. 세분화된 노동시장 분석에는 한계 (단 큰 그림 — 학력→직업, 성별→직업 분리 등은 잘 작동).
-7. ⚠️ **23개 'direct edge' 중 12개만 bias-corrected 견고** — 나머지 11개 (모두 occupation/district 같은 high-cardinality 변수 포함) 는 plug-in MI 의 카디널리티 bias 일 가능성 (P4 permutation null 결과). occupation·district 가 들어가는 fine-grained 결합 의존성 주장은 신중하게 인용 필요.
 
 → **결론**: 본 데이터셋은 분석 종류에 따라 다음 3가지로 분류 가능:
 
