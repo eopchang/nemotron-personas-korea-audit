@@ -5,6 +5,67 @@
 ### Q. 이 리포는 NVIDIA를 비판하는 건가요?
 아닙니다. NVIDIA의 데이터셋은 잘 만들어진 합성 데이터의 본보기 — 시도/시군구·인구학·교육 chain은 매우 충실합니다. 본 리포의 목적은 **사용자가 어디까지 이 데이터를 신뢰해야 할지** 판단할 수 있도록 *데이터 카드에 명시되지 않은 부분*을 정량화하는 것입니다.
 
+### Q. 단변량 12개 중 왜 5개만 KOSIS 와 비교했나요?
+선정 기준은 **선호의 우선순위** 가 아니라 **비교 가능성** 의 기술적 제약입니다.
+
+선정된 5개 (`sex`, `province`, `marital_status`, `education_level`, `housing_type`) 는 공식 KOSIS reference 와 카테고리·모집단이 명확히 매핑되는 변수입니다.
+
+나머지 7개와 탈락 이유:
+| 변수 | 비교 못한 이유 |
+|---|---|
+| `age` | 연속형 (19-99), 비교 단위 정해야 함 (binning 필요) |
+| `age_bin` | 본 분석이 만든 파생 변수 (reference 없음) |
+| `country` | 단일값 (대한민국 100%) — 비교 무의미 |
+| `district` | 252개 시군구 — Phase 1 에서 province (17) 로 충분 |
+| `family_type` | 39개 — 통계청 가구분류 (4-5개 대분류) 와 매핑 어려움 |
+| `bachelors_field` | 전공 분포 — 25세+ vs 19세+ 모집단 차이, 공식 통계 부족 |
+| `occupation` | 2,120개 직업명 — KSCO 7차 대분류 매핑 작업 필요 |
+| `military_status` | 공식 통계는 추계인구가 군인 별도 처리 — 직접 비교 어려움 |
+
+→ KSCO 매핑 후 occupation 비교 + KOSIS joint cross-tab 비교 등은 [ROADMAP P5, P7](../ROADMAP.md).
+
+### Q. 이변량 페어는 왜 55개인가요? (단변량은 12개인데)
+`country` 는 단일값이라 결합 분석에서 의미 없음 → 결합 분석에는 11개 변수만 사용 → 11C2 = 11×10/2 = **55 페어**. (단변량 phase 에서는 country 포함 12개 모두 분포 산출은 했음, trivial 하지만.)
+
+### Q. 이변량 55개 중 본문에서 깊이 다룬 10개는 어떻게 골랐나요?
+5가지 선정 논리:
+1. **NVIDIA 데이터카드 검증** — "직업 배정 시 성·전공이 독립" 주장 검증: `sex × bachelors_field`, `sex × occupation`
+2. **Phase 1 신호 추적** — housing 격차의 원인 분석: `province × housing_type`
+3. **결정론적 제약 검증** — "배우자있음 → 가구에 배우자 100%?": `marital_status × family_type`
+4. **한국 도메인 핵심 결합** — 인구학·교육·노동: `age × {marital, education, occupation}`, `education × occupation`, `bachelors_field × occupation`
+5. **Sanity check** — `sex × military_status` (현역 여성 비율)
+
+나머지 45개도 [`reports/PAIR_INDEX.md`](../reports/PAIR_INDEX.md) 에서 NMI 순으로 확인 가능 + 자동 생성된 3-panel 그림 (`reports/figures/bivariate_all/`) 모두 제공.
+
+### Q. PC-style 알고리즘이 정확히 뭐예요? 정통 PC 알고리즘과 다른가요?
+**PC algorithm** (Peter-Clark, Spirtes & Glymour 1991) 은 PGM 의 skeleton 을 데이터에서 추론하는 고전적 알고리즘입니다.
+
+**기본 절차**:
+1. 모든 노드 쌍이 연결된 완전 그래프에서 시작
+2. 각 페어 (X, Y) 마다 점점 큰 conditioning set Z 로 독립성 검정:
+   - \|Z\|=0: 마지널 — `I(X;Y) < ε` 이면 edge 제거
+   - \|Z\|=1: 다른 변수 하나로 조건걸어 `I(X;Y\|Z) < ε` 이면 제거
+   - \|Z\|=2, =3, ... 점점 크게
+3. 끝까지 살아남은 edge 가 "direct dependency"
+
+**본 리포의 PC-style** 은 정통 PC 의 약식 변형:
+- **\|Z\| ≤ 2 까지만** (정통 PC 는 이론적으로 \|Z\|=n−2 까지)
+- 모든 subset 이 아니라 **best mediator + 1 추가** 의 휴리스틱
+- 임계 ε = 0.005 nats 임의 선택 ([sensitivity 분석](../reports/PHASE3_REPORT.md#26-ε-threshold-sensitivity--위-결과는-임계-의존성이-얼마나-큰가) 완료)
+
+이 한계 때문에 "skeleton 복원" 이 아니라 "skeleton 추정" 으로 표현.
+
+### Q. Direct edge 와 Mediated edge 의 차이는?
+세 가지 분류가 있습니다:
+
+| 분류 | 정의 | 의미 | 예 |
+|---|---|---|---|
+| **direct** | `min_Z I(X;Y\|Z) ≥ ε` (어떤 Z 로 조건걸어도 의존 살아있음) | X-Y 직접 연결 | `marital × family_type` — 어떤 변수로 조건걸어도 NMI 살아있음 |
+| **mediated** | `I(X;Y) ≥ ε` 이지만 `min_Z I(X;Y\|Z) < ε` (어떤 Z 로 조건걸면 의존 사라짐) | X-Y 결합은 Z 를 통한 간접 효과, 직접 연결 없음 | `marital × education_level` — 둘 다 age 의 함수, age 조건걸면 MI 0.105 → 0.004 |
+| **no_edge_marginal** | `I(X;Y) < ε` (처음부터 의존 없음) | 거의 독립 | `sex × housing_type` (NMI ≈ 0) |
+
+자세한 정의는 [`docs/GLOSSARY.md`](GLOSSARY.md#mediated-edge-매개된-엣지--즉-엣지가-없음).
+
 ### Q. NVIDIA가 데이터 카드에 검증 내용을 안 적었나요?
 적혀 있긴 한데, **단변량 (marginal) 분포 수준** 의 정성 비교 위주입니다. 이변량 결합·조건부 독립성·예측 유틸리티 (TSTR / decoupling probe) 같은 지표는 공개되지 않았습니다. 본 리포가 이 빈자리를 채웁니다.
 

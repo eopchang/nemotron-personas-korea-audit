@@ -76,21 +76,28 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 각 변수의 분포가 KOSIS / 통계청 공식 통계와 얼마나 일치하는가.
 
-- 12개 변수의 분포 산출 → [`data/processed/marginals/`](data/processed/marginals)
-- 5개 핵심 변수에 대한 KOSIS 비교 → [`reports/tables/kosis_comparison.md`](reports/tables/kosis_comparison.md)
-- **Headline**: sex (TVD=0.0006), province (0.005), education (0.04), marital (0.05) 모두 양호. **housing (0.12) 만 신호** (아파트 +9pp, 단독 −12pp).
+- **12개 변수** 분포 산출 → [`data/processed/marginals/`](data/processed/marginals)
+- 이 중 **5개만 KOSIS 와 직접 비교** → [`reports/tables/kosis_comparison.md`](reports/tables/kosis_comparison.md)
+  - 선정 기준 = "공식 KOSIS reference 가 명확히 매핑되는 변수만". sex, province, marital_status, education_level, housing_type 채택.
+  - 나머지 7개 (occupation, district, family_type, bachelors_field, age, military_status, country) 는 모집단·분류체계 mismatch 또는 trivial 로 1차 비교에서 제외 (자세히는 [FAQ](docs/FAQ.md#q-단변량-12개-중-왜-5개만-kosis-와-비교했나요) 참조; KSCO 대분류 매핑 후 추가 비교는 [ROADMAP P5](ROADMAP.md))
+- **Headline**: sex (TVD=0.0006), province (0.005), education (0.04), marital (0.05) 모두 양호. housing 만 약한 신호 — 단위 보정 (개인 vs 가구 기준) 후 **TVD ≈ 0.08**, 단독주택 -8pp 잔존 ([§3-4 수정본](reports/PHASE1_REPORT.md#3-4-housing_type----신호-약화됨-단위-mismatch-보정-후))
 
 ### [Phase 2 — 이변량 결합](reports/PHASE2_REPORT.md) · [전 55페어 색인](reports/PAIR_INDEX.md)
 
 55개 변수쌍의 결합 분포를 **모두** 4개 지표 (Cramér V, NMI, Theil U, TVD vs independence) 로 측정 + 각 페어에 3-panel 시각화.
 
+> ℹ️ 단변량은 12개인데 이변량 페어는 왜 55개? `country` 는 단일값 (대한민국 100%) 이라 결합 분석에서 제외 → 11개 변수 × 11C2 = **55 페어**.
+
 - 4개 11×11 heatmap → [`reports/figures/heatmap_*.png`](reports/figures)
-- 55개 페어 detail → [`reports/figures/bivariate_all/`](reports/figures/bivariate_all)
-- 본문 깊이 다룬 10개 → [`reports/figures/bivariate/`](reports/figures/bivariate)
+- **55개 페어 detail** (전체 자동 생성) → [`reports/figures/bivariate_all/`](reports/figures/bivariate_all)
+- **본문 깊이 다룬 10개** (큐레이션) → [`reports/figures/bivariate/`](reports/figures/bivariate)
+  - 선정 논리: (1) 데이터카드의 "독립 가정" 검증 — `sex×bachelors_field`, `sex×occupation`, (2) Phase 1 신호 추적 — `province×housing`, (3) 결정론적 제약 검증 — `marital×family_type`, (4) 한국 도메인 핵심 결합 — `age×{marital, education, occupation}`, `education×occupation`, `bachelors_field×occupation`, (5) sanity — `sex×military_status` (자세히는 [Phase 2 §3](reports/PHASE2_REPORT.md))
 
 ### [Phase 3 — 의존 구조 추정](reports/PHASE3_REPORT.md) ⭐
 
-Conditional MI 와 PC-style 알고리즘으로 데이터에 남아있는 **조건부 의존 skeleton 을 추정** (NVIDIA 의 proprietary PGM 진짜 그래프 자체의 복원이 아님 — ε=0.005 nats, \|Z\|≤2 한계 하의 추정치).
+Conditional MI 와 [PC-style 알고리즘](docs/GLOSSARY.md#pc-algorithm) 으로 데이터에 남아있는 **조건부 의존 skeleton 을 추정** (NVIDIA 의 proprietary PGM 진짜 그래프 자체의 복원이 아님 — ε=0.005 nats, \|Z\|≤2 한계 하의 추정치).
+
+> ℹ️ **PC-style 알고리즘 한 줄 요약**: 모든 노드 쌍이 연결된 그래프에서 시작해, 각 페어마다 다른 변수들을 조건으로 걸어 독립성 검정 — 어떤 조건에서 독립이 발견되면 그 edge 를 제거. 본 리포는 정통 PC 의 약식 버전으로 \|Z\|≤2 까지만 검정. → [direct vs mediated edge 의 차이](docs/GLOSSARY.md#direct-edge-직접-엣지)
 
 ![skeleton compare](reports/figures/skeleton_compare.png)
 
