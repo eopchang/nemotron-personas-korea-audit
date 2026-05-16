@@ -44,7 +44,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 ## 🧭 어디부터 읽으면 좋은가
 
-| 원하는 바 | 여기로 |
+| 원하는 것 | 여기로 |
 |---|---|
 | 1분 안에 핵심만 알고 싶다 | 위 "한 페이지 요약" 만 읽기 |
 | 내 연구에 이 데이터 써도 될지 결정해야 한다 | [`docs/RESEARCHER_GUIDE.md`](docs/RESEARCHER_GUIDE.md) |
@@ -87,7 +87,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
   - 나머지 7개 (occupation, district, family_type, bachelors_field, age, military_status, country) 는 모집단·분류체계 mismatch 또는 trivial 로 1차 비교에서 제외 (자세히는 [FAQ](docs/FAQ.md#q-단변량-12개-중-왜-5개만-kosis-와-비교했나요) 참조; KSCO 대분류 매핑 후 추가 비교는 [ROADMAP P5](ROADMAP.md))
 - **Headline**: sex (TVD=0.0006), province (0.005), education (0.04), marital (0.05) 모두 양호. housing 만 약한 격차 (TVD ≈ 0.08, 단독주택 -8pp 잔존 — [§3-4](reports/PHASE1_REPORT.md#3-4-housing_type----약한-격차))
 
-### [Phase 2 — 이변량 결합](reports/PHASE2_REPORT.md) · [전 55페어 색인](reports/PAIR_INDEX.md)
+### [Phase 2 — 이변량 결합](reports/PHASE2_REPORT.md) · [전 55쌍 색인](reports/PAIR_INDEX.md)
 
 55개 변수쌍의 결합 분포를 **모두** 4개 지표 (Cramér V, NMI, Theil U, TVD vs independence) 로 측정 + 각 페어에 3-panel 시각화.
 
