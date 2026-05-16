@@ -1,0 +1,2753 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Independent joint-distribution & dependency-structure audit of NVIDIA's Nemotron-Personas-Korea synthetic dataset (한국어 본문 + English abstract).">
+      
+      
+        <meta name="author" content="Chang-Eop Kim">
+      
+      
+        <link rel="canonical" href="https://eopchang.github.io/nemotron-personas-korea-audit/reports/PHASE2_REPORT/">
+      
+      
+        <link rel="prev" href="../PHASE1_REPORT/">
+      
+      
+        <link rel="next" href="../PHASE3_REPORT/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Phase 2 — 이변량 - Nemotron-Personas-Korea Audit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#phase-2-bivariate" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="Nemotron-Personas-Korea Audit" class="md-header__button md-logo" aria-label="Nemotron-Personas-Korea Audit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nemotron-Personas-Korea Audit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Phase 2 — 이변량
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="공유" aria-label="공유" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/eopchang/nemotron-personas-korea-audit" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    eopchang/nemotron-personas-korea-audit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  한 페이지 요약
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ABSTRACT_EN/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  English Summary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../docs/RESEARCHER_GUIDE/" class="md-tabs__link">
+          
+  
+  
+  가이드
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../PHASE1_REPORT/" class="md-tabs__link">
+          
+  
+  
+  리포트
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../review/" class="md-tabs__link">
+          
+  
+  
+  외부 리뷰
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ROADMAP/" class="md-tabs__link">
+          
+  
+  
+  메타
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nemotron-Personas-Korea Audit" class="md-nav__button md-logo" aria-label="Nemotron-Personas-Korea Audit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nemotron-Personas-Korea Audit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/eopchang/nemotron-personas-korea-audit" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    eopchang/nemotron-personas-korea-audit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    한 페이지 요약
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ABSTRACT_EN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    가이드
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    가이드
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/RESEARCHER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구자 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/READING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    읽기 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/GLOSSARY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docs/METHODOLOGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    방법론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리포트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    리포트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PHASE1_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 1 — 단변량
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 2 — 이변량
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 2 — 이변량
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 분석 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 분석 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변수
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-scripts_libpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지표 (정의는 README 또는 scripts/_lib.py 참고)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시각화
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-top-15-by-nmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 전체 페어 결과 (Top 15 by NMI)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 전체 페어 결과 (Top 15 by NMI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bottom-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bottom 5 (가장 독립에 가까운 페어)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pgm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. PGM이 잡아낸 "비독립" 구조 — 페어별 해석
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. PGM이 잡아낸 &#34;비독립&#34; 구조 — 페어별 해석">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-1-district-province-u-1000-sanity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-1. district → province : U = 1.000 (sanity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-marital_status-family_type-nmi-044" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-2. marital_status × family_type : NMI = 0.44 (강한 결합)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3-age_bin-marital_status-nmi-021" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-3. age_bin × marital_status : NMI = 0.21
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4-age_bin-education_level-nmi-015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-4. age_bin × education_level : NMI = 0.15 (코호트 효과)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-5-sex-bachelors_field-v-026-nmi-004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-5. sex × bachelors_field : V = 0.26, NMI = 0.04 (성별 분리 인코딩)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-6-sex-military_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-6. sex × military_status — 변수 의미와 계급별 분해
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-7-province-housing_type-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-7. province × housing_type — Phase 1 격차의 추적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-8-education-occupation-nmi-010" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-8. education × occupation : NMI = 0.10
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-9-age-occupation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-9. age × occupation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-10-bachelors_field-occupation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-10. bachelors_field × occupation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-theil-u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Theil U 비대칭성에서 보이는 인과 구조
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Phase 2 종합
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Phase 2 종합">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        잘 한 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        발견된 격차 / 의문점
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터 카드 vs 실측
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다음 단계로 이어지는 질문
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 산출물
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 재현
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PHASE3_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 3 — PGM 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PAIR_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    55-pair 색인
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tables/kosis_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KOSIS 비교표
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    외부 리뷰
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    외부 리뷰
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/CLAIMS_LEDGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주장 목록 (Claims)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/REVIEW_PROMPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Prompts (KR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/REVIEW_PROMPTS_EN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Prompts (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    메타
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    메타
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로드맵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    기여 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 분석 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 분석 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        변수
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-scripts_libpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        지표 (정의는 README 또는 scripts/_lib.py 참고)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시각화
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-top-15-by-nmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 전체 페어 결과 (Top 15 by NMI)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 전체 페어 결과 (Top 15 by NMI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bottom-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bottom 5 (가장 독립에 가까운 페어)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pgm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. PGM이 잡아낸 "비독립" 구조 — 페어별 해석
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. PGM이 잡아낸 &#34;비독립&#34; 구조 — 페어별 해석">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-1-district-province-u-1000-sanity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-1. district → province : U = 1.000 (sanity)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-marital_status-family_type-nmi-044" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-2. marital_status × family_type : NMI = 0.44 (강한 결합)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-3-age_bin-marital_status-nmi-021" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-3. age_bin × marital_status : NMI = 0.21
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4-age_bin-education_level-nmi-015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-4. age_bin × education_level : NMI = 0.15 (코호트 효과)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-5-sex-bachelors_field-v-026-nmi-004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-5. sex × bachelors_field : V = 0.26, NMI = 0.04 (성별 분리 인코딩)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-6-sex-military_status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-6. sex × military_status — 변수 의미와 계급별 분해
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-7-province-housing_type-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-7. province × housing_type — Phase 1 격차의 추적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-8-education-occupation-nmi-010" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-8. education × occupation : NMI = 0.10
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-9-age-occupation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-9. age × occupation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-10-bachelors_field-occupation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3-10. bachelors_field × occupation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-theil-u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Theil U 비대칭성에서 보이는 인과 구조
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Phase 2 종합
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Phase 2 종합">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        잘 한 것
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        발견된 격차 / 의문점
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터 카드 vs 실측
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다음 단계로 이어지는 질문
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 산출물
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 재현
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="phase-2-bivariate">Phase 2 — Bivariate (이변량) 결합분포 충실도 리포트<a class="headerlink" href="#phase-2-bivariate" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>한 문단 요약</strong>: 11개 변수의 모든 55개 페어를 4종 association 지표 (Cramér V,
+NMI, Theil U, TVD vs independence) 로 측정. PGM 이 <em>결정적 제약 (배우자있음 →
+가구에 배우자 100% 포함, 시군구 → 시도 결정적)</em> 과 <em>한국 인구학 패턴 (19-24
+미혼 95%, 75-84 사별 43%)</em> 을 모두 정확히 인코딩. 성별×전공도 한국 현실 부합
+(공학 86% 남성, 보건 28% 남성). 데이터카드의 "독립 가정" 문구는 occupation
+라벨링의 좁은 의미일 뿐이고, sex×field 자체는 강한 결합으로 잘 잡혀있음.</p>
+</blockquote>
+<p>NVIDIA <code>Nemotron-Personas-Korea</code> 의 <strong>두 변수 사이 의존 구조</strong>를 측정한다.
+Phase 1이 "변수 <em>하나씩</em> 보면 KOSIS와 얼마나 비슷한가"였다면, Phase 2는
+<strong>"PGM이 변수 <em>사이의 관계</em>를 어디까지 인코딩했는가"</strong> 를 본다.</p>
+<blockquote>
+<p>데이터 카드는 "세부 직업 배정 시 성별·소득·학력·전공이 <em>독립적으로</em> 영향"이라
+명시했다. 이 한 줄을 곧이곧대로 읽으면 sex × bachelors_field 같은 페어는
+거의 독립이어야 한다. 본 phase의 한 결과는 <strong>그렇지 않다</strong> — PGM은 sex와 전공
+사이의 강한 의존성(공학·정보통신=남성, 보건·교육=여성)을 충실히 인코딩하고
+있다. 즉 카드의 "독립 가정" 문구는 occupation 라벨링의 가중 항에만 좁게
+적용된 것으로 해석된다.</p>
+</blockquote>
+<hr />
+<h2 id="1">1. 분석 설계<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">변수<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><code>country</code> 는 단일값이라 제외 → <strong>11개 변수</strong>.
+연속형 <code>age</code> 는 8개 구간(19-24/25-34/.../85+)으로 binning.</p>
+<h3 id="readme-scripts_libpy">지표 (정의는 README 또는 <code>scripts/_lib.py</code> 참고)<a class="headerlink" href="#readme-scripts_libpy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>대칭?</th>
+<th>의미</th>
+<th>해석 가이드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cramér V</strong></td>
+<td>○</td>
+<td>χ² 기반 효과크기, 0–1</td>
+<td>≥0.3 강함, ≥0.1 중간, ≥0.05 약함</td>
+</tr>
+<tr>
+<td><strong>NMI</strong> = 2I/(H_x+H_y)</td>
+<td>○</td>
+<td>정규화 상호정보</td>
+<td>1.0 = 완전결정, 0 = 독립</td>
+</tr>
+<tr>
+<td><strong>Theil U(Y|X)</strong> = I/H_y</td>
+<td>✕</td>
+<td>'X 알면 Y 불확실성 X% 줄어듬'</td>
+<td><strong>방향성</strong></td>
+</tr>
+<tr>
+<td><strong>TVD_indep</strong> = ½ Σ|P(x,y)−P(x)P(y)|</td>
+<td>○</td>
+<td>결합과 독립의 거리</td>
+<td>0 = 독립</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>N = 1,000,000. χ² p-value 는 모든 페어에서 사실상 0 → <strong>효과크기</strong>로 봐야 함.</p>
+</blockquote>
+<p>55개 모든 무방향 페어 + 110개 방향성 U 결과: <a href="../data/processed/bivariate"><code>data/processed/bivariate/</code></a></p>
+<h3 id="_2">시각화<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>4개 11×11 heatmap: Cramér V, NMI, Theil U(asymmetric), TVD_indep
+  → <a href="figures"><code>reports/figures/heatmap_*.png</code></a></li>
+<li><strong>55개 모든 페어 detail (3-panel: 조건부분포 + PMI grid + Top-15 deviation)</strong>
+  → 색인: <a href="../PAIR_INDEX/"><code>PAIR_INDEX.md</code></a> · 그림: <a href="figures/bivariate_all"><code>figures/bivariate_all/</code></a></li>
+<li>본 리포트 본문에서 깊이 분석한 큐레이션 10개: <a href="figures/bivariate"><code>figures/bivariate/</code></a></li>
+</ul>
+<hr />
+<h2 id="2-top-15-by-nmi">2. 전체 페어 결과 (Top 15 by NMI)<a class="headerlink" href="#2-top-15-by-nmi" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th style="text-align: right;">V</th>
+<th style="text-align: right;">NMI</th>
+<th style="text-align: right;">U(Y|X)</th>
+<th style="text-align: right;">U(X|Y)</th>
+<th style="text-align: right;">TVD_indep</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>district</td>
+<td>province</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.635</td>
+<td style="text-align: right;"><strong>1.000</strong></td>
+<td style="text-align: right;">0.465</td>
+<td style="text-align: right;">0.872</td>
+</tr>
+<tr>
+<td>marital_status</td>
+<td>family_type</td>
+<td style="text-align: right;">0.694</td>
+<td style="text-align: right;">0.440</td>
+<td style="text-align: right;">0.317</td>
+<td style="text-align: right;">0.717</td>
+<td style="text-align: right;">0.494</td>
+</tr>
+<tr>
+<td>education_level</td>
+<td>bachelors_field</td>
+<td style="text-align: right;">0.408</td>
+<td style="text-align: right;">0.421</td>
+<td style="text-align: right;">0.476</td>
+<td style="text-align: right;">0.377</td>
+<td style="text-align: right;">0.439</td>
+</tr>
+<tr>
+<td>age_bin</td>
+<td>marital_status</td>
+<td style="text-align: right;">0.483</td>
+<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.301</td>
+<td style="text-align: right;">0.162</td>
+<td style="text-align: right;">0.283</td>
+</tr>
+<tr>
+<td>age_bin</td>
+<td>family_type</td>
+<td style="text-align: right;">0.337</td>
+<td style="text-align: right;">0.153</td>
+<td style="text-align: right;">0.140</td>
+<td style="text-align: right;">0.169</td>
+<td style="text-align: right;">0.309</td>
+</tr>
+<tr>
+<td>age_bin</td>
+<td>education_level</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">0.165</td>
+<td style="text-align: right;">0.141</td>
+<td style="text-align: right;">0.281</td>
+</tr>
+<tr>
+<td>education_level</td>
+<td>occupation</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.104</td>
+<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.188</td>
+<td style="text-align: right;">0.288</td>
+</tr>
+<tr>
+<td>bachelors_field</td>
+<td>occupation</td>
+<td style="text-align: right;">0.261</td>
+<td style="text-align: right;">0.083</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">0.177</td>
+<td style="text-align: right;">0.220</td>
+</tr>
+<tr>
+<td>marital_status</td>
+<td>education_level</td>
+<td style="text-align: right;">0.288</td>
+<td style="text-align: right;">0.077</td>
+<td style="text-align: right;">0.063</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.146</td>
+</tr>
+<tr>
+<td>age_bin</td>
+<td>occupation</td>
+<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">0.053</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.230</td>
+</tr>
+<tr>
+<td>housing_type</td>
+<td>district</td>
+<td style="text-align: right;">0.266</td>
+<td style="text-align: right;">0.049</td>
+<td style="text-align: right;">0.030</td>
+<td style="text-align: right;">0.135</td>
+<td style="text-align: right;">0.194</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>occupation</td>
+<td style="text-align: right;">0.454</td>
+<td style="text-align: right;">0.046</td>
+<td style="text-align: right;"><strong>0.027</strong></td>
+<td style="text-align: right;">0.169</td>
+<td style="text-align: right;">0.186</td>
+</tr>
+<tr>
+<td>family_type</td>
+<td>education_level</td>
+<td style="text-align: right;">0.183</td>
+<td style="text-align: right;">0.045</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">0.144</td>
+</tr>
+<tr>
+<td>housing_type</td>
+<td>province</td>
+<td style="text-align: right;">0.176</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.031</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">0.130</td>
+</tr>
+<tr>
+<td>occupation</td>
+<td>district</td>
+<td style="text-align: right;">0.051</td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: right;">0.037</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">0.171</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bottom-5">Bottom 5 (가장 독립에 가까운 페어)<a class="headerlink" href="#bottom-5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th style="text-align: right;">V</th>
+<th style="text-align: right;">NMI</th>
+<th style="text-align: right;">TVD_indep</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>military_status</td>
+<td>district</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">0.0002</td>
+<td style="text-align: right;">0.002</td>
+</tr>
+<tr>
+<td>military_status</td>
+<td>province</td>
+<td style="text-align: right;">0.023</td>
+<td style="text-align: right;">0.0002</td>
+<td style="text-align: right;">0.001</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>province</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">0.009</td>
+</tr>
+<tr>
+<td>military_status</td>
+<td>housing_type</td>
+<td style="text-align: right;">0.006</td>
+<td style="text-align: right;">3e-5</td>
+<td style="text-align: right;">0.0003</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>housing_type</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">1e-5</td>
+<td style="text-align: right;">0.002</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>sex는 거주(province·housing)와 거의 독립</strong> — 이는 현실과 부합한다.
+→ <strong>military_status도 거주와 무관</strong> — 현실상 군 복무지가 출신 시도와 강한 상관이 없음과 부합.</p>
+<hr />
+<h2 id="3-pgm">3. PGM이 잡아낸 "비독립" 구조 — 페어별 해석<a class="headerlink" href="#3-pgm" title="Permanent link">&para;</a></h2>
+<h3 id="3-1-district-province-u-1000-sanity">3-1. district → province : U = 1.000 (sanity)<a class="headerlink" href="#3-1-district-province-u-1000-sanity" title="Permanent link">&para;</a></h3>
+<p><strong>행정 계층 구조 100% 인코딩.</strong> 시군구가 시도를 결정적으로 함의.
+역방향은 U=0.465 (각 시도가 평균 14개 시군구를 가짐). PGM이 데이터 정합성을 깨지 않음.</p>
+<h3 id="3-2-marital_status-family_type-nmi-044">3-2. marital_status × family_type : NMI = 0.44 (강한 결합)<a class="headerlink" href="#3-2-marital_status-family_type-nmi-044" title="Permanent link">&para;</a></h3>
+<p><strong>결정론적 consistency 제약</strong>: '배우자있음' 인 사람의 가구유형은 100%가 '배우자' 포함, 미혼의 부모와 동거 PMI = +1.36.</p>
+<blockquote>
+<p>⚠️ 도메인 caveat: 한국 현실의 marital_status="배우자있음" 은 <em>법적</em> 혼인을 뜻하므로, 주말부부·기러기 가족·장기 별거 등 실제로 배우자와 따로 사는 케이스가 존재한다 (인구주택총조사 가구 자료에서도 일정 비율). PGM 의 결정론적 제약은 데이터 내부 일관성에는 깔끔하지만 한국 현실의 일부 다양성을 제거하는 효과가 있을 수 있다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>셀</th>
+<th style="text-align: right;">p_obs</th>
+<th style="text-align: right;">p_indep</th>
+<th style="text-align: right;">diff (pp)</th>
+<th style="text-align: right;">PMI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>배우자있음 × 배우자·자녀와 거주</td>
+<td style="text-align: right;">27.0%</td>
+<td style="text-align: right;">16.0%</td>
+<td style="text-align: right;"><strong>+11.0</strong></td>
+<td style="text-align: right;">+0.52</td>
+</tr>
+<tr>
+<td>배우자있음 × 배우자와 거주</td>
+<td style="text-align: right;">20.6%</td>
+<td style="text-align: right;">12.2%</td>
+<td style="text-align: right;"><strong>+8.4</strong></td>
+<td style="text-align: right;">+0.52</td>
+</tr>
+<tr>
+<td>배우자있음 × 혼자 거주</td>
+<td style="text-align: right;"><strong>0.0%</strong></td>
+<td style="text-align: right;">8.3%</td>
+<td style="text-align: right;"><strong>−8.3</strong></td>
+<td style="text-align: right;">−∞</td>
+</tr>
+<tr>
+<td>미혼 × 부모와 동거</td>
+<td style="text-align: right;">9.2%</td>
+<td style="text-align: right;">2.4%</td>
+<td style="text-align: right;">+6.8</td>
+<td style="text-align: right;">+1.36</td>
+</tr>
+<tr>
+<td>미혼 × 어머니와 동거</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">+2.8</td>
+<td style="text-align: right;">+1.36</td>
+</tr>
+</tbody>
+</table>
+<p>→ 결혼 상태 → 가구 구성의 <strong>결정론적 제약</strong>(배우자있음인데 혼자 살 수 없음)을 PGM이 정확히 지킴.</p>
+<h3 id="3-3-age_bin-marital_status-nmi-021">3-3. age_bin × marital_status : NMI = 0.21<a class="headerlink" href="#3-3-age_bin-marital_status-nmi-021" title="Permanent link">&para;</a></h3>
+<p><strong>한국 인구학 곡선이 그대로 살아있음.</strong></p>
+<table>
+<thead>
+<tr>
+<th>연령대</th>
+<th style="text-align: right;">배우자있음</th>
+<th style="text-align: right;">미혼</th>
+<th style="text-align: right;">사별</th>
+<th style="text-align: right;">이혼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19-24</td>
+<td style="text-align: right;">4.2%</td>
+<td style="text-align: right;"><strong>95.4%</strong></td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">0.4%</td>
+</tr>
+<tr>
+<td>25-34</td>
+<td style="text-align: right;">32.9%</td>
+<td style="text-align: right;"><strong>65.3%</strong></td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr>
+<td>35-44</td>
+<td style="text-align: right;"><strong>68.6%</strong></td>
+<td style="text-align: right;">25.3%</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">5.4%</td>
+</tr>
+<tr>
+<td>45-54</td>
+<td style="text-align: right;"><strong>75.1%</strong></td>
+<td style="text-align: right;">11.9%</td>
+<td style="text-align: right;">2.4%</td>
+<td style="text-align: right;">10.6%</td>
+</tr>
+<tr>
+<td>55-64</td>
+<td style="text-align: right;"><strong>77.7%</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">10.6%</td>
+</tr>
+<tr>
+<td>65-74</td>
+<td style="text-align: right;">72.3%</td>
+<td style="text-align: right;">1.9%</td>
+<td style="text-align: right;">18.8%</td>
+<td style="text-align: right;">7.0%</td>
+</tr>
+<tr>
+<td>75-84</td>
+<td style="text-align: right;">54.1%</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;"><strong>42.6%</strong></td>
+<td style="text-align: right;">2.4%</td>
+</tr>
+<tr>
+<td>85+</td>
+<td style="text-align: right;">27.4%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;"><strong>70.7%</strong></td>
+<td style="text-align: right;">1.1%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>25-34 미혼 65.3%, 35-44 미혼 25.3% — 한국의 만혼·비혼 트렌드와 일치</li>
+<li>75+에서 사별 급증 (여성 평균수명이 8년 더 김 → 노년 사별)</li>
+<li>45-54 이혼 10.6% — 현실 통계와 부합 (중년 누적 이혼 경험 비율)</li>
+</ul>
+<h3 id="3-4-age_bin-education_level-nmi-015">3-4. age_bin × education_level : NMI = 0.15 (코호트 효과)<a class="headerlink" href="#3-4-age_bin-education_level-nmi-015" title="Permanent link">&para;</a></h3>
+<p><strong>고령층 학력이 낮다는 코호트 효과를 깔끔하게 재현.</strong></p>
+<table>
+<thead>
+<tr>
+<th>연령대</th>
+<th style="text-align: right;">무학</th>
+<th style="text-align: right;">초등</th>
+<th style="text-align: right;">중학</th>
+<th style="text-align: right;">고졸</th>
+<th style="text-align: right;">전문대</th>
+<th style="text-align: right;">4년제</th>
+<th style="text-align: right;">대학원</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25-34</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">16.5%</td>
+<td style="text-align: right;">23.3%</td>
+<td style="text-align: right;"><strong>51.6%</strong></td>
+<td style="text-align: right;">7.2%</td>
+</tr>
+<tr>
+<td>45-54</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">4.7%</td>
+<td style="text-align: right;"><strong>46.5%</strong></td>
+<td style="text-align: right;">14.0%</td>
+<td style="text-align: right;">26.7%</td>
+<td style="text-align: right;">7.2%</td>
+</tr>
+<tr>
+<td>65-74</td>
+<td style="text-align: right;">3.5%</td>
+<td style="text-align: right;"><strong>26.0%</strong></td>
+<td style="text-align: right;">21.4%</td>
+<td style="text-align: right;">33.3%</td>
+<td style="text-align: right;">3.1%</td>
+<td style="text-align: right;">9.8%</td>
+<td style="text-align: right;">2.9%</td>
+</tr>
+<tr>
+<td>85+</td>
+<td style="text-align: right;"><strong>37.4%</strong></td>
+<td style="text-align: right;"><strong>39.0%</strong></td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">9.0%</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">4.5%</td>
+<td style="text-align: right;">1.1%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>청년 25-34 4년제 51.6% — 통계청 수치(약 50%)와 부합</li>
+<li>19-24는 전문대 36.4% — 아직 재학 중 학생들이 "현재 학력"으로 잡힌 것</li>
+<li>85+ 무학+초등 76.4% — 일제·전후 교육 박탈 세대의 현실 반영</li>
+</ul>
+<h3 id="3-5-sex-bachelors_field-v-026-nmi-004">3-5. sex × bachelors_field : V = 0.26, NMI = 0.04 (성별 분리 인코딩)<a class="headerlink" href="#3-5-sex-bachelors_field-v-026-nmi-004" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>전공</th>
+<th style="text-align: right;">남성 비율</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>공학·제조·건설</td>
+<td style="text-align: right;"><strong>86.6%</strong></td>
+</tr>
+<tr>
+<td>정보통신기술</td>
+<td style="text-align: right;"><strong>76.3%</strong></td>
+</tr>
+<tr>
+<td>농림어업·수의학</td>
+<td style="text-align: right;">73.7%</td>
+</tr>
+<tr>
+<td>경영·행정·법</td>
+<td style="text-align: right;">64.4%</td>
+</tr>
+<tr>
+<td>자연과학·수학</td>
+<td style="text-align: right;">56.2%</td>
+</tr>
+<tr>
+<td>사회과학·언론</td>
+<td style="text-align: right;">48.0%</td>
+</tr>
+<tr>
+<td>해당없음(미진학)</td>
+<td style="text-align: right;">46.2%</td>
+</tr>
+<tr>
+<td>서비스</td>
+<td style="text-align: right;">45.4%</td>
+</tr>
+<tr>
+<td>예술·인문</td>
+<td style="text-align: right;">36.9%</td>
+</tr>
+<tr>
+<td>교육</td>
+<td style="text-align: right;"><strong>29.8%</strong></td>
+</tr>
+<tr>
+<td>보건·복지</td>
+<td style="text-align: right;"><strong>28.1%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>→ 한국 교육통계와 방향·강도 모두 부합 (공학 ~80% 남성, 보건 ~25% 남성).
+→ <strong>데이터카드의 "독립 가정" 문구는 sex×field 자체에는 적용되지 않았다.</strong></p>
+<h3 id="3-6-sex-military_status">3-6. sex × military_status — 변수 의미와 계급별 분해<a class="headerlink" href="#3-6-sex-military_status" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">비현역</th>
+<th style="text-align: right;">현역</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>남자</td>
+<td style="text-align: right;">490,794</td>
+<td style="text-align: right;">4,764 (0.96%)</td>
+</tr>
+<tr>
+<td>여자</td>
+<td style="text-align: right;">503,924</td>
+<td style="text-align: right;">518 (0.10%)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>현역 5,282명 중 여성 9.8%</li>
+<li>현역인 행의 occupation은 100% 군 직업 (육군/해군/공군/해병대 × 부사관/장교/병사 12개)</li>
+<li>→ U(military | occupation) = 1.000 (occupation 으로 거의 결정)</li>
+</ul>
+<p><strong>계급별 분해</strong> (<code>scripts/13_military_breakdown.py</code>):</p>
+<table>
+<thead>
+<tr>
+<th>계급</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">평균 연령</th>
+<th style="text-align: right;">최대</th>
+<th style="text-align: right;">여성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>병사 (의무복무)</td>
+<td style="text-align: right;">688</td>
+<td style="text-align: right;">25.4</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.0%</td>
+</tr>
+<tr>
+<td>부사관 (직업)</td>
+<td style="text-align: right;">2,636</td>
+<td style="text-align: right;">40.6</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">11.5%</td>
+</tr>
+<tr>
+<td>장교 (직업)</td>
+<td style="text-align: right;">1,958</td>
+<td style="text-align: right;">46.7</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">10.9%</td>
+</tr>
+</tbody>
+</table>
+<p>→ 한국군 부사관·장교 정년과 여군 비율 (~10%) 정확히 부합.
+<strong><code>military_status = 현역</code> 은 "의무복무 이행" 이 아니라 "현역 군 인력 신분 (직업군인 + 의무복무 통합)"</strong> 의미로 사용된 것.</p>
+<h3 id="3-7-province-housing_type-phase-1">3-7. province × housing_type — Phase 1 격차의 추적<a class="headerlink" href="#3-7-province-housing_type-phase-1" title="Permanent link">&para;</a></h3>
+<p>Phase 1에서 발견한 "전체적으로 아파트 과대" 격차의 <strong>결합 분포 내부 구조</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>셀</th>
+<th style="text-align: right;">p_obs</th>
+<th style="text-align: right;">p_indep</th>
+<th style="text-align: right;">diff (pp)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>서울 × 다세대주택</td>
+<td style="text-align: right;">4.49%</td>
+<td style="text-align: right;">2.12%</td>
+<td style="text-align: right;"><strong>+2.37</strong></td>
+</tr>
+<tr>
+<td>경기 × 단독주택</td>
+<td style="text-align: right;">2.40%</td>
+<td style="text-align: right;">4.43%</td>
+<td style="text-align: right;"><strong>−2.03</strong></td>
+</tr>
+<tr>
+<td>서울 × 단독주택</td>
+<td style="text-align: right;">1.58%</td>
+<td style="text-align: right;">3.13%</td>
+<td style="text-align: right;"><strong>−1.56</strong></td>
+</tr>
+<tr>
+<td>서울 × 아파트</td>
+<td style="text-align: right;">10.07%</td>
+<td style="text-align: right;">11.49%</td>
+<td style="text-align: right;">−1.42</td>
+</tr>
+<tr>
+<td>경기 × 아파트</td>
+<td style="text-align: right;">17.64%</td>
+<td style="text-align: right;">16.27%</td>
+<td style="text-align: right;">+1.37</td>
+</tr>
+<tr>
+<td>경상북 × 단독주택</td>
+<td style="text-align: right;">1.84%</td>
+<td style="text-align: right;">0.85%</td>
+<td style="text-align: right;">+0.99</td>
+</tr>
+<tr>
+<td>전라남 × 단독주택</td>
+<td style="text-align: right;">1.53%</td>
+<td style="text-align: right;">0.58%</td>
+<td style="text-align: right;">+0.95</td>
+</tr>
+</tbody>
+</table>
+<p>→ 도시(서울·경기)는 단독주택 과소·다세대 과대(서울)·아파트 약한 과대(경기), 농촌(전남·경북)은 단독주택 과대.
+→ <strong>결합 구조 자체는 한국 도시-농촌 주거 패턴을 정성적으로 잘 반영</strong>.
+→ Phase 1 의 housing 전체 marginal 격차는 per-person 보정 후 TVD ≈ 0.08 로 축소 (<a href="../PHASE1_REPORT/#3-4-housing_type----약한-격차">§3-4</a>) — 결합 구조 자체보다 단위·정렬 문제가 컸음.</p>
+<h3 id="3-8-education-occupation-nmi-010">3-8. education × occupation : NMI = 0.10<a class="headerlink" href="#3-8-education-occupation-nmi-010" title="Permanent link">&para;</a></h3>
+<p><strong>학력에 따른 직업 분리가 명확.</strong>
+- 4년제 × "건물 청소원" : PMI = <strong>−3.30</strong> (사실상 거의 없음)
+- 4년제 × "건물 경비원" : PMI = <strong>−2.28</strong>
+- 무학 × 무직 : PMI = +0.73
+- 초등학교 × 무직 : PMI = +0.59 (저학력 노년 → 무직 자연스러움)</p>
+<p>→ 학력-직업 간 sorting을 PGM이 인코딩하고 있음.</p>
+<h3 id="3-9-age-occupation">3-9. age × occupation<a class="headerlink" href="#3-9-age-occupation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>65-74, 75-84, 85+ × 무직: 모두 양의 PMI (은퇴 인구 자연스럽게 무직)</li>
+<li>35-44, 45-54 × 무직: 음의 PMI (현역 노동 연령)</li>
+</ul>
+<h3 id="3-10-bachelors_field-occupation">3-10. bachelors_field × occupation<a class="headerlink" href="#3-10-bachelors_field-occupation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>NMI = 0.083, U(occupation|field) = 0.054, U(field|occupation) = 0.177</li>
+<li>비대칭이 강함: 특정 직업은 전공을 강하게 함의(예: 의사 ↔ 보건·복지), 특정 전공은 다양한 직업으로 분기</li>
+</ul>
+<hr />
+<h2 id="4-theil-u">4. Theil U 비대칭성에서 보이는 인과 구조<a class="headerlink" href="#4-theil-u" title="Permanent link">&para;</a></h2>
+<p>방향성 차이가 가장 큰 페어들 — <code>U(Y|X)</code> 와 <code>U(X|Y)</code> 의 격차가 클수록 <strong>한쪽이 다른 쪽을 강하게 함의</strong>한다는 증거:</p>
+<table>
+<thead>
+<tr>
+<th>pair</th>
+<th style="text-align: right;">U(Y|X)</th>
+<th style="text-align: right;">U(X|Y)</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>military × occupation</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;"><strong>1.000</strong></td>
+<td>직업 → 군 복무 결정적</td>
+</tr>
+<tr>
+<td>district × province</td>
+<td style="text-align: right;"><strong>1.000</strong></td>
+<td style="text-align: right;">0.465</td>
+<td>시군구 → 시도 결정적 (행정 계층)</td>
+</tr>
+<tr>
+<td>marital × family_type</td>
+<td style="text-align: right;">0.317</td>
+<td style="text-align: right;"><strong>0.717</strong></td>
+<td>가구 형태 → 결혼 상태 강하게 함의</td>
+</tr>
+<tr>
+<td>sex × occupation</td>
+<td style="text-align: right;">0.027</td>
+<td style="text-align: right;"><strong>0.169</strong></td>
+<td>직업명 → 성별 약하게 함의 (간호사·소방관 등)</td>
+</tr>
+<tr>
+<td>age × marital</td>
+<td style="text-align: right;"><strong>0.301</strong></td>
+<td style="text-align: right;">0.162</td>
+<td>나이 → 결혼 단계</td>
+</tr>
+<tr>
+<td>field × occupation</td>
+<td style="text-align: right;">0.054</td>
+<td style="text-align: right;"><strong>0.177</strong></td>
+<td>직업 → 전공 함의</td>
+</tr>
+<tr>
+<td>edu × occupation</td>
+<td style="text-align: right;">0.072</td>
+<td style="text-align: right;"><strong>0.188</strong></td>
+<td>직업 → 학력 함의</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong>PGM이 "결정적 함의" 와 "확률적 영향"을 잘 구분해서 인코딩</strong>하고 있다.</p>
+<hr />
+<h2 id="5-phase-2">5. Phase 2 종합<a class="headerlink" href="#5-phase-2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">잘 한 것<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>demographic 곡선의 정성적 부합</strong>: 나이별 결혼/사별, 학력 코호트, 지역별 주택, 결혼-가구 결정론적 일관성 모두 한국 현실과 방향·강도가 부합 (단, marital→family 의 100% 결정론적 매핑은 현실의 별거·기러기 다양성을 일부 제거).</li>
+<li><strong>결정적 제약 위반 없음</strong>: 배우자있음 ↔ 가구에 배우자 존재, 시군구 ↔ 시도 매칭 모두 일관.</li>
+<li><strong>성별 segregation 인코딩</strong>: 공학/보건 같은 분야의 성비는 한국 현실과 부합.</li>
+<li><strong>현실적인 detail</strong>: 여성 군인 9.8%, 25-34 4년제 51.6% 등 미시 수치가 그럴듯.</li>
+</ol>
+<h3 id="_4">발견된 격차 / 의문점<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>housing 전체 marginal 은 약한 격차</strong> (Phase 1, TVD ≈ 0.08 per-person 보정 후) <strong>vs 결합 구조는 그럴듯</strong> (Phase 2 §3-7) — 단위·정렬 이슈가 marginal 격차의 주요 원인이며, 시군구×주택 결합은 한국 도시-농촌 패턴 잘 반영.</li>
+<li><strong>sex × occupation NMI = 0.046</strong> 은 한국 직업 성분리 현실보다 약할 수도 있음 — Phase 3에서 직업×성 KOSIS 비교 필요</li>
+<li><strong>occupation 2,120개 중 "무직" 36.7%</strong> 의 내부 구조(가정주부/학생/은퇴자/실업자 분리 안 됨)는 Phase 4 텍스트 분석에서 들여다볼 부분</li>
+</ol>
+<h3 id="vs">데이터 카드 vs 실측<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>카드 주장</th>
+<th>Phase 2 검증</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"성·소득·학력·전공이 직업에 <em>독립적</em>으로 영향"</td>
+<td>sex×field, edu×occupation 모두 강한 의존성 인코딩됨. <strong>카드 문구는 occupation 라벨링 단계의 좁은 의미</strong>로 보임</td>
+</tr>
+<tr>
+<td>"PGM으로 인구 분포 통제"</td>
+<td>marginal에 더해 <strong>bivariate 결합 구조까지 통제</strong>되고 있음</td>
+</tr>
+<tr>
+<td>"검증·평가 NeMo Data Designer 내장"</td>
+<td>본 리포가 외부 재현 가능한 bivariate 검증 첫 결과</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">다음 단계로 이어지는 질문<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Phase 3</strong>: 합성-내 예측가능성 검사 (within-synthetic predictability check) — feature 추가가 분류기 정보를 늘리는가?</li>
+<li><strong>Phase 3 보강</strong>: KOSIS 의 sex × age × province 3-way 와 비교</li>
+<li><strong>Phase 4</strong>: 7개 자유서술 페르소나 텍스트의 어휘·고정관념 분석</li>
+</ul>
+<hr />
+<h2 id="6">6. 산출물<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>reports/PHASE2_REPORT.md                       &lt;- 본 리포트
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>reports/PAIR_INDEX.md                          &lt;- 55 페어 갤러리 인덱스 (NMI 정렬)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>reports/figures/
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  heatmap_cramers_v.png                        &lt;- 11x11 대칭
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  heatmap_nmi.png                              &lt;- 11x11 대칭
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  heatmap_theils_u.png                         &lt;- 11x11 비대칭 (방향성)
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  heatmap_tvd_indep.png                        &lt;- 11x11 대칭
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  bivariate_all/                               &lt;- 55개 페어 모두 (3-panel)
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    age_bin__x__sex.png
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    ... (55 files)
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  bivariate/                                   &lt;- 본문 깊이 다룬 10개
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    detail_sex__x__bachelors_field.png
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    ... (10 files)
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>data/processed/bivariate/
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>  metrics_long.csv                             # 55 pairs × 10+ metrics
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>  matrix_{cramers_v, nmi, theils_u, tvd_indep}.csv
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>data/processed/bivariate_detail_all/           # 모든 55 페어
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>  index.csv                                    # 페어별 truncation·지표 일람
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>  contingency_&lt;x&gt;__x__&lt;y&gt;.csv                  # 55 contingency
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>  cells_&lt;x&gt;__x__&lt;y&gt;.csv                        # 55 per-cell deviation
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>data/processed/bivariate_detail/               # 본문 깊이 10개
+</span></code></pre></div>
+<h2 id="7">7. 재현<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>scripts/04_bivariate_metrics.py<span class="w">     </span><span class="c1"># 55 pair metric matrices</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>scripts/05_bivariate_detail.py<span class="w">      </span><span class="c1"># 본문 큐레이션 10개 detail</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>python<span class="w"> </span>scripts/05b_bivariate_detail_all.py<span class="w"> </span><span class="c1"># 전 55개 페어 detail</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>python<span class="w"> </span>scripts/06_build_pair_index.py<span class="w">      </span><span class="c1"># PAIR_INDEX.md 갤러리</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../PHASE1_REPORT/" class="md-footer__link md-footer__link--prev" aria-label="이전: Phase 1 — 단변량">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                Phase 1 — 단변량
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../PHASE3_REPORT/" class="md-footer__link md-footer__link--next" aria-label="다음: Phase 3 — PGM 구조">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                Phase 3 — PGM 구조
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/eopchang/nemotron-personas-korea-audit" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

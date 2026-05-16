@@ -1,0 +1,2509 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Independent joint-distribution & dependency-structure audit of NVIDIA's Nemotron-Personas-Korea synthetic dataset (한국어 본문 + English abstract).">
+      
+      
+        <meta name="author" content="Chang-Eop Kim">
+      
+      
+        <link rel="canonical" href="https://eopchang.github.io/nemotron-personas-korea-audit/docs/GLOSSARY/">
+      
+      
+        <link rel="prev" href="../FAQ/">
+      
+      
+        <link rel="next" href="../METHODOLOGY/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>용어 사전 - Nemotron-Personas-Korea Audit</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#glossary" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="Nemotron-Personas-Korea Audit" class="md-header__button md-logo" aria-label="Nemotron-Personas-Korea Audit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nemotron-Personas-Korea Audit
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              용어 사전
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="공유" aria-label="공유" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/eopchang/nemotron-personas-korea-audit" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    eopchang/nemotron-personas-korea-audit
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  한 페이지 요약
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ABSTRACT_EN/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  English Summary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../RESEARCHER_GUIDE/" class="md-tabs__link">
+          
+  
+  
+  가이드
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reports/PHASE1_REPORT/" class="md-tabs__link">
+          
+  
+  
+  리포트
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../review/" class="md-tabs__link">
+          
+  
+  
+  외부 리뷰
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ROADMAP/" class="md-tabs__link">
+          
+  
+  
+  메타
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nemotron-Personas-Korea Audit" class="md-nav__button md-logo" aria-label="Nemotron-Personas-Korea Audit" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nemotron-Personas-Korea Audit
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/eopchang/nemotron-personas-korea-audit" title="저장소로 이동" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    eopchang/nemotron-personas-korea-audit
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    한 페이지 요약
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ABSTRACT_EN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    가이드
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    가이드
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RESEARCHER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    연구자 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../READING_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    읽기 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    용어 사전
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터 자체에 대한 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="데이터 자체에 대한 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        합성 데이터 (Synthetic Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        페르소나 (Persona)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilistic-graphical-model-pgm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probabilistic Graphical Model (PGM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KOSIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#marginal-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단변량 (Marginal) 분석 — Phase 1 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="단변량 (Marginal) 분석 — Phase 1 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marginal-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marginal distribution (한계분포 / 단변량 분포)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tvd-total-variation-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TVD — Total Variation Distance (총변동거리)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chi-square" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        χ² (Chi-square) 검정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bivariate-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이변량 (Bivariate) 분석 — Phase 2 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="이변량 (Bivariate) 분석 — Phase 2 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cramers-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cramér's V
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutual-information-mi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mutual Information (MI / 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmi-normalized-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NMI — Normalized Mutual Information (정규화 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theils-u-uncertainty-coefficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theil's U (Uncertainty Coefficient)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pmi-pointwise-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PMI — Pointwise Mutual Information (점별 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independence-deviation-tvd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Independence-deviation TVD
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multivariate-phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다변량 (Multivariate) / 구조 추론 — Phase 3 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="다변량 (Multivariate) / 구조 추론 — Phase 3 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Independence (조건부 독립)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmi-conditional-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMI — Conditional Mutual Information (조건부 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mediator (매개 변수)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skeleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skeleton (스켈레톤)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct edge (직접 엣지)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediated-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mediated edge (매개된 엣지) — 즉, 엣지가 없음
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pc-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PC algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold-cmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ε threshold (CMI 임계)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bias-phase-3-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bias 보정 도구 — Phase 3 §2.5 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bias 보정 도구 — Phase 3 §2.5 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plug-in-mi-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plug-in MI bias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permutation-null-stratified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permutation null (Stratified)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap-ci-row-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap CI (row bootstrap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ratio-observed-null_p95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ratio = observed / null_p95
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias-corrected-skeleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bias-corrected skeleton
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        분류기 기반 검증 — Phase 3 보강
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="분류기 기반 검증 — Phase 3 보강">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tstr-train-on-synthetic-test-on-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TSTR — Train on Synthetic, Test on Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-within-synthetic-predictability-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        합성-내 예측가능성 검사 (Within-synthetic predictability check)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-entropy-ce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Entropy (CE / 교차 엔트로피)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information added (정보 추가량)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leakage-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leakage check (데이터 누수 점검)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        자주 쓰는 약어
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 읽을 거리 (외부)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../METHODOLOGY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    방법론
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    리포트
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    리포트
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PHASE1_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 1 — 단변량
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PHASE2_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 2 — 이변량
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PHASE3_REPORT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phase 3 — PGM 구조
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/PAIR_INDEX/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    55-pair 색인
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reports/tables/kosis_comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KOSIS 비교표
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    외부 리뷰
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    외부 리뷰
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    개요
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/CLAIMS_LEDGER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    주장 목록 (Claims)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/REVIEW_PROMPTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Prompts (KR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../review/REVIEW_PROMPTS_EN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Prompts (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    메타
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    메타
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ROADMAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    로드맵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    기여 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        데이터 자체에 대한 용어
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="데이터 자체에 대한 용어">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        합성 데이터 (Synthetic Data)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        페르소나 (Persona)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilistic-graphical-model-pgm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probabilistic Graphical Model (PGM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KOSIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#marginal-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단변량 (Marginal) 분석 — Phase 1 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="단변량 (Marginal) 분석 — Phase 1 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marginal-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Marginal distribution (한계분포 / 단변량 분포)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tvd-total-variation-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TVD — Total Variation Distance (총변동거리)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-chi-square" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        χ² (Chi-square) 검정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bivariate-phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이변량 (Bivariate) 분석 — Phase 2 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="이변량 (Bivariate) 분석 — Phase 2 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cramers-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cramér's V
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutual-information-mi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mutual Information (MI / 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmi-normalized-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NMI — Normalized Mutual Information (정규화 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theils-u-uncertainty-coefficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theil's U (Uncertainty Coefficient)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pmi-pointwise-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PMI — Pointwise Mutual Information (점별 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independence-deviation-tvd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Independence-deviation TVD
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multivariate-phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다변량 (Multivariate) / 구조 추론 — Phase 3 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="다변량 (Multivariate) / 구조 추론 — Phase 3 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conditional-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditional Independence (조건부 독립)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmi-conditional-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CMI — Conditional Mutual Information (조건부 상호정보)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mediator (매개 변수)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skeleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skeleton (스켈레톤)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#direct-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct edge (직접 엣지)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediated-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mediated edge (매개된 엣지) — 즉, 엣지가 없음
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pc-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PC algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold-cmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ε threshold (CMI 임계)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bias-phase-3-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bias 보정 도구 — Phase 3 §2.5 핵심
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bias 보정 도구 — Phase 3 §2.5 핵심">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plug-in-mi-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plug-in MI bias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permutation-null-stratified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permutation null (Stratified)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bootstrap-ci-row-bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap CI (row bootstrap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ratio-observed-null_p95" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ratio = observed / null_p95
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bias-corrected-skeleton" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bias-corrected skeleton
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        분류기 기반 검증 — Phase 3 보강
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="분류기 기반 검증 — Phase 3 보강">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tstr-train-on-synthetic-test-on-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TSTR — Train on Synthetic, Test on Real
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-within-synthetic-predictability-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        합성-내 예측가능성 검사 (Within-synthetic predictability check)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-entropy-ce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Entropy (CE / 교차 엔트로피)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information added (정보 추가량)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leakage-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leakage check (데이터 누수 점검)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        자주 쓰는 약어
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        더 읽을 거리 (외부)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="glossary">용어집 (Glossary)<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h1>
+<p>본 리포에 자주 등장하는 용어를 가능한 한 친절하게 설명합니다.
+순서는 알파벳/한글 가나다 순이 아니라 <strong>개념 이해 순서</strong> 입니다 — 위에서부터 읽으면 자연스럽게 다음 용어가 이어집니다.</p>
+<hr />
+<h2 id="_1">데이터 자체에 대한 용어<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="synthetic-data">합성 데이터 (Synthetic Data)<a class="headerlink" href="#synthetic-data" title="Permanent link">&para;</a></h3>
+<p>실제 사람의 정보가 <strong>하나도 들어있지 않은</strong>, 컴퓨터가 인공적으로 생성한 데이터.
+"아무개 33세, 서울 강남구, 4년제 대학 졸업, 직업 사무원" 같은 행이 1백만 개 있어도,
+이 안의 그 누구도 실존 인물이 아닙니다. 보통 <strong>실제 통계 (KOSIS 등) 의 분포를 흉내 내도록</strong> 만듭니다.</p>
+<h3 id="persona">페르소나 (Persona)<a class="headerlink" href="#persona" title="Permanent link">&para;</a></h3>
+<p>한 사람을 묘사하는 가상의 인물. 본 데이터셋에서는 26개 변수 (성별, 나이, 직업, 자유서술 7종 등) 로 구성된 한 행이 한 페르소나.</p>
+<h3 id="probabilistic-graphical-model-pgm">Probabilistic Graphical Model (PGM)<a class="headerlink" href="#probabilistic-graphical-model-pgm" title="Permanent link">&para;</a></h3>
+<p>변수들 사이의 의존 관계를 <strong>그래프(노드+엣지)</strong> 로 표현하는 통계 모델.
+- 노드 = 변수 (sex, age, occupation 등)
+- 엣지 = "직접 영향을 주고받는다"
+- 엣지가 없는 두 변수는 <strong>다른 변수만 알면 서로 독립</strong>.</p>
+<p>NVIDIA의 데이터는 이런 PGM 으로 인구통계 변수를 표본 추출한 뒤, LLM 으로 자유서술 텍스트를 생성한 것입니다.</p>
+<h3 id="kosis">KOSIS<a class="headerlink" href="#kosis" title="Permanent link">&para;</a></h3>
+<p>국가통계포털 (kosis.kr). 통계청·행안부·각 부처의 공식 통계가 모여있는 사이트.
+본 리포에서 reference 통계로 사용.</p>
+<hr />
+<h2 id="marginal-phase-1">단변량 (Marginal) 분석 — Phase 1 핵심<a class="headerlink" href="#marginal-phase-1" title="Permanent link">&para;</a></h2>
+<h3 id="marginal-distribution">Marginal distribution (한계분포 / 단변량 분포)<a class="headerlink" href="#marginal-distribution" title="Permanent link">&para;</a></h3>
+<p>변수 하나만 떼어 본 분포. "전체 인구 중 남자 49.6%, 여자 50.4%" 같은 것.
+가장 기본적인 검증 — 합성 데이터의 marginal이 실제와 다르면 그 데이터는 일단 <em>시작부터</em> 잘못된 것.</p>
+<h3 id="tvd-total-variation-distance">TVD — Total Variation Distance (총변동거리)<a class="headerlink" href="#tvd-total-variation-distance" title="Permanent link">&para;</a></h3>
+<p>두 분포가 얼마나 다른지를 0~1 로 재는 지표.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>TVD(P, Q) = ½ · Σ |P(i) − Q(i)|
+</span></code></pre></div>
+- 0 = 완전히 같음
+- 1 = 완전히 다름 (겹치는 카테고리 없음)
+- 0.05 이내면 양호, 0.10 이상이면 검토 필요</p>
+<p>직관: "각 카테고리에서 비율이 평균 몇 %p 차이 나는지" 의 절반 합.</p>
+<h3 id="2-chi-square">χ² (Chi-square) 검정<a class="headerlink" href="#2-chi-square" title="Permanent link">&para;</a></h3>
+<p><strong>작은 표본에서</strong> 두 분포가 다른지를 통계적으로 판단하는 도구.
+<strong>대규모 데이터 (N=1M) 에서는 거의 모든 차이가 "통계적으로 유의" 로 나오므로 효과크기 (TVD 등) 만큼 정보가 많지 않음.</strong> 본 리포는 χ² p-value를 보지 않는 이유.</p>
+<hr />
+<h2 id="bivariate-phase-2">이변량 (Bivariate) 분석 — Phase 2 핵심<a class="headerlink" href="#bivariate-phase-2" title="Permanent link">&para;</a></h2>
+<h3 id="cramers-v">Cramér's V<a class="headerlink" href="#cramers-v" title="Permanent link">&para;</a></h3>
+<p>두 카테고리 변수의 결합 강도. 0~1.
+- ≥ 0.3 강함, ≥ 0.1 중간, ≥ 0.05 약함
+- 카디널리티 (카테고리 개수) 영향을 받음 — 카테고리가 많으면 작아 보일 수 있음.</p>
+<h3 id="mutual-information-mi">Mutual Information (MI / 상호정보)<a class="headerlink" href="#mutual-information-mi" title="Permanent link">&para;</a></h3>
+<p>두 변수가 공유하는 정보량 (단위: nats 또는 bits).
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>I(X; Y) = ΣΣ p(x,y) · log [p(x,y) / (p(x)·p(y))]
+</span></code></pre></div>
+- 0 = 두 변수가 독립 (서로 정보 없음)
+- 양수 = 한 변수를 알면 다른 변수에 대한 불확실성이 줄어듦
+- nats 단위는 자연로그 기반 (1 nat ≈ 1.44 bits)</p>
+<h3 id="nmi-normalized-mutual-information">NMI — Normalized Mutual Information (정규화 상호정보)<a class="headerlink" href="#nmi-normalized-mutual-information" title="Permanent link">&para;</a></h3>
+<p>MI 를 0~1 로 정규화한 것. 본 리포는 다음 식 사용:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>NMI(X; Y) = 2 · I(X; Y) / [ H(X) + H(Y) ]
+</span></code></pre></div>
+- 1.0 = 한 변수가 다른 변수를 완전 결정
+- 0 = 독립</p>
+<h3 id="theils-u-uncertainty-coefficient">Theil's U (Uncertainty Coefficient)<a class="headerlink" href="#theils-u-uncertainty-coefficient" title="Permanent link">&para;</a></h3>
+<p><strong>비대칭</strong> 결합 측도.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>U(Y | X) = I(X; Y) / H(Y)
+</span></code></pre></div>
+"X 를 알면 Y 의 불확실성이 몇 % 줄어드는가"
+- U(Y|X) ≠ U(X|Y) — 방향성이 있음
+- 예: U(시도 | 시군구) = 1.0 (시군구를 알면 시도가 결정됨)
+       U(시군구 | 시도) ≈ 0.46 (시도를 알아도 시군구는 여러 후보)</p>
+<h3 id="pmi-pointwise-mutual-information">PMI — Pointwise Mutual Information (점별 상호정보)<a class="headerlink" href="#pmi-pointwise-mutual-information" title="Permanent link">&para;</a></h3>
+<p>하나의 <em>셀</em> (X=x, Y=y) 에서 독립과 얼마나 다른지.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PMI(x, y) = log [p(x, y) / (p(x)·p(y))]
+</span></code></pre></div>
+- 양수: 그 조합이 독립일 때보다 더 자주 등장 (예: 4년제대 × 의사)
+- 음수: 그 조합이 독립일 때보다 덜 등장 (예: 4년제대 × 건물청소원)
+- 0: 정확히 독립 수준</p>
+<p>PMI grid (heatmap) 는 <strong>결합 분포에서 어디가 강한 신호인지</strong> 한눈에 보여줌.</p>
+<h3 id="independence-deviation-tvd">Independence-deviation TVD<a class="headerlink" href="#independence-deviation-tvd" title="Permanent link">&para;</a></h3>
+<p>"결합분포가 독립이라면 어떻게 생겼을까" 와 실제 결합의 거리.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>TVD( P(X,Y) ‖ P(X)·P(Y) )
+</span></code></pre></div>
+- 0 = X와 Y는 독립
+- 큰 값 = 강한 의존</p>
+<hr />
+<h2 id="multivariate-phase-3">다변량 (Multivariate) / 구조 추론 — Phase 3 핵심<a class="headerlink" href="#multivariate-phase-3" title="Permanent link">&para;</a></h2>
+<h3 id="conditional-independence">Conditional Independence (조건부 독립)<a class="headerlink" href="#conditional-independence" title="Permanent link">&para;</a></h3>
+<p>"Z 를 알고 나면, X 와 Y 는 더 이상 정보를 공유하지 않는다" → 표기: X ⊥ Y | Z.</p>
+<p>예: 결혼상태와 학력은 둘 다 나이의 영향을 받음. 나이를 <em>모를 때</em> 는 둘이 상관 있어 보이지만,
+나이를 <em>고정</em> 하고 보면 거의 독립. → 결혼 ⊥ 학력 | 나이.</p>
+<h3 id="cmi-conditional-mutual-information">CMI — Conditional Mutual Information (조건부 상호정보)<a class="headerlink" href="#cmi-conditional-mutual-information" title="Permanent link">&para;</a></h3>
+<p>조건부 독립을 정량화.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>I(X; Y | Z) = ΣΣΣ p(x,y,z) · log [p(x,y,z)·p(z) / (p(x,z)·p(y,z))]
+</span></code></pre></div>
+- I(X; Y | Z) ≈ 0 → "Z 만 알면 X·Y 는 서로 독립" → <strong>Z 가 X-Y 결합의 매개</strong>
+- I(X; Y | Z) ≈ I(X; Y) → "Z 가 무관" → X-Y 사이에 직접 연결</p>
+<p>본 리포의 핵심 도구.</p>
+<h3 id="mediator">Mediator (매개 변수)<a class="headerlink" href="#mediator" title="Permanent link">&para;</a></h3>
+<p>X 와 Y 가 통계적으로 결합된 진짜 이유가 다른 변수 Z 를 통한 것일 때, Z 를 매개라 부름.</p>
+<p>예: "주차장 면적" 과 "교통사고 사망률" 은 도시별로 양의 상관. 매개는 "도시 인구". 도시 인구를 통제하면 두 변수의 상관은 사라짐.</p>
+<p>본 리포에서 발견한 예: 결혼 ↔ 학력 의 결합 = 나이가 매개.</p>
+<h3 id="skeleton">Skeleton (스켈레톤)<a class="headerlink" href="#skeleton" title="Permanent link">&para;</a></h3>
+<p>PGM 의 <strong>방향이 없는</strong> 그래프 구조. 어느 변수 쌍이 직접 연결되어 있는가만 표시. (방향까지 알려면 추가 가정 필요)</p>
+<h3 id="direct-edge">Direct edge (직접 엣지)<a class="headerlink" href="#direct-edge" title="Permanent link">&para;</a></h3>
+<p>어떤 다른 변수를 조건으로 걸어도 CMI 가 살아있는 페어. → "이 두 변수는 PGM 에서 직접 연결됐다" 는 후보.</p>
+<h3 id="mediated-edge">Mediated edge (매개된 엣지) — 즉, <strong>엣지가 없음</strong><a class="headerlink" href="#mediated-edge" title="Permanent link">&para;</a></h3>
+<p>다른 변수 하나를 조건으로 걸면 CMI ≈ 0 으로 떨어지는 페어. → 직접 연결이 아니라 다른 변수를 통한 의존.</p>
+<h3 id="pc-algorithm">PC algorithm<a class="headerlink" href="#pc-algorithm" title="Permanent link">&para;</a></h3>
+<p>PGM의 skeleton 을 데이터에서 추론하는 고전적 알고리즘. 페어마다 점점 큰 조건 변수 집합으로 독립성 검정.
+본 리포는 |Z| ≤ 2 (조건 집합 크기 최대 2) 까지의 약식 버전 사용.</p>
+<h3 id="threshold-cmi">ε threshold (CMI 임계)<a class="headerlink" href="#threshold-cmi" title="Permanent link">&para;</a></h3>
+<p>CMI 가 이 값 미만이면 "효과 없음" 으로 본 임의 임계.
+본 리포 기본값 ε = 0.005 nats (전체 엔트로피의 0.5~1% 정도). 이 임계가 결과를 얼마나 바꾸는지는 별도 sensitivity 분석에서 검증 (METHODOLOGY §5 참조).</p>
+<hr />
+<h2 id="bias-phase-3-25">Bias 보정 도구 — Phase 3 §2.5 핵심<a class="headerlink" href="#bias-phase-3-25" title="Permanent link">&para;</a></h2>
+<h3 id="plug-in-mi-bias">Plug-in MI bias<a class="headerlink" href="#plug-in-mi-bias" title="Permanent link">&para;</a></h3>
+<p>표본에서 계산한 MI 추정량 (<code>MI_hat</code>) 이 진짜 MI 보다 위로 치우치는 현상.
+2D contingency table 의 카디널리티가 크면 bias 도 큼 (Miller-Madow 보정값 ≈ (k−1)(m−1) / (2N)).
+예: occupation × district (2120 × 252) 에서 bias ≈ 0.27 nats — 임계 ε=0.005 의 53배. → 단순 MI 값만으로는 "진짜 효과" 와 "추정 bias" 분간 불가.</p>
+<h3 id="permutation-null-stratified">Permutation null (Stratified)<a class="headerlink" href="#permutation-null-stratified" title="Permanent link">&para;</a></h3>
+<p>H0: X ⊥ Y | Z 하에서 X 와 Y 의 결합 분포가 어떨지 시뮬레이션하는 도구.
+- <strong>Unconditional (marginal)</strong>: Y 를 전체에서 셔플 → I(X;Y) 의 null 분포
+- <strong>Stratified (conditional)</strong>: Y 를 Z 의 각 stratum 안에서만 셔플 → I(X;Y|Z) 의 null 분포 (X·Y·Z 의 marginal 모두 보존, 결합만 깸)</p>
+<p>관측값이 null 분포의 95th percentile 위에 있으면 "유의" (p &lt; 0.05). 단 N 이 크면 거의 모든 게 유의해지므로 effect-size 비교가 더 정보적 — 아래 "ratio" 참조.</p>
+<h3 id="bootstrap-ci-row-bootstrap">Bootstrap CI (row bootstrap)<a class="headerlink" href="#bootstrap-ci-row-bootstrap" title="Permanent link">&para;</a></h3>
+<p>같은 N 으로 행을 with-replacement 재추출 → MI/CMI 분포 → 95% percentile = CI.
+"추정치의 정밀도" (sampling variance) 를 잰다. permutation null 과 다른 정보:
+- permutation null: "이 효과가 우연일 가능성"
+- bootstrap CI: "추정치 자체가 얼마나 흔들리는가"</p>
+<h3 id="ratio-observed-null_p95">Ratio = observed / null_p95<a class="headerlink" href="#ratio-observed-null_p95" title="Permanent link">&para;</a></h3>
+<p>본 리포의 핵심 effect-size dominance 지표.
+- ratio ≥ 10: robust — bias floor 의 10배 이상으로 견고
+- ratio 2–10: significant — 통계적으로 분명하나 너무 강하진 않음
+- ratio &lt; 2: bias-suspect — 추정 bias 와 같은 자릿수, 진짜 의존성이라 단언 어려움</p>
+<p>본 리포의 "23 direct edges 중 12개만 견고" 라는 분류는 이 ratio 임계 기반.</p>
+<h3 id="bias-corrected-skeleton">Bias-corrected skeleton<a class="headerlink" href="#bias-corrected-skeleton" title="Permanent link">&para;</a></h3>
+<p>원래 skeleton (PC-style 분류 결과) 에 위 permutation null ratio 를 입혀, robust/signif/suspect 3-tier 로 재분류한 의존 그래프. <a href="../../reports/figures/skeleton_bias_corrected.png"><code>reports/figures/skeleton_bias_corrected.png</code></a> 가 본 리포의 메인 시각화.</p>
+<hr />
+<h2 id="phase-3">분류기 기반 검증 — Phase 3 보강<a class="headerlink" href="#phase-3" title="Permanent link">&para;</a></h2>
+<h3 id="tstr-train-on-synthetic-test-on-real">TSTR — Train on Synthetic, Test on Real<a class="headerlink" href="#tstr-train-on-synthetic-test-on-real" title="Permanent link">&para;</a></h3>
+<p>표준 정의: 합성 데이터로 모델을 학습한 뒤 <em>실제 데이터</em> 에서 평가하는 합성데이터 평가 방식.</p>
+<p><strong>본 리포에서는 엄밀한 TSTR 을 수행하지 않는다.</strong> 합성 데이터를 train/test split 한 <em>within-synthetic</em> 비교만 사용 — 정확한 명칭은 아래 "합성-내 예측가능성 검사".</p>
+<h3 id="-within-synthetic-predictability-check">합성-내 예측가능성 검사 (Within-synthetic predictability check)<a class="headerlink" href="#-within-synthetic-predictability-check" title="Permanent link">&para;</a></h3>
+<p>본 리포의 Phase 3 보강 분석. baseline feature set 과 baseline + extra feature set 으로 각각 분류기를 학습/평가한 뒤 cross-entropy 차이로 "extra 가 정보를 더하는가" 를 정량화. marginal 만 일치시켜도 얻을 수 있는 baseline 예측력 대비 합성데이터에서 변수 간 결합 구조가 살아있는지 측정.
+- info_added ≈ 0 → extra 는 baseline 에 conditional independent (변수 간 결합이 약함)
+- info_added &gt; 0 → extra 가 baseline 위에 정보 추가 (결합 구조 살아있음)</p>
+<p>본 리포의 <strong>housing decoupling</strong> 결정적 증거 산출법. (파일·함수명에는 초기 명칭 <code>decoupling_probe</code> 가 그대로 남아 있음 — 외부 참조 안정성 위해 유지.)</p>
+<h3 id="cross-entropy-ce">Cross-Entropy (CE / 교차 엔트로피)<a class="headerlink" href="#cross-entropy-ce" title="Permanent link">&para;</a></h3>
+<p>분류 모델이 정답을 얼마나 잘 맞추는지의 평균 정보량 손실 (단위: nats).
+- 낮을수록 좋음
+- 정답을 100% 확신하고 맞히면 CE = 0
+- 무작위 추측이면 CE = H(target) (target의 엔트로피)</p>
+<h3 id="information-added">Information added (정보 추가량)<a class="headerlink" href="#information-added" title="Permanent link">&para;</a></h3>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>info_added = CE(target | baseline_features) − CE(target | baseline + extras)
+</span></code></pre></div>
+- 양수: 추가 feature가 도움됨
+- 0 근처: 추가 feature가 불필요 (baseline 만으로 정보 포화)</p>
+<p>본 리포의 <strong>housing decoupling</strong> 결정적 증거: info_added(person-attrs over district) = <strong>−0.008 nats</strong> (실질 0).</p>
+<h3 id="leakage-check">Leakage check (데이터 누수 점검)<a class="headerlink" href="#leakage-check" title="Permanent link">&para;</a></h3>
+<p>예측 모델 평가에서 train 데이터의 정보가 test 결과에 누설되는지 점검.
+본 리포의 예측가능성 검사 는 6가지 잠재 누수 (encoder 전체 fit, cap_high_card 전체 빈도, target encoding, 단일 split, HGB 내부 split, 합성 row 중복성) 를 식별 후 <strong>train-only encoder + 5-fold CV</strong> 로 재실행 — 6개 case 모두 info_added 변화 &lt; 0.005 nats (원본 효과의 1% 이하). 결론 변화 없음.</p>
+<hr />
+<h2 id="_2">자주 쓰는 약어<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>약어</th>
+<th>풀이</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MI</td>
+<td>Mutual Information</td>
+</tr>
+<tr>
+<td>CMI</td>
+<td>Conditional MI</td>
+</tr>
+<tr>
+<td>NMI</td>
+<td>Normalized MI</td>
+</tr>
+<tr>
+<td>TVD</td>
+<td>Total Variation Distance</td>
+</tr>
+<tr>
+<td>PMI</td>
+<td>Pointwise MI</td>
+</tr>
+<tr>
+<td>PGM</td>
+<td>Probabilistic Graphical Model</td>
+</tr>
+<tr>
+<td>PC algorithm</td>
+<td>Peter-Clark algorithm (skeleton 추론)</td>
+</tr>
+<tr>
+<td>ε (epsilon)</td>
+<td>CMI 효과크기 임계 (본 리포 0.005 nats)</td>
+</tr>
+<tr>
+<td>ratio</td>
+<td>observed / null_p95 (effect-size dominance)</td>
+</tr>
+<tr>
+<td>TSTR</td>
+<td>Train on Synthetic, Test on Real</td>
+</tr>
+<tr>
+<td>CV</td>
+<td>Cross-Validation (5-fold 등)</td>
+</tr>
+<tr>
+<td>CE</td>
+<td>Cross-Entropy</td>
+</tr>
+<tr>
+<td>HGB</td>
+<td>HistGradientBoostingClassifier (sklearn)</td>
+</tr>
+<tr>
+<td>KOSIS</td>
+<td>국가통계포털</td>
+</tr>
+<tr>
+<td>KSCO</td>
+<td>한국표준직업분류</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">더 읽을 거리 (외부)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>합성 데이터 평가: SDV (synthetic-data-vault) 의 평가 가이드</li>
+<li>PGM / d-separation: Judea Pearl, <em>Causality</em> (2009) 1-2장</li>
+<li>정보이론: Cover &amp; Thomas, <em>Elements of Information Theory</em> 2장</li>
+<li>PC algorithm: Spirtes, Glymour, Scheines, <em>Causation, Prediction, and Search</em> (2000)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../FAQ/" class="md-footer__link md-footer__link--prev" aria-label="이전: FAQ">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                FAQ
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../METHODOLOGY/" class="md-footer__link md-footer__link--next" aria-label="다음: 방법론">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                방법론
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/eopchang/nemotron-personas-korea-audit" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
