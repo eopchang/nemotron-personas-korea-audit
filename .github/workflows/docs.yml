@@ -7,11 +7,12 @@ on:
       - '**.md'
       - 'mkdocs.yml'
       - 'reports/figures/**'
+      - 'scripts/build_site_src.sh'
       - '.github/workflows/docs.yml'
-  workflow_dispatch:  # 수동 실행 가능
+  workflow_dispatch:
 
 permissions:
-  contents: write  # gh-pages 브랜치에 푸시하려면 필요
+  contents: write  # mkdocs gh-deploy pushes to gh-pages branch
 
 jobs:
   deploy:
@@ -19,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # gh-deploy 가 git history 필요
+          fetch-depth: 0  # gh-deploy needs full history
 
       - uses: actions/setup-python@v5
         with:
@@ -31,13 +32,15 @@ jobs:
           path: ~/.cache/pip
           key: pip-mkdocs-${{ hashFiles('.github/workflows/docs.yml') }}
 
-      - name: Install MkDocs + Material + plugins
+      - name: Install MkDocs + Material
         run: |
           python -m pip install --upgrade pip
           pip install \
             "mkdocs-material>=9.5" \
-            "mkdocs-include-markdown-plugin>=6.2" \
             "pymdown-extensions>=10.0"
+
+      - name: Assemble site source
+        run: bash scripts/build_site_src.sh
 
       - name: Build & deploy to gh-pages
         run: mkdocs gh-deploy --force --verbose

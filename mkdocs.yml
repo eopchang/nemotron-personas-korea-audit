@@ -7,35 +7,12 @@ site_author: Chang-Eop Kim
 
 repo_name: eopchang/nemotron-personas-korea-audit
 repo_url: https://github.com/eopchang/nemotron-personas-korea-audit
-edit_uri: edit/main/
+# edit_uri 는 _site_src 가 임시 디렉토리이므로 의미 없음 — 비활성화
 
-docs_dir: .
+# _site_src 는 빌드 직전에 scripts/build_site_src.sh 가 만든다
+# (repo 루트 .md + reports/ + docs/ + review/ + 이미지를 모은다)
+docs_dir: _site_src
 site_dir: site
-
-# repo 루트를 source 로 쓰므로 사이트에 노출하지 않을 것들은 모두 exclude
-exclude_docs: |
-  .github/
-  .venv/
-  .vscode/
-  data/
-  scripts/
-  notebooks/
-  site/
-  *.py
-  *.json
-  *.csv
-  *.parquet
-  *.cff
-  *.lock
-  *.toml
-  *.txt
-  *.yml
-  *.yaml
-  LICENSE
-  .gitignore
-  .python-version
-  uv.lock
-  pyproject.toml
 
 theme:
   name: material
@@ -51,8 +28,6 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
-    - content.action.edit
-    - content.action.view
     - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -104,7 +79,6 @@ plugins:
       lang:
         - ko
         - en
-  - include-markdown
 
 markdown_extensions:
   - admonition
@@ -119,11 +93,7 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
@@ -134,13 +104,6 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
 
-# README.md 는 index.md 가 include 하므로 source 에 남겨두되 nav 에는 없음.
-# 55-pair detail 페이지 (reports/PAIR_INDEX.md 가 링크) 도 nav 외 처리.
-not_in_nav: |
-  README.md
-
-# 데이터 파일 (data/, scripts/) 링크는 GitHub blob 으로 가는 게 정상.
-# 일부 깨진 링크 (raw evidence file) 는 site 빌드 실패 아닌 경고로 처리.
 strict: false
 
 extra:
