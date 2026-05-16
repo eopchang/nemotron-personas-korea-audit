@@ -20,6 +20,7 @@
 | [`REVIEW_PACKET.md`](REVIEW_PACKET.md) | **단일 파일에 모든 것** — 리뷰어 모델에 그대로 붙여넣기 (~35k 토큰, 그림 제외). `scripts/build_review_packet.py` 가 자동 생성. |
 | [`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md) | 본 리포가 한 **36개 검증 가능한 주장에 번호 + 증거 파일 링크**. 한 줄씩 검증할 수 있도록 정리. |
 | [`REVIEW_PROMPTS.md`](REVIEW_PROMPTS.md) | **6종 미리 작성된 리뷰 프롬프트** (통합 / Falsification / 방법론 / 통계 / 도메인 / 재현성). 모델에 그대로 붙여넣기 |
+| [`REVIEW_PROMPTS_EN.md`](REVIEW_PROMPTS_EN.md) | **English version** — same 6 prompts for English-speaking reviewers / Anglophone LLM interfaces. PACKET 자체는 한국어이지만 최신 long-context 모델은 한·영 혼합 입력을 잘 다룸. |
 | [`key_results.json`](key_results.json) | **15개 분석 결과 구조화 JSON** — 데이터셋 기본 / KOSIS marginal 비교 / 이변량 top-15 / skeleton / 합성-내 예측가능성 검사 / subsample stability / node degrees / ε sensitivity / permutation null / bootstrap CI / leakage check / military breakdown / housing per-person correction. 모델이 수치 mechanically 검증 시 사용. |
 
 ---
