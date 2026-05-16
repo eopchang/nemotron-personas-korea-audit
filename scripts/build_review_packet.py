@@ -100,6 +100,67 @@ def build_key_results() -> dict:
     deg = pd.read_csv(ROOT / "data/processed/cmi/node_degrees.csv")
     out["phase3_node_degrees_in_skeleton"] = deg.to_dict(orient="records")
 
+    # ε threshold sensitivity (Phase 3 §2.7)
+    eps = pd.read_csv(ROOT / "data/processed/cmi/epsilon_counts.csv")
+    out["phase3_epsilon_sensitivity"] = {
+        "eps_grid": eps["eps"].tolist(),
+        "default_eps": 0.005,
+        "counts_by_epsilon": {
+            str(row["eps"]): {
+                "direct": int(row["direct"]),
+                "mediated": int(row["mediated"]),
+                "no_edge_marginal": int(row["no_edge_marginal"]),
+            }
+            for _, row in eps.iterrows()
+        },
+    }
+
+    # Permutation null (Phase 3 §2.5)
+    pn_m = pd.read_csv(ROOT / "data/processed/cmi/permutation_null_marginal.csv")
+    pn_c = pd.read_csv(ROOT / "data/processed/cmi/permutation_null_conditional.csv")
+    out["phase3_permutation_null"] = {
+        "n_perms_per_pair": 100,
+        "subsample_n": 100_000,
+        "metric_key": "ratio_obs_to_p95 (observed / null_p95)",
+        "ratio_tier_thresholds": {"robust": 10, "significant": 2},
+        "marginal_pairs": pn_m[
+            ["x", "y", "observed", "null_p95", "ratio_obs_to_p95", "p_value"]
+        ].round(5).to_dict(orient="records"),
+        "conditional_direct_edges": pn_c[
+            ["x", "y", "z_cols", "observed", "null_p95", "ratio_obs_to_p95", "p_value"]
+        ].round(5).to_dict(orient="records"),
+    }
+
+    # Bootstrap CI (Phase 3 §2.5)
+    bs_m = pd.read_csv(ROOT / "data/processed/cmi/bootstrap_marginal.csv")
+    bs_c = pd.read_csv(ROOT / "data/processed/cmi/bootstrap_conditional.csv")
+    out["phase3_bootstrap_ci"] = {
+        "n_boots_per_pair": 100,
+        "subsample_n": 100_000,
+        "ci_level": "95%",
+        "marginal_pairs": bs_m[
+            ["x", "y", "observed", "boot_ci95_lo", "boot_ci95_hi", "boot_se"]
+        ].round(5).to_dict(orient="records"),
+        "conditional_direct_edges": bs_c[
+            ["x", "y", "z_cols", "observed", "boot_ci95_lo", "boot_ci95_hi", "boot_se"]
+        ].round(5).to_dict(orient="records"),
+    }
+
+    # Leakage check (Phase 3 §1.4)
+    out["phase3_decoupling_probe_leakage_check"] = json.loads(
+        read(ROOT / "data/processed/decoupling_probe_no_leakage.json")
+    )
+
+    # Military breakdown (Phase 3 §3.4)
+    out["phase3_military_breakdown"] = json.loads(
+        read(ROOT / "data/processed/military_breakdown.json")
+    )
+
+    # Housing per-person reference correction (Phase 1 §3-4)
+    out["phase1_housing_unit_correction"] = json.loads(
+        read(ROOT / "data/processed/housing_unit_correction.json")
+    )
+
     return out
 
 

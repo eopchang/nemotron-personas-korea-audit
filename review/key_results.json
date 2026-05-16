@@ -778,5 +778,1716 @@
       "node": "military_status",
       "degree": 1
     }
-  ]
+  ],
+  "phase3_epsilon_sensitivity": {
+    "eps_grid": [
+      0.0005,
+      0.001,
+      0.002,
+      0.005,
+      0.01,
+      0.02,
+      0.05
+    ],
+    "default_eps": 0.005,
+    "counts_by_epsilon": {
+      "0.0005": {
+        "direct": 32,
+        "mediated": 17,
+        "no_edge_marginal": 6
+      },
+      "0.001": {
+        "direct": 31,
+        "mediated": 14,
+        "no_edge_marginal": 10
+      },
+      "0.002": {
+        "direct": 30,
+        "mediated": 12,
+        "no_edge_marginal": 13
+      },
+      "0.005": {
+        "direct": 23,
+        "mediated": 14,
+        "no_edge_marginal": 18
+      },
+      "0.01": {
+        "direct": 19,
+        "mediated": 15,
+        "no_edge_marginal": 21
+      },
+      "0.02": {
+        "direct": 16,
+        "mediated": 11,
+        "no_edge_marginal": 28
+      },
+      "0.05": {
+        "direct": 13,
+        "mediated": 5,
+        "no_edge_marginal": 37
+      }
+    }
+  },
+  "phase3_permutation_null": {
+    "n_perms_per_pair": 100,
+    "subsample_n": 100000,
+    "metric_key": "ratio_obs_to_p95 (observed / null_p95)",
+    "ratio_tier_thresholds": {
+      "robust": 10,
+      "significant": 2
+    },
+    "marginal_pairs": [
+      {
+        "x": "age_bin",
+        "y": "sex",
+        "observed": 0.00334,
+        "null_p95": 7e-05,
+        "ratio_obs_to_p95": 46.99463,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "marital_status",
+        "observed": 0.3113,
+        "null_p95": 0.00016,
+        "ratio_obs_to_p95": 1972.94221,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "military_status",
+        "observed": 0.00168,
+        "null_p95": 8e-05,
+        "ratio_obs_to_p95": 22.23198,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "family_type",
+        "observed": 0.32818,
+        "null_p95": 0.00156,
+        "ratio_obs_to_p95": 209.94367,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "housing_type",
+        "observed": 0.00221,
+        "null_p95": 0.00025,
+        "ratio_obs_to_p95": 8.82563,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "education_level",
+        "observed": 0.2754,
+        "null_p95": 0.0003,
+        "ratio_obs_to_p95": 923.15923,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "bachelors_field",
+        "observed": 0.06547,
+        "null_p95": 0.00043,
+        "ratio_obs_to_p95": 150.57017,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "occupation",
+        "observed": 0.20387,
+        "null_p95": 0.0532,
+        "ratio_obs_to_p95": 3.8319,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "district",
+        "observed": 0.03137,
+        "null_p95": 0.00935,
+        "ratio_obs_to_p95": 3.35539,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "province",
+        "observed": 0.00774,
+        "null_p95": 0.00069,
+        "ratio_obs_to_p95": 11.27197,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "marital_status",
+        "observed": 0.02705,
+        "null_p95": 4e-05,
+        "ratio_obs_to_p95": 710.56694,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "military_status",
+        "observed": 0.00213,
+        "null_p95": 2e-05,
+        "ratio_obs_to_p95": 126.66766,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "family_type",
+        "observed": 0.01773,
+        "null_p95": 0.00028,
+        "ratio_obs_to_p95": 63.04464,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "housing_type",
+        "observed": 3e-05,
+        "null_p95": 5e-05,
+        "ratio_obs_to_p95": 0.59539,
+        "p_value": 0.29703
+      },
+      {
+        "x": "sex",
+        "y": "education_level",
+        "observed": 0.01382,
+        "null_p95": 6e-05,
+        "ratio_obs_to_p95": 230.50974,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "bachelors_field",
+        "observed": 0.03871,
+        "null_p95": 9e-05,
+        "ratio_obs_to_p95": 451.42851,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "occupation",
+        "observed": 0.12602,
+        "null_p95": 0.00967,
+        "ratio_obs_to_p95": 13.02621,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "district",
+        "observed": 0.00185,
+        "null_p95": 0.00142,
+        "ratio_obs_to_p95": 1.29806,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "province",
+        "observed": 0.0003,
+        "null_p95": 0.00013,
+        "ratio_obs_to_p95": 2.36819,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "military_status",
+        "observed": 0.00045,
+        "null_p95": 4e-05,
+        "ratio_obs_to_p95": 11.95835,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "family_type",
+        "observed": 0.74945,
+        "null_p95": 0.00071,
+        "ratio_obs_to_p95": 1062.17744,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "housing_type",
+        "observed": 0.00116,
+        "null_p95": 0.00012,
+        "ratio_obs_to_p95": 9.52971,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "education_level",
+        "observed": 0.10274,
+        "null_p95": 0.00016,
+        "ratio_obs_to_p95": 647.41305,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "bachelors_field",
+        "observed": 0.02464,
+        "null_p95": 0.00022,
+        "ratio_obs_to_p95": 112.17086,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "occupation",
+        "observed": 0.06754,
+        "null_p95": 0.02422,
+        "ratio_obs_to_p95": 2.78869,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "district",
+        "observed": 0.01939,
+        "null_p95": 0.00414,
+        "ratio_obs_to_p95": 4.68897,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "province",
+        "observed": 0.00664,
+        "null_p95": 0.00031,
+        "ratio_obs_to_p95": 21.43497,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "family_type",
+        "observed": 0.00052,
+        "null_p95": 0.00027,
+        "ratio_obs_to_p95": 1.95963,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "housing_type",
+        "observed": 3e-05,
+        "null_p95": 6e-05,
+        "ratio_obs_to_p95": 0.44368,
+        "p_value": 0.45545
+      },
+      {
+        "x": "military_status",
+        "y": "education_level",
+        "observed": 0.00074,
+        "null_p95": 6e-05,
+        "ratio_obs_to_p95": 13.229,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "bachelors_field",
+        "observed": 0.00028,
+        "null_p95": 8e-05,
+        "ratio_obs_to_p95": 3.35227,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "occupation",
+        "observed": 0.03405,
+        "null_p95": 0.00331,
+        "ratio_obs_to_p95": 10.28019,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "district",
+        "observed": 0.00189,
+        "null_p95": 0.00151,
+        "ratio_obs_to_p95": 1.2477,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "province",
+        "observed": 0.00027,
+        "null_p95": 0.00013,
+        "ratio_obs_to_p95": 2.17585,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "housing_type",
+        "observed": 0.00295,
+        "null_p95": 0.00118,
+        "ratio_obs_to_p95": 2.5039,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "education_level",
+        "observed": 0.08985,
+        "null_p95": 0.00135,
+        "ratio_obs_to_p95": 66.71078,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "bachelors_field",
+        "observed": 0.02001,
+        "null_p95": 0.00221,
+        "ratio_obs_to_p95": 9.05791,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "occupation",
+        "observed": 0.16278,
+        "null_p95": 0.12354,
+        "ratio_obs_to_p95": 1.31766,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "district",
+        "observed": 0.08589,
+        "null_p95": 0.04517,
+        "ratio_obs_to_p95": 1.90155,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "province",
+        "observed": 0.02149,
+        "null_p95": 0.00339,
+        "ratio_obs_to_p95": 6.33447,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "education_level",
+        "observed": 0.0038,
+        "null_p95": 0.00022,
+        "ratio_obs_to_p95": 17.21008,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "bachelors_field",
+        "observed": 0.00171,
+        "null_p95": 0.00032,
+        "ratio_obs_to_p95": 5.3113,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "occupation",
+        "observed": 0.03668,
+        "null_p95": 0.03366,
+        "ratio_obs_to_p95": 1.08993,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "district",
+        "observed": 0.16062,
+        "null_p95": 0.00693,
+        "ratio_obs_to_p95": 23.16166,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "province",
+        "observed": 0.07484,
+        "null_p95": 0.00052,
+        "ratio_obs_to_p95": 144.29331,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "bachelors_field",
+        "observed": 0.63046,
+        "null_p95": 0.00042,
+        "ratio_obs_to_p95": 1488.76183,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "occupation",
+        "observed": 0.33946,
+        "null_p95": 0.04527,
+        "ratio_obs_to_p95": 7.49941,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "district",
+        "observed": 0.05884,
+        "null_p95": 0.00811,
+        "ratio_obs_to_p95": 7.25215,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "province",
+        "observed": 0.01811,
+        "null_p95": 0.00058,
+        "ratio_obs_to_p95": 31.31454,
+        "p_value": 0.0099
+      },
+      {
+        "x": "bachelors_field",
+        "y": "occupation",
+        "observed": 0.27343,
+        "null_p95": 0.05702,
+        "ratio_obs_to_p95": 4.79516,
+        "p_value": 0.0099
+      },
+      {
+        "x": "bachelors_field",
+        "y": "district",
+        "observed": 0.04242,
+        "null_p95": 0.01378,
+        "ratio_obs_to_p95": 3.07894,
+        "p_value": 0.0099
+      },
+      {
+        "x": "bachelors_field",
+        "y": "province",
+        "observed": 0.01285,
+        "null_p95": 0.00093,
+        "ratio_obs_to_p95": 13.74567,
+        "p_value": 0.0099
+      },
+      {
+        "x": "occupation",
+        "y": "district",
+        "observed": 0.59706,
+        "null_p95": 0.57926,
+        "ratio_obs_to_p95": 1.03072,
+        "p_value": 0.0099
+      },
+      {
+        "x": "occupation",
+        "y": "province",
+        "observed": 0.12476,
+        "null_p95": 0.09789,
+        "ratio_obs_to_p95": 1.27441,
+        "p_value": 0.0099
+      },
+      {
+        "x": "district",
+        "y": "province",
+        "observed": 2.42575,
+        "null_p95": 0.02189,
+        "ratio_obs_to_p95": 110.83926,
+        "p_value": 0.0099
+      }
+    ],
+    "conditional_direct_edges": [
+      {
+        "x": "age_bin",
+        "y": "marital_status",
+        "z_cols": "family_type+education_level",
+        "observed": 0.06288,
+        "null_p95": 0.00588,
+        "ratio_obs_to_p95": 10.69737,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "family_type",
+        "z_cols": "marital_status+education_level",
+        "observed": 0.09969,
+        "null_p95": 0.01243,
+        "ratio_obs_to_p95": 8.01699,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "education_level",
+        "z_cols": "marital_status+bachelors_field",
+        "observed": 0.13656,
+        "null_p95": 0.00209,
+        "ratio_obs_to_p95": 65.2012,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "occupation",
+        "z_cols": "education_level+military_status",
+        "observed": 0.16941,
+        "null_p95": 0.11084,
+        "ratio_obs_to_p95": 1.52837,
+        "p_value": 0.0099
+      },
+      {
+        "x": "age_bin",
+        "y": "district",
+        "z_cols": "province+military_status",
+        "observed": 0.02701,
+        "null_p95": 0.01221,
+        "ratio_obs_to_p95": 2.21317,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "marital_status",
+        "z_cols": "family_type+education_level",
+        "observed": 0.00943,
+        "null_p95": 0.00126,
+        "ratio_obs_to_p95": 7.50863,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "family_type",
+        "z_cols": "marital_status+military_status",
+        "observed": 0.00801,
+        "null_p95": 0.00057,
+        "ratio_obs_to_p95": 13.99225,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "bachelors_field",
+        "z_cols": "occupation+education_level",
+        "observed": 0.03878,
+        "null_p95": 0.0211,
+        "ratio_obs_to_p95": 1.83832,
+        "p_value": 0.0099
+      },
+      {
+        "x": "sex",
+        "y": "occupation",
+        "z_cols": "bachelors_field+military_status",
+        "observed": 0.12921,
+        "null_p95": 0.03369,
+        "ratio_obs_to_p95": 3.83503,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "family_type",
+        "z_cols": "age_bin+sex",
+        "observed": 0.52603,
+        "null_p95": 0.00655,
+        "ratio_obs_to_p95": 80.33621,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "occupation",
+        "z_cols": "age_bin+military_status",
+        "observed": 0.06443,
+        "null_p95": 0.06101,
+        "ratio_obs_to_p95": 1.05607,
+        "p_value": 0.0099
+      },
+      {
+        "x": "marital_status",
+        "y": "district",
+        "z_cols": "province+family_type",
+        "observed": 0.0279,
+        "null_p95": 0.02393,
+        "ratio_obs_to_p95": 1.16601,
+        "p_value": 0.0099
+      },
+      {
+        "x": "military_status",
+        "y": "occupation",
+        "z_cols": "sex+age_bin",
+        "observed": 0.03039,
+        "null_p95": 0.0084,
+        "ratio_obs_to_p95": 3.61726,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "occupation",
+        "z_cols": "marital_status+military_status",
+        "observed": 0.16065,
+        "null_p95": 0.13869,
+        "ratio_obs_to_p95": 1.15839,
+        "p_value": 0.0099
+      },
+      {
+        "x": "family_type",
+        "y": "district",
+        "z_cols": "province+marital_status",
+        "observed": 0.07955,
+        "null_p95": 0.06125,
+        "ratio_obs_to_p95": 1.29888,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "occupation",
+        "z_cols": "military_status+sex",
+        "observed": 0.05461,
+        "null_p95": 0.05191,
+        "ratio_obs_to_p95": 1.05185,
+        "p_value": 0.0099
+      },
+      {
+        "x": "housing_type",
+        "y": "district",
+        "z_cols": "province+military_status",
+        "observed": 0.08809,
+        "null_p95": 0.00895,
+        "ratio_obs_to_p95": 9.83785,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "bachelors_field",
+        "z_cols": "occupation+district",
+        "observed": 0.33217,
+        "null_p95": 0.14587,
+        "ratio_obs_to_p95": 2.27715,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "occupation",
+        "z_cols": "bachelors_field+age_bin",
+        "observed": 0.15921,
+        "null_p95": 0.10119,
+        "ratio_obs_to_p95": 1.57335,
+        "p_value": 0.0099
+      },
+      {
+        "x": "education_level",
+        "y": "district",
+        "z_cols": "bachelors_field+province",
+        "observed": 0.03155,
+        "null_p95": 0.01626,
+        "ratio_obs_to_p95": 1.93988,
+        "p_value": 0.0099
+      },
+      {
+        "x": "bachelors_field",
+        "y": "occupation",
+        "z_cols": "education_level+sex",
+        "observed": 0.11258,
+        "null_p95": 0.07732,
+        "ratio_obs_to_p95": 1.45606,
+        "p_value": 0.0099
+      },
+      {
+        "x": "occupation",
+        "y": "district",
+        "z_cols": "province+military_status",
+        "observed": 0.47069,
+        "null_p95": 0.4665,
+        "ratio_obs_to_p95": 1.00897,
+        "p_value": 0.0099
+      },
+      {
+        "x": "district",
+        "y": "province",
+        "z_cols": "housing_type+occupation",
+        "observed": 2.11288,
+        "null_p95": 1.02527,
+        "ratio_obs_to_p95": 2.06081,
+        "p_value": 0.0099
+      }
+    ]
+  },
+  "phase3_bootstrap_ci": {
+    "n_boots_per_pair": 100,
+    "subsample_n": 100000,
+    "ci_level": "95%",
+    "marginal_pairs": [
+      {
+        "x": "age_bin",
+        "y": "sex",
+        "observed": 0.00334,
+        "boot_ci95_lo": 0.00299,
+        "boot_ci95_hi": 0.00381,
+        "boot_se": 0.00025
+      },
+      {
+        "x": "age_bin",
+        "y": "marital_status",
+        "observed": 0.3113,
+        "boot_ci95_lo": 0.30748,
+        "boot_ci95_hi": 0.31542,
+        "boot_se": 0.00202
+      },
+      {
+        "x": "age_bin",
+        "y": "military_status",
+        "observed": 0.00168,
+        "boot_ci95_lo": 0.00151,
+        "boot_ci95_hi": 0.0019,
+        "boot_se": 0.00011
+      },
+      {
+        "x": "age_bin",
+        "y": "family_type",
+        "observed": 0.32818,
+        "boot_ci95_lo": 0.32516,
+        "boot_ci95_hi": 0.33317,
+        "boot_se": 0.00211
+      },
+      {
+        "x": "age_bin",
+        "y": "housing_type",
+        "observed": 0.00221,
+        "boot_ci95_lo": 0.00198,
+        "boot_ci95_hi": 0.00289,
+        "boot_se": 0.00025
+      },
+      {
+        "x": "age_bin",
+        "y": "education_level",
+        "observed": 0.2754,
+        "boot_ci95_lo": 0.27141,
+        "boot_ci95_hi": 0.27952,
+        "boot_se": 0.00222
+      },
+      {
+        "x": "age_bin",
+        "y": "bachelors_field",
+        "observed": 0.06547,
+        "boot_ci95_lo": 0.06322,
+        "boot_ci95_hi": 0.06799,
+        "boot_se": 0.00116
+      },
+      {
+        "x": "age_bin",
+        "y": "occupation",
+        "observed": 0.20387,
+        "boot_ci95_lo": 0.22592,
+        "boot_ci95_hi": 0.23145,
+        "boot_se": 0.00152
+      },
+      {
+        "x": "age_bin",
+        "y": "district",
+        "observed": 0.03137,
+        "boot_ci95_lo": 0.03871,
+        "boot_ci95_hi": 0.04184,
+        "boot_se": 0.00084
+      },
+      {
+        "x": "age_bin",
+        "y": "province",
+        "observed": 0.00774,
+        "boot_ci95_lo": 0.00756,
+        "boot_ci95_hi": 0.00903,
+        "boot_se": 0.0004
+      },
+      {
+        "x": "sex",
+        "y": "marital_status",
+        "observed": 0.02705,
+        "boot_ci95_lo": 0.02576,
+        "boot_ci95_hi": 0.02838,
+        "boot_se": 0.00069
+      },
+      {
+        "x": "sex",
+        "y": "military_status",
+        "observed": 0.00213,
+        "boot_ci95_lo": 0.00179,
+        "boot_ci95_hi": 0.0025,
+        "boot_se": 0.00017
+      },
+      {
+        "x": "sex",
+        "y": "family_type",
+        "observed": 0.01773,
+        "boot_ci95_lo": 0.01692,
+        "boot_ci95_hi": 0.01871,
+        "boot_se": 0.00052
+      },
+      {
+        "x": "sex",
+        "y": "housing_type",
+        "observed": 3e-05,
+        "boot_ci95_lo": 1e-05,
+        "boot_ci95_hi": 0.00012,
+        "boot_se": 3e-05
+      },
+      {
+        "x": "sex",
+        "y": "education_level",
+        "observed": 0.01382,
+        "boot_ci95_lo": 0.01292,
+        "boot_ci95_hi": 0.0147,
+        "boot_se": 0.00048
+      },
+      {
+        "x": "sex",
+        "y": "bachelors_field",
+        "observed": 0.03871,
+        "boot_ci95_lo": 0.03714,
+        "boot_ci95_hi": 0.04026,
+        "boot_se": 0.00085
+      },
+      {
+        "x": "sex",
+        "y": "occupation",
+        "observed": 0.12602,
+        "boot_ci95_lo": 0.12961,
+        "boot_ci95_hi": 0.13402,
+        "boot_se": 0.0012
+      },
+      {
+        "x": "sex",
+        "y": "district",
+        "observed": 0.00185,
+        "boot_ci95_lo": 0.00272,
+        "boot_ci95_hi": 0.00361,
+        "boot_se": 0.00023
+      },
+      {
+        "x": "sex",
+        "y": "province",
+        "observed": 0.0003,
+        "boot_ci95_lo": 0.00024,
+        "boot_ci95_hi": 0.00055,
+        "boot_se": 8e-05
+      },
+      {
+        "x": "marital_status",
+        "y": "military_status",
+        "observed": 0.00045,
+        "boot_ci95_lo": 0.00033,
+        "boot_ci95_hi": 0.00064,
+        "boot_se": 9e-05
+      },
+      {
+        "x": "marital_status",
+        "y": "family_type",
+        "observed": 0.74945,
+        "boot_ci95_lo": 0.74655,
+        "boot_ci95_hi": 0.75249,
+        "boot_se": 0.00161
+      },
+      {
+        "x": "marital_status",
+        "y": "housing_type",
+        "observed": 0.00116,
+        "boot_ci95_lo": 0.00094,
+        "boot_ci95_hi": 0.0015,
+        "boot_se": 0.00015
+      },
+      {
+        "x": "marital_status",
+        "y": "education_level",
+        "observed": 0.10274,
+        "boot_ci95_lo": 0.09996,
+        "boot_ci95_hi": 0.10532,
+        "boot_se": 0.00145
+      },
+      {
+        "x": "marital_status",
+        "y": "bachelors_field",
+        "observed": 0.02464,
+        "boot_ci95_lo": 0.02355,
+        "boot_ci95_hi": 0.02593,
+        "boot_se": 0.00061
+      },
+      {
+        "x": "marital_status",
+        "y": "occupation",
+        "observed": 0.06754,
+        "boot_ci95_lo": 0.07805,
+        "boot_ci95_hi": 0.08195,
+        "boot_se": 0.00102
+      },
+      {
+        "x": "marital_status",
+        "y": "district",
+        "observed": 0.01939,
+        "boot_ci95_lo": 0.02209,
+        "boot_ci95_hi": 0.02463,
+        "boot_se": 0.00065
+      },
+      {
+        "x": "marital_status",
+        "y": "province",
+        "observed": 0.00664,
+        "boot_ci95_lo": 0.00616,
+        "boot_ci95_hi": 0.00753,
+        "boot_se": 0.00037
+      },
+      {
+        "x": "military_status",
+        "y": "family_type",
+        "observed": 0.00052,
+        "boot_ci95_lo": 0.00052,
+        "boot_ci95_hi": 0.00077,
+        "boot_se": 7e-05
+      },
+      {
+        "x": "military_status",
+        "y": "housing_type",
+        "observed": 3e-05,
+        "boot_ci95_lo": 1e-05,
+        "boot_ci95_hi": 0.00011,
+        "boot_se": 3e-05
+      },
+      {
+        "x": "military_status",
+        "y": "education_level",
+        "observed": 0.00074,
+        "boot_ci95_lo": 0.00065,
+        "boot_ci95_hi": 0.00093,
+        "boot_se": 7e-05
+      },
+      {
+        "x": "military_status",
+        "y": "bachelors_field",
+        "observed": 0.00028,
+        "boot_ci95_lo": 0.00018,
+        "boot_ci95_hi": 0.00048,
+        "boot_se": 8e-05
+      },
+      {
+        "x": "military_status",
+        "y": "occupation",
+        "observed": 0.03405,
+        "boot_ci95_lo": 0.0315,
+        "boot_ci95_hi": 0.03669,
+        "boot_se": 0.00137
+      },
+      {
+        "x": "military_status",
+        "y": "district",
+        "observed": 0.00189,
+        "boot_ci95_lo": 0.00258,
+        "boot_ci95_hi": 0.00322,
+        "boot_se": 0.00019
+      },
+      {
+        "x": "military_status",
+        "y": "province",
+        "observed": 0.00027,
+        "boot_ci95_lo": 0.0002,
+        "boot_ci95_hi": 0.00057,
+        "boot_se": 0.0001
+      },
+      {
+        "x": "family_type",
+        "y": "housing_type",
+        "observed": 0.00295,
+        "boot_ci95_lo": 0.00331,
+        "boot_ci95_hi": 0.00452,
+        "boot_se": 0.00032
+      },
+      {
+        "x": "family_type",
+        "y": "education_level",
+        "observed": 0.08985,
+        "boot_ci95_lo": 0.08882,
+        "boot_ci95_hi": 0.09366,
+        "boot_se": 0.00123
+      },
+      {
+        "x": "family_type",
+        "y": "bachelors_field",
+        "observed": 0.02001,
+        "boot_ci95_lo": 0.02077,
+        "boot_ci95_hi": 0.02282,
+        "boot_se": 0.00054
+      },
+      {
+        "x": "family_type",
+        "y": "occupation",
+        "observed": 0.16278,
+        "boot_ci95_lo": 0.20989,
+        "boot_ci95_hi": 0.21688,
+        "boot_se": 0.00187
+      },
+      {
+        "x": "family_type",
+        "y": "district",
+        "observed": 0.08589,
+        "boot_ci95_lo": 0.11384,
+        "boot_ci95_hi": 0.11825,
+        "boot_se": 0.00112
+      },
+      {
+        "x": "family_type",
+        "y": "province",
+        "observed": 0.02149,
+        "boot_ci95_lo": 0.0233,
+        "boot_ci95_hi": 0.02578,
+        "boot_se": 0.00064
+      },
+      {
+        "x": "housing_type",
+        "y": "education_level",
+        "observed": 0.0038,
+        "boot_ci95_lo": 0.00335,
+        "boot_ci95_hi": 0.00451,
+        "boot_se": 0.0003
+      },
+      {
+        "x": "housing_type",
+        "y": "bachelors_field",
+        "observed": 0.00171,
+        "boot_ci95_lo": 0.00162,
+        "boot_ci95_hi": 0.00233,
+        "boot_se": 0.00018
+      },
+      {
+        "x": "housing_type",
+        "y": "occupation",
+        "observed": 0.03668,
+        "boot_ci95_lo": 0.0537,
+        "boot_ci95_hi": 0.05662,
+        "boot_se": 0.00079
+      },
+      {
+        "x": "housing_type",
+        "y": "district",
+        "observed": 0.16062,
+        "boot_ci95_lo": 0.16346,
+        "boot_ci95_hi": 0.16925,
+        "boot_se": 0.00164
+      },
+      {
+        "x": "housing_type",
+        "y": "province",
+        "observed": 0.07484,
+        "boot_ci95_lo": 0.07308,
+        "boot_ci95_hi": 0.07721,
+        "boot_se": 0.00119
+      },
+      {
+        "x": "education_level",
+        "y": "bachelors_field",
+        "observed": 0.63046,
+        "boot_ci95_lo": 0.6284,
+        "boot_ci95_hi": 0.63264,
+        "boot_se": 0.00113
+      },
+      {
+        "x": "education_level",
+        "y": "occupation",
+        "observed": 0.33946,
+        "boot_ci95_lo": 0.35061,
+        "boot_ci95_hi": 0.36003,
+        "boot_se": 0.00236
+      },
+      {
+        "x": "education_level",
+        "y": "district",
+        "observed": 0.05884,
+        "boot_ci95_lo": 0.0641,
+        "boot_ci95_hi": 0.06842,
+        "boot_se": 0.00108
+      },
+      {
+        "x": "education_level",
+        "y": "province",
+        "observed": 0.01811,
+        "boot_ci95_lo": 0.01745,
+        "boot_ci95_hi": 0.01993,
+        "boot_se": 0.00061
+      },
+      {
+        "x": "bachelors_field",
+        "y": "occupation",
+        "observed": 0.27343,
+        "boot_ci95_lo": 0.29237,
+        "boot_ci95_hi": 0.29969,
+        "boot_se": 0.00186
+      },
+      {
+        "x": "bachelors_field",
+        "y": "district",
+        "observed": 0.04242,
+        "boot_ci95_lo": 0.05268,
+        "boot_ci95_hi": 0.0556,
+        "boot_se": 0.00091
+      },
+      {
+        "x": "bachelors_field",
+        "y": "province",
+        "observed": 0.01285,
+        "boot_ci95_lo": 0.01281,
+        "boot_ci95_hi": 0.01457,
+        "boot_se": 0.00047
+      },
+      {
+        "x": "occupation",
+        "y": "district",
+        "observed": 0.59706,
+        "boot_ci95_lo": 0.7717,
+        "boot_ci95_hi": 0.78402,
+        "boot_se": 0.00351
+      },
+      {
+        "x": "occupation",
+        "y": "province",
+        "observed": 0.12476,
+        "boot_ci95_lo": 0.16886,
+        "boot_ci95_hi": 0.17504,
+        "boot_se": 0.00176
+      },
+      {
+        "x": "district",
+        "y": "province",
+        "observed": 2.42575,
+        "boot_ci95_lo": 2.41869,
+        "boot_ci95_hi": 2.43184,
+        "boot_se": 0.00351
+      }
+    ],
+    "conditional_direct_edges": [
+      {
+        "x": "age_bin",
+        "y": "marital_status",
+        "z_cols": "family_type+education_level",
+        "observed": 0.06288,
+        "boot_ci95_lo": 0.06402,
+        "boot_ci95_hi": 0.06778,
+        "boot_se": 0.00107
+      },
+      {
+        "x": "age_bin",
+        "y": "family_type",
+        "z_cols": "marital_status+education_level",
+        "observed": 0.09969,
+        "boot_ci95_lo": 0.10504,
+        "boot_ci95_hi": 0.10966,
+        "boot_se": 0.00124
+      },
+      {
+        "x": "age_bin",
+        "y": "education_level",
+        "z_cols": "marital_status+bachelors_field",
+        "observed": 0.13656,
+        "boot_ci95_lo": 0.13507,
+        "boot_ci95_hi": 0.14073,
+        "boot_se": 0.00155
+      },
+      {
+        "x": "age_bin",
+        "y": "occupation",
+        "z_cols": "education_level+military_status",
+        "observed": 0.16941,
+        "boot_ci95_lo": 0.20892,
+        "boot_ci95_hi": 0.21523,
+        "boot_se": 0.00179
+      },
+      {
+        "x": "age_bin",
+        "y": "district",
+        "z_cols": "province+military_status",
+        "observed": 0.02701,
+        "boot_ci95_lo": 0.03476,
+        "boot_ci95_hi": 0.0378,
+        "boot_se": 0.00074
+      },
+      {
+        "x": "sex",
+        "y": "marital_status",
+        "z_cols": "family_type+education_level",
+        "observed": 0.00943,
+        "boot_ci95_lo": 0.00934,
+        "boot_ci95_hi": 0.0112,
+        "boot_se": 0.00052
+      },
+      {
+        "x": "sex",
+        "y": "family_type",
+        "z_cols": "marital_status+military_status",
+        "observed": 0.00801,
+        "boot_ci95_lo": 0.00767,
+        "boot_ci95_hi": 0.00911,
+        "boot_se": 0.00038
+      },
+      {
+        "x": "sex",
+        "y": "bachelors_field",
+        "z_cols": "occupation+education_level",
+        "observed": 0.03878,
+        "boot_ci95_lo": 0.04162,
+        "boot_ci95_hi": 0.04444,
+        "boot_se": 0.00078
+      },
+      {
+        "x": "sex",
+        "y": "occupation",
+        "z_cols": "bachelors_field+military_status",
+        "observed": 0.12921,
+        "boot_ci95_lo": 0.13844,
+        "boot_ci95_hi": 0.14435,
+        "boot_se": 0.00137
+      },
+      {
+        "x": "marital_status",
+        "y": "family_type",
+        "z_cols": "age_bin+sex",
+        "observed": 0.52603,
+        "boot_ci95_lo": 0.52461,
+        "boot_ci95_hi": 0.53147,
+        "boot_se": 0.0017
+      },
+      {
+        "x": "marital_status",
+        "y": "occupation",
+        "z_cols": "age_bin+military_status",
+        "observed": 0.06443,
+        "boot_ci95_lo": 0.08599,
+        "boot_ci95_hi": 0.09088,
+        "boot_se": 0.00119
+      },
+      {
+        "x": "marital_status",
+        "y": "district",
+        "z_cols": "province+family_type",
+        "observed": 0.0279,
+        "boot_ci95_lo": 0.03825,
+        "boot_ci95_hi": 0.04157,
+        "boot_se": 0.00085
+      },
+      {
+        "x": "military_status",
+        "y": "occupation",
+        "z_cols": "sex+age_bin",
+        "observed": 0.03039,
+        "boot_ci95_lo": 0.02826,
+        "boot_ci95_hi": 0.03256,
+        "boot_se": 0.00109
+      },
+      {
+        "x": "family_type",
+        "y": "occupation",
+        "z_cols": "marital_status+military_status",
+        "observed": 0.16065,
+        "boot_ci95_lo": 0.2065,
+        "boot_ci95_hi": 0.21251,
+        "boot_se": 0.00173
+      },
+      {
+        "x": "family_type",
+        "y": "district",
+        "z_cols": "province+marital_status",
+        "observed": 0.07955,
+        "boot_ci95_lo": 0.1129,
+        "boot_ci95_hi": 0.11745,
+        "boot_se": 0.00123
+      },
+      {
+        "x": "housing_type",
+        "y": "occupation",
+        "z_cols": "military_status+sex",
+        "observed": 0.05461,
+        "boot_ci95_lo": 0.07714,
+        "boot_ci95_hi": 0.08134,
+        "boot_se": 0.00102
+      },
+      {
+        "x": "housing_type",
+        "y": "district",
+        "z_cols": "province+military_status",
+        "observed": 0.08809,
+        "boot_ci95_lo": 0.09196,
+        "boot_ci95_hi": 0.0974,
+        "boot_se": 0.00143
+      },
+      {
+        "x": "education_level",
+        "y": "bachelors_field",
+        "z_cols": "occupation+district",
+        "observed": 0.33217,
+        "boot_ci95_lo": 0.30142,
+        "boot_ci95_hi": 0.30823,
+        "boot_se": 0.00172
+      },
+      {
+        "x": "education_level",
+        "y": "occupation",
+        "z_cols": "bachelors_field+age_bin",
+        "observed": 0.15921,
+        "boot_ci95_lo": 0.18049,
+        "boot_ci95_hi": 0.18694,
+        "boot_se": 0.00169
+      },
+      {
+        "x": "education_level",
+        "y": "district",
+        "z_cols": "bachelors_field+province",
+        "observed": 0.03155,
+        "boot_ci95_lo": 0.04161,
+        "boot_ci95_hi": 0.04486,
+        "boot_se": 0.00082
+      },
+      {
+        "x": "bachelors_field",
+        "y": "occupation",
+        "z_cols": "education_level+sex",
+        "observed": 0.11258,
+        "boot_ci95_lo": 0.13531,
+        "boot_ci95_hi": 0.14048,
+        "boot_se": 0.0014
+      },
+      {
+        "x": "occupation",
+        "y": "district",
+        "z_cols": "province+military_status",
+        "observed": 0.47069,
+        "boot_ci95_lo": 0.59941,
+        "boot_ci95_hi": 0.61028,
+        "boot_se": 0.00288
+      },
+      {
+        "x": "district",
+        "y": "province",
+        "z_cols": "housing_type+occupation",
+        "observed": 2.11288,
+        "boot_ci95_lo": 2.02983,
+        "boot_ci95_hi": 2.04262,
+        "boot_se": 0.00328
+      }
+    ]
+  },
+  "phase3_decoupling_probe_leakage_check": [
+    {
+      "question": "Q1 housing decoupled?",
+      "target": "housing_type",
+      "baseline_features": [
+        "district"
+      ],
+      "full_features": [
+        "district",
+        "age_bin",
+        "sex",
+        "marital_status",
+        "family_type",
+        "education_level",
+        "bachelors_field",
+        "occupation"
+      ],
+      "CE_null": 1.1531472120682433,
+      "CE_baseline_mean": 1.0019844218927663,
+      "CE_baseline_std": 0.0034196193194717573,
+      "CE_full_mean": 1.0101866472419139,
+      "CE_full_std": 0.003256336462332334,
+      "acc_baseline_mean": 0.6527033333333334,
+      "acc_full_mean": 0.6523233333333334,
+      "info_in_baseline": 0.15116279017547707,
+      "info_added_by_extras": -0.008202225349147607,
+      "info_total": 0.14296056482632946,
+      "fraction_added": -0.057374041289720616,
+      "n_folds": 5
+    },
+    {
+      "question": "Control: family_type",
+      "target": "family_type",
+      "baseline_features": [
+        "district"
+      ],
+      "full_features": [
+        "district",
+        "age_bin",
+        "sex",
+        "marital_status",
+        "education_level"
+      ],
+      "CE_null": 2.3696888331832726,
+      "CE_baseline_mean": 2.3389601010227024,
+      "CE_baseline_std": 0.0033970338136141763,
+      "CE_full_mean": 1.5230268022146232,
+      "CE_full_std": 0.005565727233039125,
+      "acc_baseline_mean": 0.2885333333333333,
+      "acc_full_mean": 0.54127,
+      "info_in_baseline": 0.03072873216057026,
+      "info_added_by_extras": 0.8159332988080792,
+      "info_total": 0.8466620309686494,
+      "fraction_added": 0.9637060231395825,
+      "n_folds": 5
+    },
+    {
+      "question": "Control: occupation",
+      "target": "occupation",
+      "baseline_features": [
+        "district",
+        "province"
+      ],
+      "full_features": [
+        "district",
+        "province",
+        "age_bin",
+        "sex",
+        "education_level",
+        "bachelors_field"
+      ],
+      "CE_null": 4.355506868595341,
+      "CE_baseline_mean": 3.485156710432215,
+      "CE_baseline_std": 0.016323483920394292,
+      "CE_full_mean": 3.308298749144442,
+      "CE_full_std": 0.018472604260987947,
+      "acc_baseline_mean": 0.36794333333333334,
+      "acc_full_mean": 0.36839666666666665,
+      "info_in_baseline": 0.8703501581631254,
+      "info_added_by_extras": 0.17685796128777298,
+      "info_total": 1.0472081194508984,
+      "fraction_added": 0.1688852082053261,
+      "n_folds": 5
+    },
+    {
+      "question": "Q2 military|age+sex",
+      "target": "military_status",
+      "baseline_features": [
+        "age_bin"
+      ],
+      "full_features": [
+        "age_bin",
+        "sex"
+      ],
+      "CE_null": 0.03307563501181216,
+      "CE_baseline_mean": 0.03147596027767794,
+      "CE_baseline_std": 0.0021784165667131923,
+      "CE_full_mean": 0.029565318254648466,
+      "CE_full_std": 0.0019990710491957745,
+      "acc_baseline_mean": 0.9946966666666667,
+      "acc_full_mean": 0.9946966666666667,
+      "info_in_baseline": 0.001599674734134221,
+      "info_added_by_extras": 0.0019106420230294748,
+      "info_total": 0.0035103167571636958,
+      "fraction_added": 0.5442933373833923,
+      "n_folds": 5
+    },
+    {
+      "question": "Q3 military|sex+age+occupation",
+      "target": "military_status",
+      "baseline_features": [
+        "sex"
+      ],
+      "full_features": [
+        "sex",
+        "age_bin",
+        "occupation"
+      ],
+      "CE_null": 0.03307563501181216,
+      "CE_baseline_mean": 0.031011923161541877,
+      "CE_baseline_std": 0.002141851296051211,
+      "CE_full_mean": 0.007384567505111286,
+      "CE_full_std": 0.0007504487391357769,
+      "acc_baseline_mean": 0.9946966666666667,
+      "acc_full_mean": 0.9985833333333332,
+      "info_in_baseline": 0.002063711850270284,
+      "info_added_by_extras": 0.023627355656430593,
+      "info_total": 0.025691067506700874,
+      "fraction_added": 0.9196720085791681,
+      "n_folds": 5
+    },
+    {
+      "question": "Control: marital",
+      "target": "marital_status",
+      "baseline_features": [
+        "age_bin"
+      ],
+      "full_features": [
+        "age_bin",
+        "sex",
+        "education_level",
+        "family_type"
+      ],
+      "CE_null": 1.0482782233284051,
+      "CE_baseline_mean": 0.7332811774204038,
+      "CE_baseline_std": 0.0019237670159267535,
+      "CE_full_mean": 0.18149111883812663,
+      "CE_full_std": 0.0016484919117271475,
+      "acc_baseline_mean": 0.7276,
+      "acc_full_mean": 0.9217566666666667,
+      "info_in_baseline": 0.31499704590800137,
+      "info_added_by_extras": 0.5517900585822771,
+      "info_total": 0.8667871044902785,
+      "fraction_added": 0.6365923716721212,
+      "n_folds": 5
+    }
+  ],
+  "phase3_military_breakdown": {
+    "_motivation": "External review (GPT-5.5 Pro, 2026-05) raised that military_status definition is undefined in the data card; this script empirically decides between competing readings.",
+    "n_total_rows": 1000000,
+    "n_military_active": 5282,
+    "n_military_inactive": 994718,
+    "active_share_pct": 0.5282,
+    "active_rank_distribution": [
+      {
+        "rank": "부사관",
+        "n": 2636,
+        "share": 0.49905338886785305
+      },
+      {
+        "rank": "장교",
+        "n": 1958,
+        "share": 0.3706929193487315
+      },
+      {
+        "rank": "병사",
+        "n": 688,
+        "share": 0.13025369178341537
+      }
+    ],
+    "active_age_stats_by_rank": [
+      {
+        "rank": "부사관",
+        "mean_age": 40.58,
+        "min_age": 19,
+        "p25_age": 33.0,
+        "p50_age": 41.0,
+        "p75_age": 48.0,
+        "max_age": 55,
+        "n": 2636
+      },
+      {
+        "rank": "장교",
+        "mean_age": 46.66,
+        "min_age": 22,
+        "p25_age": 38.0,
+        "p50_age": 48.0,
+        "p75_age": 57.0,
+        "max_age": 63,
+        "n": 1958
+      },
+      {
+        "rank": "병사",
+        "mean_age": 25.35,
+        "min_age": 19,
+        "p25_age": 23.0,
+        "p50_age": 26.0,
+        "p75_age": 28.0,
+        "max_age": 30,
+        "n": 688
+      }
+    ],
+    "active_sex_by_rank": [
+      {
+        "rank": "병사",
+        "sex": "남자",
+        "n": 688
+      },
+      {
+        "rank": "부사관",
+        "sex": "남자",
+        "n": 2332
+      },
+      {
+        "rank": "부사관",
+        "sex": "여자",
+        "n": 304
+      },
+      {
+        "rank": "장교",
+        "sex": "남자",
+        "n": 1744
+      },
+      {
+        "rank": "장교",
+        "sex": "여자",
+        "n": 214
+      }
+    ],
+    "consistency_check": {
+      "n_active_with_military_occupation": 5282,
+      "n_active_with_NON_military_occupation": 0,
+      "n_inactive_with_military_occupation": 187,
+      "interpretation": "If 'active' meant a determined occupation function only, both off-diagonal cells should be 0. The two values measure how strict the PGM constraint is."
+    },
+    "interpretation": {
+      "career_military_share": 0.8697,
+      "conscript_share": 0.1303,
+      "verdict": "Reading (b) — 'currently in active military service: career + conscripts': 직업군인(부사관·장교) 비중과 50대 분포를 고려할 때 한국군 현역 인력 구성과 일치. 현역 평균 연령 ~40세는 부사관·장교 정년(53-60세)과 의무복무 사병 19-22세의 가중평균으로 자연스러움."
+    }
+  },
+  "phase1_housing_unit_correction": {
+    "_motivation": "원래 Phase 1 housing 비교는 Nemotron(개인 단위) vs KOSIS 일반가구(가구 단위)로 단위가 다른 비교였음. 이 보정은 1인가구 비중·1인가구 거처분포·평균 가구원수를 이용해 per-person reference 를 추정하고 TVD 를 재계산한다.",
+    "method": "(a) 다인가구 분포 = (전체가구 - 1인가구비중×1인가구분포) / (1-1인가구비중)\n(b) 다인가구 평균 가구원수 = (전체평균 - 1인가구비중) / (1-1인가구비중)\n(c) per-person share(k) = (1인가구비중·1·1인가구(k) + 다인가구비중·평균·다인가구(k)) / 평균",
+    "inputs": {
+      "household_total_2023": {
+        "아파트": 0.531,
+        "단독주택": 0.284,
+        "연립·다세대주택": 0.112,
+        "주택 이외의 거처": 0.058,
+        "비주거용 건물 내 주택": 0.014
+      },
+      "one_person_share_2023": 0.355,
+      "one_person_housing_2023": {
+        "아파트": 0.349,
+        "단독주택": 0.401,
+        "연립·다세대주택": 0.117,
+        "주택 이외의 거처": 0.117,
+        "비주거용 건물 내 주택": 0.016
+      },
+      "mean_household_size_2023": 2.21,
+      "nemotron_per_person": {
+        "아파트": 0.6206,
+        "단독주택": 0.1692,
+        "연립·다세대주택": 0.1401,
+        "주택 이외의 거처": 0.0603,
+        "비주거용 건물 내 주택": 0.0099
+      }
+    },
+    "derived": {
+      "multi_person_housing": {
+        "아파트": 0.631170542635659,
+        "단독주택": 0.21960465116279063,
+        "연립·다세대주택": 0.10924806201550387,
+        "주택 이외의 거처": 0.025527131782945738,
+        "비주거용 건물 내 주택": 0.01289922480620155
+      },
+      "multi_person_avg_size": 2.875968992248062,
+      "per_person_reference_estimated": {
+        "아파트": 0.5858445052439581,
+        "단독주택": 0.24874281805745546,
+        "연립·다세대주택": 0.11049328282296818,
+        "주택 이외의 거처": 0.04022073731102459,
+        "비주거용 건물 내 주택": 0.013397313129187275
+      }
+    },
+    "tvd_summary": {
+      "tvd_vs_household_ref": 0.11945,
+      "tvd_vs_person_ref_est": 0.08374080290434593,
+      "reduction_share": 0.29894681536755185
+    },
+    "cell_level": [
+      {
+        "category": "아파트",
+        "nemotron_per_person": 0.6206,
+        "ref_per_household": 0.531,
+        "ref_per_person_estimated": 0.5858445052439581,
+        "diff_pp_vs_household": 8.96,
+        "diff_pp_vs_person_est": 3.4755494756041894
+      },
+      {
+        "category": "단독주택",
+        "nemotron_per_person": 0.1692,
+        "ref_per_household": 0.284,
+        "ref_per_person_estimated": 0.24874281805745546,
+        "diff_pp_vs_household": -11.479999999999999,
+        "diff_pp_vs_person_est": -7.9542818057455476
+      },
+      {
+        "category": "연립·다세대주택",
+        "nemotron_per_person": 0.1401,
+        "ref_per_household": 0.112,
+        "ref_per_person_estimated": 0.11049328282296818,
+        "diff_pp_vs_household": 2.81,
+        "diff_pp_vs_person_est": 2.9606717177031823
+      },
+      {
+        "category": "주택 이외의 거처",
+        "nemotron_per_person": 0.0603,
+        "ref_per_household": 0.058,
+        "ref_per_person_estimated": 0.04022073731102459,
+        "diff_pp_vs_household": 0.22999999999999965,
+        "diff_pp_vs_person_est": 2.007926268897541
+      },
+      {
+        "category": "비주거용 건물 내 주택",
+        "nemotron_per_person": 0.0099,
+        "ref_per_household": 0.014,
+        "ref_per_person_estimated": 0.013397313129187275,
+        "diff_pp_vs_household": -0.4099999999999999,
+        "diff_pp_vs_person_est": -0.3497313129187274
+      }
+    ],
+    "interpretation": "원본 TVD=0.12 (가구기준 비교) 중 약 30% 가 단위 mismatch 로 인한 환상. Per-person 보정 후 TVD≈0.084. 아파트 격차는 +9pp → +3.5pp 로 크게 감소. 단독주택 격차는 -11.5pp → -8.0pp 로 여전히 큰 폭. 즉 housing marginal 신호는 약화되지만 단독주택에 한해 진짜 격차로 남음.",
+    "caveat": "1) Per-person reference 는 공식 발표가 없어 본 분석이 자체 추정. 2) 다인가구 평균을 단일 값(2.88)으로 단순화 (실제로는 거처유형별 다름). 3) NVIDIA 가 어느 reference(가구·인구·주택)를 targeting했는지 불명확. 4) Phase 3 의 housing decoupling 결론은 internal structure 분석이라 본 보정과 무관."
+  }
 }
