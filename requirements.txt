@@ -1,11 +1,14 @@
-datasets>=3.0
-huggingface_hub>=0.24
-polars>=1.5
-pandas>=2.2
-pyarrow>=17
+# Data I/O
+huggingface_hub>=0.24      # scripts/01_download.py: snapshot_download
+polars>=1.5                # primary dataframe lib
+pandas>=2.2                # mixed-use, sklearn interop
+pyarrow>=17                # parquet I/O backend for polars/pandas
+
+# Numerics + stats
 numpy>=1.26
-scipy>=1.13
-scikit-learn>=1.5
-matplotlib>=3.9
-seaborn>=0.13
-networkx>=3.5
+scipy>=1.13                # scripts/04 etc.: chi-square / contingency
+scikit-learn>=1.5          # HGB classifier, OrdinalEncoder, KFold
+
+# Visualization
+matplotlib>=3.9            # all figures
+networkx>=3.5              # scripts/09, 19: skeleton network

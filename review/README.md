@@ -17,7 +17,7 @@
 
 | 파일 | 용도 |
 |---|---|
-| [`REVIEW_PACKET.md`](REVIEW_PACKET.md) | **단일 파일에 모든 것** — 리뷰어 모델에 그대로 붙여넣기 (~22k 토큰, 그림 제외). `scripts/build_review_packet.py` 가 자동 생성. |
+| [`REVIEW_PACKET.md`](REVIEW_PACKET.md) | **단일 파일에 모든 것** — 리뷰어 모델에 그대로 붙여넣기 (~24k 토큰, 그림 제외). `scripts/build_review_packet.py` 가 자동 생성. |
 | [`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md) | 본 리포가 한 **36개 검증 가능한 주장에 번호 + 증거 파일 링크**. 한 줄씩 검증할 수 있도록 정리. |
 | [`REVIEW_PROMPTS.md`](REVIEW_PROMPTS.md) | **6종 미리 작성된 리뷰 프롬프트** (통합 / Falsification / 방법론 / 통계 / 도메인 / 재현성). 모델에 그대로 붙여넣기 |
 | [`key_results.json`](key_results.json) | 핵심 수치를 구조화된 JSON 으로. 모델이 수치 검증 시 사용 |
