@@ -189,14 +189,14 @@ H0: X ⊥ Y | Z 하에서 X 와 Y 의 결합 분포가 어떨지 시뮬레이션
 ### TSTR — Train on Synthetic, Test on Real
 표준 정의: 합성 데이터로 모델을 학습한 뒤 *실제 데이터* 에서 평가하는 합성데이터 평가 방식.
 
-**본 리포에서는 엄밀한 TSTR 을 수행하지 않는다.** 합성 데이터를 train/test split 한 *within-synthetic* 비교만 사용 — 정확한 명칭은 아래 "Decoupling probe".
+**본 리포에서는 엄밀한 TSTR 을 수행하지 않는다.** 합성 데이터를 train/test split 한 *within-synthetic* 비교만 사용 — 정확한 명칭은 아래 "합성-내 예측가능성 검사".
 
-### Decoupling probe (Predictive conditional-independence probe)
-본 리포의 Phase 3 보강 분석. baseline feature set 과 baseline + extra feature set 으로 각각 분류기를 학습/평가한 뒤 cross-entropy 차이로 "extra 가 정보를 더하는가" 를 정량화.
-- info_added ≈ 0 → extra 는 baseline 에 conditional independent
-- info_added > 0 → extra 가 baseline 위에 정보 추가
+### 합성-내 예측가능성 검사 (Within-synthetic predictability check)
+본 리포의 Phase 3 보강 분석. baseline feature set 과 baseline + extra feature set 으로 각각 분류기를 학습/평가한 뒤 cross-entropy 차이로 "extra 가 정보를 더하는가" 를 정량화. marginal 만 일치시켜도 얻을 수 있는 baseline 예측력 대비 합성데이터에서 변수 간 결합 구조가 살아있는지 측정.
+- info_added ≈ 0 → extra 는 baseline 에 conditional independent (변수 간 결합이 약함)
+- info_added > 0 → extra 가 baseline 위에 정보 추가 (결합 구조 살아있음)
 
-본 리포의 housing decoupling 결정적 증거 산출법.
+본 리포의 **housing decoupling** 결정적 증거 산출법. (파일·함수명에는 초기 명칭 `decoupling_probe` 가 그대로 남아 있음 — 외부 참조 안정성 위해 유지.)
 
 ### Cross-Entropy (CE / 교차 엔트로피)
 분류 모델이 정답을 얼마나 잘 맞추는지의 평균 정보량 손실 (단위: nats).
@@ -215,7 +215,7 @@ info_added = CE(target | baseline_features) − CE(target | baseline + extras)
 
 ### Leakage check (데이터 누수 점검)
 예측 모델 평가에서 train 데이터의 정보가 test 결과에 누설되는지 점검.
-본 리포의 decoupling probe 는 6가지 잠재 누수 (encoder 전체 fit, cap_high_card 전체 빈도, target encoding, 단일 split, HGB 내부 split, 합성 row 중복성) 를 식별 후 **train-only encoder + 5-fold CV** 로 재실행 — 6개 case 모두 info_added 변화 < 0.005 nats (원본 효과의 1% 이하). 결론 변화 없음.
+본 리포의 예측가능성 검사 는 6가지 잠재 누수 (encoder 전체 fit, cap_high_card 전체 빈도, target encoding, 단일 split, HGB 내부 split, 합성 row 중복성) 를 식별 후 **train-only encoder + 5-fold CV** 로 재실행 — 6개 case 모두 info_added 변화 < 0.005 nats (원본 효과의 1% 이하). 결론 변화 없음.
 
 ---
 

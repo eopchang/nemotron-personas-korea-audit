@@ -1,4 +1,4 @@
-# Phase 3 — PGM 구조 추론 (Conditional MI · Skeleton · Decoupling Probe)
+# Phase 3 — PGM 구조 추론 (Conditional MI · Skeleton · 합성-내 예측가능성 검사)
 
 > **한 문단 요약**: Conditional MI 와 PC-style 알고리즘으로 PGM이 생성한
 > 데이터에서 *관찰되는 조건부 의존 skeleton* 을 추정. 결과: **23 direct + 14 mediated
@@ -14,7 +14,7 @@ NVIDIA `Nemotron-Personas-Korea` 가 사용한 PGM이 생성한 데이터에서 
 > ⚠️ 본 분석은 NVIDIA의 proprietary PGM 그래프 자체의 복원이 아니라, **공개 데이터에 남아있는 조건부 의존 구조의 근사** 이다. 생성 파이프라인은 PGM 외 LLM 텍스트 생성·필터링·후처리를 포함하며, 관찰 데이터에서 추론한 skeleton 은 conditioning depth, threshold, latent variable 가정에 의존한다.
 >
 > Phase 2 결론: marginal·bivariate 결합은 풍부하지만, 두 변수가 강하게 결합돼 보여도 직접 edge인지(아니면 다른 변수를 통한 매개인지) 모른다.
-> Phase 3 결론: **23개 direct + 14개 mediated + 18개 marginal 독립의 skeleton** 을 PC-style 추론으로 추정했다 (단, ε=0.005 nats · \|Z\|≤2 한계 하의 결과로, "direct" = "현 조건 하에서 매개되지 않은 잔존 의존"). Housing은 district 외 사람 속성과 거의 독립이라는 가설을 **예측 기반 conditional-independence probe** (분류기로 정보 추가량 측정) 로도 정량 확인 (person-attrs 정보 추가 = −0.008 nats, 즉 0).
+> Phase 3 결론: **23개 direct + 14개 mediated + 18개 marginal 독립의 skeleton** 을 PC-style 추론으로 추정했다 (단, ε=0.005 nats · \|Z\|≤2 한계 하의 결과로, "direct" = "현 조건 하에서 매개되지 않은 잔존 의존"). Housing은 district 외 사람 속성과 거의 독립이라는 가설을 **합성-내 예측가능성 검사** (분류기로 정보 추가량 측정) 로도 정량 확인 (person-attrs 정보 추가 = −0.008 nats, 즉 0).
 
 ---
 
@@ -43,9 +43,9 @@ I(X; Y | Z) = Σ_{x,y,z} p(x,y,z) · log [ p(x,y,z) · p(z) / (p(x,z) · p(y,z))
 
 ε = **0.005 nats** (효과크기 임계, N=1M 에서 χ² p-value는 의미 없음)
 
-### 1.3 Decoupling probe (예측 기반 conditional-independence)
+### 1.3 합성-내 예측가능성 검사 (within-synthetic predictability check)
 
-> 용어 주의: 본 probe 는 합성 데이터를 train/test split 한 **within-synthetic** 비교다. 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르므로 "predictive conditional-independence probe" 또는 "decoupling probe" 명칭을 사용.
+> 용어 주의: 본 검사는 합성 데이터를 train/test split 한 **within-synthetic** 비교다. 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르므로 "합성-내 예측가능성 검사 (within-synthetic predictability check)" 명칭을 사용한다. 파일·함수명에는 초기 명칭 `decoupling_probe` 가 그대로 남아 있다 (외부 참조 안정성 위해 유지).
 
 분류기로 정보 추가량을 측정:
 ```
@@ -374,7 +374,7 @@ Bootstrap (N=100K × 100회) 으로 본 CI 폭:
 
 ## 3. 결정적 관찰들
 
-### 3.1 housing의 완전한 decoupling (예측 기반 probe 로 이중 확인)
+### 3.1 housing의 완전한 decoupling (예측가능성 검사로 이중 확인)
 
 | 모델 | Cross-Entropy | accuracy | info(over baseline) |
 |---|---:|---:|---:|
@@ -505,7 +505,7 @@ PGM은 다음 4개 군집으로 잘 분리됨:
 4. **방향성 미해결** — skeleton은 무방향. 본래 생성 PGM은 DAG일 텐데 d-separation 방향은 추가 가정 (예: 시간 순서, 도메인 지식) 없이는 식별 불가.
 5. **CMI 임계 ε=0.005 nats** — 임의 선택이지만 §2.7 sensitivity 분석으로 의존성 정량화. ε 100배 변동 시 direct edge 수 32→13 변화하나, 핵심 결론 (housing decoupling, demographic chain 강건성) 은 ε-stable.
 6. **High-cardinality variable bias** — §2.5 permutation null 결과, 23 'direct edges' 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect. 이들의 "direct" 분류는 plug-in MI 의 카디널리티 bias 일 가능성 — bias-corrected 결론에서는 12개 direct edge 만 견고.
-7. **Decoupling probe 한계** — 1개 모델 (HGB) 의 학습 능력 한계. 다른 모델 (LightGBM, RF, NN) 에서 미세 차이 발생 가능. 5-fold CV 로 leakage·split-variance 점검 완료 (§1.4) 하나, 다중 모델 robustness 는 향후 작업 ([ROADMAP P8](../ROADMAP.md)).
+7. **예측가능성 검사 한계** — 1개 모델 (HGB) 의 학습 능력 한계. 다른 모델 (LightGBM, RF, NN) 에서 미세 차이 발생 가능. 5-fold CV 로 leakage·split-variance 점검 완료 (§1.4) 하나, 다중 모델 robustness 는 향후 작업 ([ROADMAP P8](../ROADMAP.md)).
 8. **외부 검증 (§2.6) 은 부분만 완료** — KOSIS 직접 API 접근 불가로 보도자료 인용 cell 만 비교. 완전 외부 검증은 KOSIS Open API 키 등록 후 [ROADMAP P7 v2](../ROADMAP.md) 에서 처리 예정.
 
 ---
@@ -529,7 +529,7 @@ data/processed/cmi/
   bootstrap_conditional.csv        §2.5 bootstrap CI conditional
 
 data/processed/
-  decoupling_probe.json            §1.3 6 decoupling probe experiments
+  decoupling_probe.json            §1.3 6 within-synthetic predictability experiments (파일명 유지)
   decoupling_probe_no_leakage.json §1.4 leakage-corrected 재실행
   military_breakdown.json          §3.4 현역 계급별 분해 (의무복무/직업군인)
   housing_unit_correction.json     Phase 1 §3-4 per-person 보정
@@ -568,7 +568,7 @@ python scripts/07_cmi_sweep.py             # 495 CMIs (~3분)
 python scripts/08_skeleton_recovery.py     # PC-style with |Z|≤2 (~5분)
 python scripts/09_network_viz.py
 python scripts/10_three_way_viz.py
-python scripts/11_decoupling_probe.py      # 6 HGB experiments (~3분)
+python scripts/11_decoupling_probe.py      # §1.3 within-synthetic predictability, 6 HGB experiments (~3분)
 python scripts/11b_decoupling_probe_no_leakage.py  # §1.4 leakage check (~15분)
 python scripts/12_subsample_stability.py   # 5 seeds (~6분)
 python scripts/13_military_breakdown.py    # §3.4 현역 계급 분해 (즉시)

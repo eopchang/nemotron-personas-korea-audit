@@ -67,7 +67,7 @@
 자세한 정의는 [`docs/GLOSSARY.md`](GLOSSARY.md#mediated-edge-매개된-엣지--즉-엣지가-없음).
 
 ### Q. NVIDIA가 데이터 카드에 검증 내용을 안 적었나요?
-적혀 있긴 한데, **단변량 (marginal) 분포 수준** 의 정성 비교 위주입니다. 이변량 결합·조건부 독립성·예측 유틸리티 (TSTR / decoupling probe) 같은 지표는 공개되지 않았습니다. 본 리포가 이 빈자리를 채웁니다.
+적혀 있긴 한데, **단변량 (marginal) 분포 수준** 의 정성 비교 위주입니다. 이변량 결합·조건부 독립성·예측 유틸리티 (TSTR / 합성-내 예측가능성 검사) 같은 지표는 공개되지 않았습니다. 본 리포가 이 빈자리를 채웁니다.
 
 ### Q. 1백만 행에 700만 페르소나라니, 이상한 표현 아닌가요?
 NVIDIA의 표기 방식입니다. 한 행에 7개의 자유서술 페르소나 텍스트 (직업·스포츠·예술·여행·식문화·가족·요약) 가 있어, 1M × 7 = "약 700만 페르소나" 로 마케팅. 행 수는 1,000,000.
@@ -147,10 +147,10 @@ Nemotron 은 개인 단위 (1M 행 = 1M 명) 이므로 per-person 거처 분포 
 - 견고한 결론은 12개 direct edge 만 (ratio > 2)
 - **Housing decoupling 결론은 이 보정 후에도 견고** (housing × district ratio = 9.84)
 
-### Q. Decoupling probe 결과의 info_added가 음수 (-0.008 nats) 인 게 무슨 의미죠?
+### Q. 예측가능성 검사 결과의 info_added가 음수 (-0.008 nats) 인 게 무슨 의미죠?
 음수는 **추가한 feature가 오히려 약간 과적합** 을 일으켜 holdout cross-entropy를 살짝 올렸다는 뜻. 사실상 0과 같으며, "person-attrs는 housing 예측에 정보를 더하지 못한다" 는 결론을 강하게 지지합니다. 단일 모델 (HGB) 한계는 향후 작업 (P8). **5-fold CV 보강** 완료: 5-fold SE < 0.02 nats, leakage-corrected 결과 -0.0082 로 거의 동일.
 
-### Q. Decoupling probe 에 data leakage 이슈는 없었나요?
+### Q. 예측가능성 검사 에 data leakage 이슈는 없었나요?
 정밀 점검 완료 ([Phase 3 §1.4](../reports/PHASE3_REPORT.md#14-leakage-check--위-probe-결과는-데이터-누수에-영향받았나)). 잠재 leakage 6가지 (전체 데이터로 OrdinalEncoder fit, cap_high_card 전체 빈도 기반 등) 를 식별 후 train-only encoder + 5-fold CV 로 재실행. **6개 모든 case 에서 info_added 변화 < 0.005 nats** (원본 효과의 1% 이하). 결론 (Q1 housing decoupled, controls 모두 작동) 그대로 유지. 우려는 합리적이었으나 실제 영향은 무의미.
 
 ---

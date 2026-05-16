@@ -147,9 +147,9 @@ I(X; Y | Z) = Σ_{x,y,z} p(x, y, z) · log [ p(x, y, z) · p(z) / (p(x, z) · p(
 
 ---
 
-## 7. Predictive decoupling probe — Phase 3 §1.3 보강
+## 7. 합성-내 예측가능성 검사 (Within-synthetic predictability check) — Phase 3 §1.3 보강
 
-(용어 정의: [GLOSSARY](GLOSSARY.md#decoupling-probe-predictive-conditional-independence-probe) 참조)
+(용어 정의: [GLOSSARY](GLOSSARY.md#합성-내-예측가능성-검사-within-synthetic-predictability-check) 참조)
 
 ### 7.1 목표
 "Feature set F 가 baseline B 위에 정보를 더하는가" 를 분류기 cross-entropy로 측정.
@@ -226,7 +226,7 @@ HGB의 categorical 한계 (255 unique). 250 초과는 top-249 + "기타" 로 캡
 | Permutation null subsample | 100,000 (seed 42) | `15_permutation_null.py:N_SUB` |
 | Bootstrap CI boots | 100, 95% percentile | `16_bootstrap_ci.py:N_BOOTS` |
 | ratio tier 임계 | robust ≥ 10 / signif 2–10 / suspect < 2 | `19_bias_corrected_skeleton.py:TIER_THR` |
-| Decoupling probe subsample size | 300,000 | `11_decoupling_probe.py:N_SUB` |
+| 예측가능성 검사 subsample size | 300,000 | `11_decoupling_probe.py:N_SUB` |
 | Probe HGB iter | 200, depth 8, lr 0.05 | `11_decoupling_probe.py:fit_eval` |
 | HGB cardinality cap | 250 | `11_decoupling_probe.py:CARD_CAP` |
 | Leakage check folds | 5-fold CV, train-only encoder | `11b_decoupling_probe_no_leakage.py` |
@@ -247,7 +247,7 @@ HGB의 categorical 한계 (255 unique). 250 초과는 top-249 + "기타" 로 캡
 - [x] 산출물 (CSV/JSON) git에 commit (작은 것)
 - [x] ε sensitivity 분석
 - [x] Permutation null + Bootstrap CI (bias correction)
-- [x] Decoupling probe leakage check (5-fold CV)
+- [x] 예측가능성 검사 leakage check (5-fold CV)
 - [x] Subsample stability
 - [ ] CI (GitHub Actions) 로 smoke test (미진행)
 - [ ] Docker 이미지 (미진행)

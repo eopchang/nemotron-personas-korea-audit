@@ -1,8 +1,11 @@
-"""Predictive decoupling probe (within-synthetic conditional-independence test).
+"""Within-synthetic predictability check (합성-내 예측가능성 검사).
 
 This is a within-synthetic probe: we train/test split the synthetic data and
 compare cross-entropy with vs without an extra feature set. It is NOT TSTR
 (Train on Synthetic, Test on REAL) since we never evaluate on real data.
+
+(File name retains the legacy `decoupling_probe` identifier for external
+reference stability — see docs/GLOSSARY.md for the canonical term.)
 
 For each (target, baseline-features, full-features) triple:
   - train HistGradientBoostingClassifier on baseline

@@ -113,7 +113,7 @@ Conditional MI 와 [PC-style 알고리즘](docs/GLOSSARY.md#pc-algorithm) 으로
 - ε threshold sensitivity (7 grid 값) → [`data/processed/cmi/epsilon_counts.csv`](data/processed/cmi/epsilon_counts.csv)
 - Permutation null + bootstrap CI (bias-corrected significance) → [`data/processed/cmi/permutation_null_*.csv`](data/processed/cmi)
 - KOSIS cross-tab 외부 비교 (age×marital, age×sex×edu, province×housing) → [`data/processed/kosis_joint_compare.json`](data/processed/kosis_joint_compare.json)
-- 예측 기반 decoupling probe → [`data/processed/decoupling_probe.json`](data/processed/decoupling_probe.json) (+ leakage 점검 → [`data/processed/decoupling_probe_no_leakage.json`](data/processed/decoupling_probe_no_leakage.json))
+- 합성-내 예측가능성 검사 → [`data/processed/decoupling_probe.json`](data/processed/decoupling_probe.json) (+ leakage 점검 → [`data/processed/decoupling_probe_no_leakage.json`](data/processed/decoupling_probe_no_leakage.json)) — 파일명에는 초기 명칭 `decoupling_probe` 유지
 - 현역 계급별 분해 → [`data/processed/military_breakdown.json`](data/processed/military_breakdown.json)
 - 5-seed subsample stability (52/55 stable) → [`data/processed/cmi/stability.csv`](data/processed/cmi/stability.csv)
 
@@ -154,7 +154,7 @@ python scripts/07_cmi_sweep.py                       # 495 CMIs (~3분)
 python scripts/08_skeleton_recovery.py               # PC-style with |Z|≤2 (~5분)
 python scripts/09_network_viz.py
 python scripts/10_three_way_viz.py
-python scripts/11_decoupling_probe.py                # decoupling probe (~3분)
+python scripts/11_decoupling_probe.py                # 합성-내 예측가능성 검사 (~3분)
 python scripts/11b_decoupling_probe_no_leakage.py    # leakage check (~15분)
 python scripts/12_subsample_stability.py             # 5 seeds (~6분)
 python scripts/13_military_breakdown.py              # 현역 계급 분해 (즉시)

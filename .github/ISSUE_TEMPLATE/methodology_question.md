@@ -1,6 +1,6 @@
 ---
 name: 방법론 질문 / 의문
-about: CMI, PC, decoupling probe, 임계 등 방법론적 의문 또는 개선 제안
+about: CMI, PC, 합성-내 예측가능성 검사, 임계 등 방법론적 의문 또는 개선 제안
 title: "[METHOD] "
 labels: methodology
 ---
@@ -8,7 +8,7 @@ labels: methodology
 ### 어떤 분석에 대한 질문인가요?
 [ ] Phase 1 (단변량/marginal)
 [ ] Phase 2 (이변량/bivariate)
-[ ] Phase 3 (CMI / skeleton / decoupling probe)
+[ ] Phase 3 (CMI / skeleton / 합성-내 예측가능성 검사)
 [ ] 그 외:
 
 ### 의문 / 제안

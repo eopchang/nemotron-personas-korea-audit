@@ -1,4 +1,7 @@
-"""Leakage-corrected re-run of the decoupling probe.
+"""Leakage-corrected re-run of the within-synthetic predictability check.
+
+(File name retains the legacy `decoupling_probe` identifier — see
+docs/GLOSSARY.md for the canonical term "합성-내 예측가능성 검사".)
 
 Critical examination identified two potential leakage sources in 11_decoupling_probe.py:
 
