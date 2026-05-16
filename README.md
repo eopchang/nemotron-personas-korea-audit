@@ -1,4 +1,4 @@
-# Nemotron-Personas-Korea — 데이터셋 감사 (Audit)
+# Nemotron-Personas-Korea — 데이터셋 독립 검토
 
 > 2026년 4월, NVIDIA가 *700만 한국인 가상 페르소나* 라는 이름으로 공개한 합성 데이터셋이
 > 통계적으로 얼마나 실제 한국 인구를 닮았고, 내부적으로 어떤 구조를 갖는지를
@@ -231,7 +231,7 @@ NVIDIA가 본 결과를 정정하거나 보강하면 환영합니다.
 
 ## 📚 인용
 
-논문·보고서에서 본 감사를 인용하실 때:
+논문·보고서에서 본 검토를 인용하실 때:
 
 ```bibtex
 @software{kim_nemotron_personas_korea_audit_2026,

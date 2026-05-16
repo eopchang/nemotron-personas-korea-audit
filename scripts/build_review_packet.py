@@ -119,7 +119,7 @@ def main() -> None:
     intro = """# REVIEW PACKET — Nemotron-Personas-Korea Audit
 
 > **외부 리뷰어를 위한 단일 자족 문서.**
-> 본 패킷 하나만으로 본 감사의 방법론, 결과, 주장의 증거 사슬을 모두 평가할 수 있도록
+> 본 패킷 하나만으로 본 검토의 방법론, 결과, 주장의 증거 사슬을 모두 평가할 수 있도록
 > 자동 생성되었습니다. 그림은 별도 (필요 시 `reports/figures/` 참조).
 >
 > **사용법**: 이 문서 전체를 GPT/Claude/Gemini 등의 long-context 모델에 첨부하고,
@@ -148,7 +148,7 @@ def main() -> None:
     # §1 Project intro = README excerpt minus repo navigation noise
     readme = read(ROOT / "README.md")
     intro_excerpt = readme.split("## 🧭 어디부터")[0]  # take TL;DR + key findings
-    parts.append(section("§1. 프로젝트 개요", intro_excerpt.replace("# Nemotron-Personas-Korea — 데이터셋 감사 (Audit)", "").strip()))
+    parts.append(section("§1. 프로젝트 개요", intro_excerpt.replace("# Nemotron-Personas-Korea — 데이터셋 독립 검토", "").strip()))
 
     # §2 Dataset info compact
     parts.append(section("§2. 데이터셋 정보 (NVIDIA 공식 자료 + 본 리포 실측)",
