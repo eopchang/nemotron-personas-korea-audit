@@ -44,7 +44,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 ## 🧭 어디부터 읽으면 좋은가
 
-| 당신은 ... | 가세요 |
+| 원하는 바 | 여기로 |
 |---|---|
 | 1분 안에 핵심만 알고 싶다 | 위 "한 페이지 요약" 만 읽기 |
 | 내 연구에 이 데이터 써도 될지 결정해야 한다 | [`docs/RESEARCHER_GUIDE.md`](docs/RESEARCHER_GUIDE.md) |
