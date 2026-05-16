@@ -206,11 +206,13 @@ def main() -> None:
                          "[in (B) only — omitted from network for clarity]"),
     ]
     grp_handles = [mpatches.Patch(color=GROUP_COLOR[g], label=g) for g in GROUP_COLOR]
-    fig.legend(handles=tier_handles, loc="lower left", bbox_to_anchor=(0.04, -0.05),
+    # Node group → 좌하 (panel A 의 노드에서만 사용)
+    fig.legend(handles=grp_handles, loc="lower left", bbox_to_anchor=(0.04, -0.02),
+               fontsize=10, title="Node group", title_fontsize=11, frameon=False, ncol=5)
+    # Edge significance tier → 우하 (panel B 막대에 색으로 바로 적용)
+    fig.legend(handles=tier_handles, loc="lower right", bbox_to_anchor=(0.96, -0.05),
                fontsize=10, title="Edge significance tier",
                title_fontsize=11, frameon=False, ncol=1)
-    fig.legend(handles=grp_handles, loc="lower right", bbox_to_anchor=(0.96, -0.02),
-               fontsize=10, title="Node group", title_fontsize=11, frameon=False, ncol=5)
 
     fig.suptitle(
         "Bias-corrected dependency skeleton  —  P4 permutation null applied",
