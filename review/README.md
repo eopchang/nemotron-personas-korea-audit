@@ -17,9 +17,9 @@
 
 | 파일 | 용도 |
 |---|---|
-| [`REVIEW_PACKET.md`](REVIEW_PACKET.md) | **단일 파일에 모든 것** — 리뷰어 모델에 그대로 붙여넣기 (~30k 토큰, 그림 제외). `scripts/build_review_packet.py` 가 자동 생성. |
-| [`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md) | 본 리포가 한 **모든 검증 가능한 주장에 번호 + 증거 파일 링크**. 한 줄씩 검증할 수 있도록 정리. |
-| [`REVIEW_PROMPTS.md`](REVIEW_PROMPTS.md) | **4종 미리 작성된 리뷰 프롬프트** (방법론·통계·도메인·재현성). 모델에 그대로 붙여넣기 |
+| [`REVIEW_PACKET.md`](REVIEW_PACKET.md) | **단일 파일에 모든 것** — 리뷰어 모델에 그대로 붙여넣기 (~22k 토큰, 그림 제외). `scripts/build_review_packet.py` 가 자동 생성. |
+| [`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md) | 본 리포가 한 **36개 검증 가능한 주장에 번호 + 증거 파일 링크**. 한 줄씩 검증할 수 있도록 정리. |
+| [`REVIEW_PROMPTS.md`](REVIEW_PROMPTS.md) | **6종 미리 작성된 리뷰 프롬프트** (통합 / Falsification / 방법론 / 통계 / 도메인 / 재현성). 모델에 그대로 붙여넣기 |
 | [`key_results.json`](key_results.json) | 핵심 수치를 구조화된 JSON 으로. 모델이 수치 검증 시 사용 |
 
 ---
@@ -40,12 +40,14 @@
 
 ```
 1. REVIEW_PACKET.md 첨부
-2. REVIEW_PROMPTS.md 의 4종 중 관심 분야 선택:
+2. REVIEW_PROMPTS.md 의 6종 중 관심 분야 선택:
+   - 통합 리뷰 (모든 측면 한번에)
+   - Falsification (가장 강한 비판 유도 — 결론 무너뜨릴 falsification test 요구)
    - 방법론 (CMI, PC, decoupling probe 의 적용이 정확한가)
    - 통계 (임계, 표본 크기, 효과크기 해석이 적절한가)
    - 도메인 (한국 인구통계 해석이 맞는가)
    - 재현성 (코드/수치를 제3자가 검증 가능한가)
-3. 4번 별도 호출 → 4개 리포트 받기
+3. 별도 호출 → 분야별 리포트 받기
 ```
 
 ### 옵션 C. "수치 검증만 빠르게"
@@ -64,12 +66,10 @@
 python scripts/build_review_packet.py
 ```
 
-이 명령은:
-- `reports/PHASE1~3_REPORT.md`
-- `data/processed/cmi/skeleton.json`
-- `data/processed/decoupling_probe.json`
-- `data/processed/marginals_summary.json`
-- 등을 자동 수집해서 `review/REVIEW_PACKET.md` 와 `review/key_results.json` 을 갱신.
+이 명령은 다음을 자동 수집해 `review/REVIEW_PACKET.md` 와 `review/key_results.json` 을 갱신:
+- 본문: `reports/PHASE1~3_REPORT.md`, `CLAIMS_LEDGER.md`, `docs/METHODOLOGY.md`
+- 수치: `data/processed/marginals_summary.json`, `kosis_comparison.json`, `cmi/skeleton.json`, `cmi/stability.csv`, `cmi/node_degrees.csv`, `decoupling_probe.json`, `bivariate/metrics_long.csv`
+- 외부 reference: `data/reference/kosis_reference.json`
 
 분석을 수정한 뒤에는 빌더를 다시 돌려 패키지를 동기화하세요.
 

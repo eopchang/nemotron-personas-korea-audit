@@ -5,7 +5,7 @@
 > 자동 생성되었습니다. 그림은 별도 (필요 시 `reports/figures/` 참조).
 >
 > **사용법**: 이 문서 전체를 GPT/Claude/Gemini 등의 long-context 모델에 첨부하고,
-> [`REVIEW_PROMPTS.md`](REVIEW_PROMPTS.md) 의 4종 프롬프트 중 하나로 분석을 요청하세요.
+> [`REVIEW_PROMPTS.md`](REVIEW_PROMPTS.md) 의 6종 프롬프트 (통합/Falsification/방법론/통계/도메인/재현성) 중 하나로 분석을 요청하세요.
 
 ---
 
@@ -19,7 +19,7 @@
 §4. Phase 1 — 단변량 충실도 리포트
 §5. Phase 2 — 이변량 결합 리포트
 §6. Phase 3 — PGM 구조 추론 리포트
-§7. CLAIMS LEDGER (30개 주장 + 증거)
+§7. CLAIMS LEDGER (36개 주장 + 증거)
 §8. KEY RESULTS (구조화 수치)
 §9. KOSIS reference 통계 (검증용)
 §10. 한계 및 자기 진술
@@ -2460,20 +2460,24 @@ C7  [_]  C14 [_]  C21 [_]  C28 [_]  C34 [_]
 # §10. 한계 / 자기 진술 / 의심 가능 지점
 
 
-본 리포가 스스로 인정한 한계:
+본 리포가 스스로 인정한 한계 (CLAIMS_LEDGER 의 C27~C35 항목 참조):
 
-1. **모집단 차이**: KOSIS reference 일부는 15+ 또는 가구 기준. 19+ 정밀 비교를 위한 KOSIS 미시 자료 사용은 향후 작업.
+1. **모집단 차이**: KOSIS reference 가 모집단 정의가 다를 수 있음 (15+ 또는 25+). marital/education 에서 caveat 명시. housing 은 본 분석이 per-person reference 자체 추정 (±2pp 오차 가능).
 2. **PC conditioning depth**: |Z| ≤ 2 까지만. |Z| ≥ 3 에서 mediation 가능성 미검증.
-3. **CMI 임계 ε = 0.005 nats**: 임의 선택. sensitivity 분석 미실시.
-4. **Decoupling probe 단일 모델 / 시드**: HistGradientBoostingClassifier · seed=42 만 사용. 다른 모델 (RF, LightGBM, NN) / 다른 seed 에서의 robustness 미확인 (P8 예정). 또한 "TSTR" 이라는 명칭은 부정확하며 within-synthetic probe 가 정확.
-5. **방향성 미해결**: 추론된 skeleton 은 무방향. DAG 화 (방향 있는 PGM) 는 시간 순서 등 추가 가정 필요.
-6. **시계열 부재**: 정적 스냅샷. 생애주기·이주·세대간 이동 분석 불가.
-7. **bootstrap 표준오차 미산출**: subsample stability 만 수행. CMI 추정량의 confidence interval 없음.
-8. **Phase 4 미진행**: 7개 자유서술 페르소나 텍스트 분석 (어휘 다양성, 고정관념) 은 미수행.
+3. **CMI 임계 ε = 0.005 nats**: 임의 선택이나 §2.7 sensitivity 분석으로 의존성 정량화 — 핵심 결론은 ε-stable. ★★★ 검증 완료.
+4. **High-cardinality bias**: §2.5 permutation null 결과, 23 direct edges 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect.
+5. **Bootstrap CI 산출 완료**: 모든 페어 SE 매우 작음 (district~province SE=0.004 nats). 추정치 자체는 정밀.
+6. **Decoupling probe 단일 모델 한계**: HistGradientBoostingClassifier · seed=42 사용. 다른 모델 (RF, LightGBM, NN) 에서의 robustness 미확인 (ROADMAP P8 예정). 단 leakage check (§1.4) + 5-fold CV 로 단일 split 한계는 점검 완료 — 결론 변화 없음. 명칭은 within-synthetic probe (엄밀한 TSTR 아님).
+7. **방향성 미해결**: 추론된 skeleton 은 무방향. DAG 화 (방향 있는 PGM) 는 시간 순서 등 추가 가정 필요.
+8. **외부 검증 부분만 완료**: §2.6 KOSIS cross-tab 비교는 보도자료 인용 cell 위주. 완전 외부 검증은 KOSIS Open API 통한 P7 v2 예정.
+9. **시계열 부재**: 정적 스냅샷. 생애주기·이주·세대간 이동 분석 불가.
+10. **Phase 4 미진행**: 7개 자유서술 페르소나 텍스트 분석 (어휘 다양성, 고정관념) 은 미수행.
 
 리뷰어가 특히 봐 주실 점:
-- C19 (housing decoupling, info_added = -0.008 nats) 의 통계적 신뢰도
+- C19 (housing decoupling, info_added = -0.008 nats) 의 통계적 신뢰도 — leakage check 후에도 동일 (C30b)
 - C21 (현역 인력 분해 vs 한국군 실제 구성) 의 도메인 해석 정당성
 - C12, C13 (sex×field, sex×military) 한국 reference 정밀 검증
+- C31 (permutation null bias correction) — 23 direct edges 중 12개만 견고 결론의 견고성
+- C8 (housing per-person reference 자체 추정) 의 ±2pp 오차 가정
 - METHODOLOGY §7 의 8개 임의 선택의 sensitivity
 

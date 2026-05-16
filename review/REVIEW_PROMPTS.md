@@ -16,14 +16,14 @@ GPT-5.5 Pro / Claude Opus / Gemini Pro 등에 그대로 붙여넣을 수 있는 
 
 다음 형식으로 응답:
 
-【1】본 리포트의 핵심 결론 5개 (housing decoupling, military as occupation function 등)
+【1】본 리포트의 핵심 결론 7개 (시도/시군구 분포, 인구학 chain, 성별×전공, housing decoupling, military as occupation function, occupation '무직' 카테고리, high-card bias 등 — README "7개 결정적 발견" 참조)
    각각에 대해 "이 결론을 무너뜨리려면 어떤 분석 결과가 나와야 하는가" 를 적어주세요.
    각 결론마다 falsification test 1-2개 제안.
 
 【2】본 리포트의 문장 중 evidence level 대비 과장된 표현을 찾아 직접 인용하고
    더 안전한 수정안을 제시해주세요. 최소 5개.
 
-【3】CLAIMS_LEDGER 의 30개 주장 중 신뢰도 등급이 *과대* 매겨졌다고 보는 것을
+【3】CLAIMS_LEDGER 의 36개 주장 중 신뢰도 등급이 *과대* 매겨졌다고 보는 것을
    3개 이상 골라 다운그레이드 사유와 함께 적어주세요.
 
 【4】본 리포트의 결론 중 외부에서 신뢰하기 어려운 가장 약한 부분 1개를
@@ -63,13 +63,13 @@ GPT-5.5 Pro / Claude Opus / Gemini Pro 등에 그대로 붙여넣을 수 있는 
 - "military as occupation function" 해석이 과한가, 적절한가
 
 【4. 재현성·투명성】
-- CLAIMS_LEDGER 의 30개 주장 중 증거가 명확한 것 / 모호한 것
+- CLAIMS_LEDGER 의 36개 주장 중 증거가 명확한 것 / 모호한 것
 - 코드와 산출물의 매핑이 명확한가
 - 임의 선택 (임계, 시드, 샘플 크기) 이 충분히 명시됐는가
 
 【종합 판단】
 다음 형식으로 마무리:
-- 본 검토의 핵심 결론 5개를 최대 신뢰도 / 보통 / 낮은 신뢰도로 분류
+- 본 검토의 핵심 결론 7개를 최대 신뢰도 / 보통 / 낮은 신뢰도로 분류
 - 가장 큰 약점 3개
 - 추가로 수행하면 좋을 검증 3개
 - "이 검토를 인용해도 될 만한 신뢰도인가" 1줄 평
@@ -192,7 +192,7 @@ C. N=1M 에서 χ² p-value 무시 결정의 정당성
 
 평가 대상:
 
-1. CLAIMS_LEDGER 의 30개 주장 → 증거 파일 매핑
+1. CLAIMS_LEDGER 의 36개 주장 → 증거 파일 매핑
    - 각 주장이 어떤 CSV/JSON/figure 에서 직접 검증 가능한가
    - 매핑이 명확하지 않은 주장은 어느 것인가
 
