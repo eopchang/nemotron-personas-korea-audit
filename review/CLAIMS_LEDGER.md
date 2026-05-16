@@ -47,14 +47,11 @@
 - Caveat: 모집단 차이 (19+ vs 25+).
 - Evidence: [`reports/tables/kosis_comparison.md:education_level`](../reports/tables/kosis_comparison.md)
 
-[**C8**] (★) `housing_type` 비교는 **단위 mismatch 보정 후 약화됨**.
-- 원본 비교: TVD=0.119 (vs KOSIS 가구 기준 reference). 아파트 +8.9pp, 단독 −11.5pp.
-- 보정 비교: TVD ≈ 0.084 (vs 본 분석 자체 추정 per-person reference). 아파트 +3.5pp, 단독 -8.0pp. **원래 격차의 약 30% 가 단위 mismatch 환상.**
-- 보정 방법: 1인가구 비중 35.5% + 1인가구 거처분포 + 평균 가구원수 2.21 로 다인가구 분포 역산 후 가구원수 가중. [`scripts/20_housing_unit_correction.py`](../scripts/20_housing_unit_correction.py), [`data/processed/housing_unit_correction.json`](../data/processed/housing_unit_correction.json).
-- **신뢰도 다운그레이드**: ★★ → ★. (a) per-person reference 가 공식 발표 없어 자체 추정 (±2pp 오차 가능), (b) NVIDIA targeting reference 불명확.
-- 단독주택 -8pp 잔존 격차는 **약한 신호로만** 인용해야 함 (확정적 결론 어려움).
-- Evidence: [Phase 1 §3-4 수정본](../reports/PHASE1_REPORT.md#3-4-housing_type----신호-약화됨-단위-mismatch-보정-후)
-- ※ Phase 3 의 housing decoupling 결론 (C18, C19) 은 internal structure 분석이라 본 보정과 무관, 그대로 유효.
+[**C8**] (★) `housing_type` 은 per-person 기준 reference 대비 약한 격차. **TVD = 0.084**, 셀별 차이 +3.5pp (아파트) / −8.0pp (단독주택) / +3.0pp (연립·다세대) / +2.0pp (주택이외) / −0.3pp (비주거).
+- Reference: 본 분석이 통계청 일반가구 + 1인가구 비중·거처분포 + 평균 가구원수로 자체 추정 (`scripts/20_housing_unit_correction.py`).
+- Caveat (신뢰도 ★): (a) per-person reference 가 공식 발표 없어 ±2pp 추정 오차, (b) NVIDIA targeting reference 불명확, (c) 단독주택 -8pp 잔존 차이는 약한 차이로만 인용 가능.
+- Evidence: [Phase 1 §3-4](../reports/PHASE1_REPORT.md#3-4-housing_type----약한-격차), [`data/processed/housing_unit_correction.json`](../data/processed/housing_unit_correction.json)
+- ※ Phase 3 의 housing decoupling 결론 (C18, C19) 은 internal structure 분석이라 본 marginal 비교와 무관, 그대로 유효.
 
 ---
 
@@ -155,7 +152,7 @@ baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Contr
 
 [**C30**] (★★) Decoupling probe 는 단일 모델 (HGB) 한정. 다른 모델 (RF, LightGBM, NN) 에서 결과 다를 가능성. 5-fold CV 는 보강 완료 (C19 caveat).
 
-[**C30b**] (★★★) **Leakage 점검 통과**: 6개 case 모두 train-only encoder + 5-fold CV 로 재실행, info_added 차이 < 0.005 nats (원본 신호의 1% 이하). 5-fold SE < 0.02 nats. Housing decoupling 결론 (Q1) 은 -0.0077 → -0.0082 로 거의 동일. 단일 split + 전체 데이터 encoder 사용으로 인한 잠재 leakage 가 결론에 영향 없음을 확인.
+[**C30b**] (★★★) **Leakage 점검 통과**: 6개 case 모두 train-only encoder + 5-fold CV 로 재실행, info_added 차이 < 0.005 nats (원본 효과의 1% 이하). 5-fold SE < 0.02 nats. Housing decoupling 결론 (Q1) 은 -0.0077 → -0.0082 로 거의 동일. 단일 split + 전체 데이터 encoder 사용으로 인한 잠재 leakage 가 결론에 영향 없음을 확인.
 - Evidence: [`data/processed/decoupling_probe_no_leakage.json`](../data/processed/decoupling_probe_no_leakage.json), [`scripts/11b_decoupling_probe_no_leakage.py`](../scripts/11b_decoupling_probe_no_leakage.py), [Phase 3 §1.3.1](../reports/PHASE3_REPORT.md#131-leakage-check--위-probe-결과는-데이터-누수에-영향받았나)
 
 [**C31**] (★★★) Permutation null (100회, N=100K subsample, stratified shuffle) 결과:

@@ -21,7 +21,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 | Phase | 무엇을 봤나 | 결과 |
 |---|---|---|
-| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). housing 은 약한 신호 — 단위 보정 (개인 vs 가구 기준) 후 TVD ≈ 0.08, 단독주택 -8pp 잔존 (Phase1 §3-4) |
+| **1** 단변량 충실도 | 12개 변수의 분포가 KOSIS 와 일치하나? | sex/지역/학력/혼인 모두 양호 (TVD ≤ 0.05). housing 은 약한 격차 (TVD ≈ 0.08, 단독주택 -8pp 잔존; [Phase1 §3-4](reports/PHASE1_REPORT.md#3-4-housing_type----약한-격차)) |
 | **2** 이변량 결합 | 55개 변수 쌍의 결합이 어떤 모양인가? | 인구학 chain (age→marital→family, age→edu→field→occupation) 견고. 성별×전공 분리 패턴 한국 현실과 부합 |
 | **3** 의존 구조 추정 | 데이터에 어떤 조건부 의존 skeleton이 남아있나? | **23 direct + 14 mediated + 18 no-edge** (ε=0.005 nats, \|Z\|≤2 조건 하; ε 100배 변동 시 direct 수 32–13 범위, 핵심 결론은 ε-stable; permutation null 로 bias 보정 시 12개만 ratio>2 로 견고). **Housing은 사람 속성과 분리, military는 occupation 함수** |
 
@@ -80,7 +80,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 - 이 중 **5개만 KOSIS 와 직접 비교** → [`reports/tables/kosis_comparison.md`](reports/tables/kosis_comparison.md)
   - 선정 기준 = "공식 KOSIS reference 가 명확히 매핑되는 변수만". sex, province, marital_status, education_level, housing_type 채택.
   - 나머지 7개 (occupation, district, family_type, bachelors_field, age, military_status, country) 는 모집단·분류체계 mismatch 또는 trivial 로 1차 비교에서 제외 (자세히는 [FAQ](docs/FAQ.md#q-단변량-12개-중-왜-5개만-kosis-와-비교했나요) 참조; KSCO 대분류 매핑 후 추가 비교는 [ROADMAP P5](ROADMAP.md))
-- **Headline**: sex (TVD=0.0006), province (0.005), education (0.04), marital (0.05) 모두 양호. housing 만 약한 신호 — 단위 보정 (개인 vs 가구 기준) 후 **TVD ≈ 0.08**, 단독주택 -8pp 잔존 ([§3-4 수정본](reports/PHASE1_REPORT.md#3-4-housing_type----신호-약화됨-단위-mismatch-보정-후))
+- **Headline**: sex (TVD=0.0006), province (0.005), education (0.04), marital (0.05) 모두 양호. housing 만 약한 격차 (TVD ≈ 0.08, 단독주택 -8pp 잔존 — [§3-4](reports/PHASE1_REPORT.md#3-4-housing_type----약한-격차))
 
 ### [Phase 2 — 이변량 결합](reports/PHASE2_REPORT.md) · [전 55페어 색인](reports/PAIR_INDEX.md)
 
@@ -91,7 +91,7 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 - 4개 11×11 heatmap → [`reports/figures/heatmap_*.png`](reports/figures)
 - **55개 페어 detail** (전체 자동 생성) → [`reports/figures/bivariate_all/`](reports/figures/bivariate_all)
 - **본문 깊이 다룬 10개** (큐레이션) → [`reports/figures/bivariate/`](reports/figures/bivariate)
-  - 선정 논리: (1) 데이터카드의 "독립 가정" 검증 — `sex×bachelors_field`, `sex×occupation`, (2) Phase 1 신호 추적 — `province×housing`, (3) 결정론적 제약 검증 — `marital×family_type`, (4) 한국 도메인 핵심 결합 — `age×{marital, education, occupation}`, `education×occupation`, `bachelors_field×occupation`, (5) sanity — `sex×military_status` (자세히는 [Phase 2 §3](reports/PHASE2_REPORT.md))
+  - 선정 논리: (1) 데이터카드의 "독립 가정" 검증 — `sex×bachelors_field`, `sex×occupation`, (2) Phase 1 격차 추적 — `province×housing`, (3) 결정론적 제약 검증 — `marital×family_type`, (4) 한국 도메인 핵심 결합 — `age×{marital, education, occupation}`, `education×occupation`, `bachelors_field×occupation`, (5) sanity — `sex×military_status` (자세히는 [Phase 2 §3](reports/PHASE2_REPORT.md))
 
 ### [Phase 3 — 의존 구조 추정](reports/PHASE3_REPORT.md) ⭐
 

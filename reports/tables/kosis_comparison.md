@@ -29,7 +29,7 @@ Phase 1: 단변량 충실도. TVD = 0.5·Σ|p_synth − p_ref|.
 | 주택 이외의 거처 | 4.00% | 6.03% | +2.03 |
 | 비주거용 건물 내 주택 | 1.30% | 0.99% | -0.31 |
 
-단독주택 -8pp 잔존 격차는 약한 신호 — per-person reference 추정 오차 (±2pp) 고려 시 단언적 결론 어려움. 산출 방법: `scripts/20_housing_unit_correction.py`.
+단독주택 -8pp 잔존 격차가 가장 큰 차이 — per-person reference 추정 오차 (±2pp) 고려 시 단언적 결론 어려움. 산출 방법: `scripts/20_housing_unit_correction.py`.
 
 ![compare](../figures/compare_housing_type.png)
 

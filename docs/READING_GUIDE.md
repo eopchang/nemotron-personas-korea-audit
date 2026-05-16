@@ -41,7 +41,7 @@
 1. [README §재현](../README.md#재현) 으로 환경 세팅
 2. `python scripts/01_download.py` — HuggingFace 에서 받기 (~2GB)
 3. [`scripts/_lib.py`](../scripts/_lib.py) 의 `load_df()` 호출하면 1M 행 polars DataFrame
-4. 본 리포의 [`reports/PAIR_INDEX.md`](../reports/PAIR_INDEX.md) 에서 어느 변수 쌍에 신호가 있는지 먼저 보세요.
+4. 본 리포의 [`reports/PAIR_INDEX.md`](../reports/PAIR_INDEX.md) 에서 어느 변수 쌍에 강한 결합이 있는지 먼저 보세요.
 
 ---
 

@@ -117,7 +117,7 @@ def main() -> None:
         "interpretation": (
             "원본 TVD=0.12 (가구기준 비교) 중 약 30% 가 단위 mismatch 로 인한 환상. "
             "Per-person 보정 후 TVD≈0.084. 아파트 격차는 +9pp → +3.5pp 로 크게 감소. "
-            "단독주택 격차는 -11.5pp → -8.0pp 로 여전히 큰 폭. 즉 housing marginal 신호는 "
+            "단독주택 격차는 -11.5pp → -8.0pp 로 여전히 큰 폭. 즉 housing marginal 격차는 "
             "약화되지만 단독주택에 한해 진짜 격차로 남음."
         ),
         "caveat": (

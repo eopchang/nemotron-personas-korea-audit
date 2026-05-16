@@ -76,7 +76,7 @@
 
 ### 농촌 / 도시 비교
 - ✅ province × housing 결합은 도시 단독↓ / 농촌 단독↑ 패턴 잘 잡음
-- ⚠️ 단위 mismatch 보정 후 housing 의 *전체* 분포 격차는 작아짐 (TVD ≈ 0.08, 단독주택 -8pp 잔존). 베이스라인으로 쓸 때 단독주택만 주의 ([Phase 1 §3-4 수정본](../reports/PHASE1_REPORT.md#3-4-housing_type----신호-약화됨-단위-mismatch-보정-후))
+- ⚠️ housing 의 *전체* 분포는 per-person reference 대비 약한 격차 (TVD ≈ 0.08, 단독주택 -8pp 잔존). 베이스라인으로 쓸 때 단독주택만 주의 ([Phase 1 §3-4](../reports/PHASE1_REPORT.md#3-4-housing_type----약한-격차))
 
 ---
 
