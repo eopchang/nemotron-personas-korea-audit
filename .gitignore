@@ -4,6 +4,9 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 
+# MkDocs build output (CI 가 빌드하므로 로컬·gh-pages 모두 커밋 안함)
+site/
+
 # 큰 원본/중간 산출물은 추적하지 않음 (재현 스크립트로 받기)
 data/raw/
 data/processed/*.parquet

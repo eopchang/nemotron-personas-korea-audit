@@ -1,0 +1,150 @@
+site_name: Nemotron-Personas-Korea Audit
+site_description: >-
+  Independent joint-distribution & dependency-structure audit of NVIDIA's
+  Nemotron-Personas-Korea synthetic dataset (한국어 본문 + English abstract).
+site_url: https://eopchang.github.io/nemotron-personas-korea-audit/
+site_author: Chang-Eop Kim
+
+repo_name: eopchang/nemotron-personas-korea-audit
+repo_url: https://github.com/eopchang/nemotron-personas-korea-audit
+edit_uri: edit/main/
+
+docs_dir: .
+site_dir: site
+
+# repo 루트를 source 로 쓰므로 사이트에 노출하지 않을 것들은 모두 exclude
+exclude_docs: |
+  .github/
+  .venv/
+  .vscode/
+  data/
+  scripts/
+  notebooks/
+  site/
+  *.py
+  *.json
+  *.csv
+  *.parquet
+  *.cff
+  *.lock
+  *.toml
+  *.txt
+  *.yml
+  *.yaml
+  LICENSE
+  .gitignore
+  .python-version
+  uv.lock
+  pyproject.toml
+
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 전환
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 전환
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Noto Sans KR
+    code: JetBrains Mono
+
+nav:
+  - 한 페이지 요약: index.md
+  - English Summary: ABSTRACT_EN.md
+  - 가이드:
+      - 연구자 가이드: docs/RESEARCHER_GUIDE.md
+      - 읽기 가이드: docs/READING_GUIDE.md
+      - FAQ: docs/FAQ.md
+      - 용어 사전: docs/GLOSSARY.md
+      - 방법론: docs/METHODOLOGY.md
+  - 리포트:
+      - Phase 1 — 단변량: reports/PHASE1_REPORT.md
+      - Phase 2 — 이변량: reports/PHASE2_REPORT.md
+      - Phase 3 — PGM 구조: reports/PHASE3_REPORT.md
+      - 55-pair 색인: reports/PAIR_INDEX.md
+      - KOSIS 비교표: reports/tables/kosis_comparison.md
+  - 외부 리뷰:
+      - 개요: review/README.md
+      - 주장 목록 (Claims): review/CLAIMS_LEDGER.md
+      - Review Prompts (KR): review/REVIEW_PROMPTS.md
+      - Review Prompts (EN): review/REVIEW_PROMPTS_EN.md
+  - 메타:
+      - 로드맵: ROADMAP.md
+      - 기여 가이드: CONTRIBUTING.md
+
+plugins:
+  - search:
+      lang:
+        - ko
+        - en
+  - include-markdown
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+# README.md 는 index.md 가 include 하므로 source 에 남겨두되 nav 에는 없음.
+# 55-pair detail 페이지 (reports/PAIR_INDEX.md 가 링크) 도 nav 외 처리.
+not_in_nav: |
+  README.md
+
+# 데이터 파일 (data/, scripts/) 링크는 GitHub blob 으로 가는 게 정상.
+# 일부 깨진 링크 (raw evidence file) 는 site 빌드 실패 아닌 경고로 처리.
+strict: false
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/eopchang/nemotron-personas-korea-audit
+  generator: false

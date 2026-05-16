@@ -1,6 +1,6 @@
 # Nemotron-Personas-Korea — 합성 데이터 결합 분포·의존 구조 검증
 
-🇰🇷 **한국어 (본 페이지)** · 🇺🇸 [English Summary](#-english-summary) · 📄 [Full English Abstract](ABSTRACT_EN.md)
+🇰🇷 **한국어 (본 페이지)** · 🇺🇸 [English Summary](#-english-summary) · 📄 [Full English Abstract](ABSTRACT_EN.md) · 🌐 [웹사이트 (검색·다크모드)](https://eopchang.github.io/nemotron-personas-korea-audit/)
 
 > 2026년 4월, NVIDIA가 *700만 한국인 가상 페르소나* 라는 이름으로 공개한 합성 데이터셋이
 > 통계적으로 얼마나 실제 한국 인구를 닮았고, 내부적으로 어떤 구조를 갖는지를
@@ -10,6 +10,7 @@
 [![Reports: CC BY 4.0](https://img.shields.io/badge/reports-CC--BY--4.0-orange.svg)](LICENSE)
 [![Dataset: HuggingFace](https://img.shields.io/badge/dataset-HuggingFace-yellow)](https://huggingface.co/datasets/nvidia/Nemotron-Personas-Korea)
 [![English Abstract](https://img.shields.io/badge/abstract-English-blue)](ABSTRACT_EN.md)
+[![Website](https://img.shields.io/badge/site-GitHub_Pages-success)](https://eopchang.github.io/nemotron-personas-korea-audit/)
 
 ---
 
