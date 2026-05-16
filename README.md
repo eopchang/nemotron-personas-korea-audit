@@ -46,12 +46,12 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 
 | 당신은 ... | 가세요 |
 |---|---|
-| 5분 안에 핵심만 알고 싶다 | 위 "한 페이지 요약" 만 읽기 |
+| 1분 안에 핵심만 알고 싶다 | 위 "한 페이지 요약" 만 읽기 |
 | 내 연구에 이 데이터 써도 될지 결정해야 한다 | [`docs/RESEARCHER_GUIDE.md`](docs/RESEARCHER_GUIDE.md) |
 | 통계 용어 (CMI, NMI, TVD…) 가 어렵다 | [`docs/GLOSSARY.md`](docs/GLOSSARY.md) |
-| 자주 묻는 질문이 있다 | [`docs/FAQ.md`](docs/FAQ.md) |
+| 자주 묻는 질문 | [`docs/FAQ.md`](docs/FAQ.md) |
 | 어느 보고서를 어디서 보나 | [`docs/READING_GUIDE.md`](docs/READING_GUIDE.md) |
-| 분석 방법론을 자세히 보고 싶다 | [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) |
+| 분석 방법론을 자세히 확인하고 싶다 | [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) |
 | 직접 재현하고 싶다 | [`#재현`](#재현) |
 | **이 분석 자체를 의심한다 / 다른 LLM으로 검증하고 싶다** | [`review/`](review/) |
 
