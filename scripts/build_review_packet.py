@@ -198,7 +198,7 @@ def main() -> None:
 3. **CMI 임계 ε = 0.005 nats**: 임의 선택이나 §2.7 sensitivity 분석으로 의존성 정량화 — 핵심 결론은 ε-stable. ★★★ 검증 완료.
 4. **High-cardinality bias**: §2.5 permutation null 결과, 23 direct edges 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect.
 5. **Bootstrap CI 산출 완료**: 모든 페어 SE 매우 작음 (district~province SE=0.004 nats). 추정치 자체는 정밀.
-6. **Decoupling probe 단일 모델 한계**: HistGradientBoostingClassifier · seed=42 사용. 다른 모델 (RF, LightGBM, NN) 에서의 robustness 미확인 (ROADMAP P8 예정). 단 leakage check (§1.4) + 5-fold CV 로 단일 split 한계는 점검 완료 — 결론 변화 없음. 명칭은 within-synthetic probe (엄밀한 TSTR 아님).
+6. **Decoupling probe 단일 모델 한계**: HistGradientBoostingClassifier · seed=42 사용. 다른 모델 (RF, LightGBM, NN) 에서의 robustness 미확인 (ROADMAP P8 예정). 단 leakage check (§1.4) + 5-fold CV 로 단일 split 한계는 점검 완료 — 결론 변화 없음.
 7. **방향성 미해결**: 추론된 skeleton 은 무방향. DAG 화 (방향 있는 PGM) 는 시간 순서 등 추가 가정 필요.
 8. **외부 검증 부분만 완료**: §2.6 KOSIS cross-tab 비교는 보도자료 인용 cell 위주. 완전 외부 검증은 KOSIS Open API 통한 P7 v2 예정.
 9. **시계열 부재**: 정적 스냅샷. 생애주기·이주·세대간 이동 분석 불가.

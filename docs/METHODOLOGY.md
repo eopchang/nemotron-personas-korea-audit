@@ -149,7 +149,7 @@ I(X; Y | Z) = Σ_{x,y,z} p(x, y, z) · log [ p(x, y, z) · p(z) / (p(x, z) · p(
 
 ## 7. Predictive decoupling probe — Phase 3 §1.3 보강
 
-> 용어 주의: 본 within-synthetic probe 는 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르다. 합성 데이터만으로 train/test split 한 **predictive conditional-independence probe** / **decoupling probe** 가 정확한 명칭.
+(용어 정의: [GLOSSARY](GLOSSARY.md#decoupling-probe-predictive-conditional-independence-probe) 참조)
 
 ### 7.1 목표
 "Feature set F 가 baseline B 위에 정보를 더하는가" 를 분류기 cross-entropy로 측정.

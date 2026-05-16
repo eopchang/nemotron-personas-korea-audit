@@ -153,9 +153,6 @@ Nemotron 은 개인 단위 (1M 행 = 1M 명) 이므로 per-person 거처 분포 
 ### Q. Decoupling probe 에 data leakage 이슈는 없었나요?
 정밀 점검 완료 ([Phase 3 §1.4](../reports/PHASE3_REPORT.md#14-leakage-check--위-probe-결과는-데이터-누수에-영향받았나)). 잠재 leakage 6가지 (전체 데이터로 OrdinalEncoder fit, cap_high_card 전체 빈도 기반 등) 를 식별 후 train-only encoder + 5-fold CV 로 재실행. **6개 모든 case 에서 info_added 변화 < 0.005 nats** (원본 효과의 1% 이하). 결론 (Q1 housing decoupled, controls 모두 작동) 그대로 유지. 우려는 합리적이었으나 실제 영향은 무의미.
 
-### Q. "TSTR" 인가요, "decoupling probe" 인가요?
-**Decoupling probe** 가 정확한 명칭입니다. 엄밀한 TSTR (Train on Synthetic, Test on Real) 은 *실제 한국 원자료* 에서 평가하는 것인데, 본 분석은 합성 데이터를 train/test split 한 **within-synthetic** probe 입니다. 표준 용어로 **predictive conditional-independence probe** 또는 **within-synthetic decoupling probe** 가 적절합니다.
-
 ---
 
 ## 데이터 사용

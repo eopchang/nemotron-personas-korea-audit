@@ -261,7 +261,7 @@ I(X; Y | Z) = Σ_{x,y,z} p(x, y, z) · log [ p(x, y, z) · p(z) / (p(x, z) · p(
 
 ## 7. Predictive decoupling probe — Phase 3 §1.3 보강
 
-> 용어 주의: 본 within-synthetic probe 는 엄밀한 TSTR (Train on Synthetic, *Test on Real*) 과 다르다. 합성 데이터만으로 train/test split 한 **predictive conditional-independence probe** / **decoupling probe** 가 정확한 명칭.
+(용어 정의: [GLOSSARY](GLOSSARY.md#decoupling-probe-predictive-conditional-independence-probe) 참조)
 
 ### 7.1 목표
 "Feature set F 가 baseline B 위에 정보를 더하는가" 를 분류기 cross-entropy로 측정.
@@ -1528,7 +1528,6 @@ python scripts/20_housing_unit_correction.py  # Phase 1 §3-4 보정 (즉시)
 baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Control (family_type) info_added = +0.82 nats (96% share). 
 - Evidence: [`data/processed/decoupling_probe.json`](../data/processed/decoupling_probe.json) (Q1, C1)
 - Caveat: 단일 모델 (HGB) · 단일 random seed (42) 한계. 다른 모델 / seed 에서 결과 robustness 추가 검증 권장 ([ROADMAP.md](../ROADMAP.md) P8).
-- 명칭: 본 분석은 합성 데이터를 train/test split 한 within-synthetic probe (엄밀한 TSTR 아님).
 
 [**C20**] (★★★) `military_status` 의 직접 edge 는 단 1개 — occupation (deterministic, U(military|occupation) = 1.000).
 - Evidence: [`data/processed/cmi/skeleton.json`](../data/processed/cmi/skeleton.json)
@@ -2550,7 +2549,7 @@ C7  [_]  C14 [_]  C21 [_]  C28 [_]  C34 [_]
 3. **CMI 임계 ε = 0.005 nats**: 임의 선택이나 §2.7 sensitivity 분석으로 의존성 정량화 — 핵심 결론은 ε-stable. ★★★ 검증 완료.
 4. **High-cardinality bias**: §2.5 permutation null 결과, 23 direct edges 중 11개 (모두 occupation/district 포함) 가 ratio < 2 로 bias-suspect.
 5. **Bootstrap CI 산출 완료**: 모든 페어 SE 매우 작음 (district~province SE=0.004 nats). 추정치 자체는 정밀.
-6. **Decoupling probe 단일 모델 한계**: HistGradientBoostingClassifier · seed=42 사용. 다른 모델 (RF, LightGBM, NN) 에서의 robustness 미확인 (ROADMAP P8 예정). 단 leakage check (§1.4) + 5-fold CV 로 단일 split 한계는 점검 완료 — 결론 변화 없음. 명칭은 within-synthetic probe (엄밀한 TSTR 아님).
+6. **Decoupling probe 단일 모델 한계**: HistGradientBoostingClassifier · seed=42 사용. 다른 모델 (RF, LightGBM, NN) 에서의 robustness 미확인 (ROADMAP P8 예정). 단 leakage check (§1.4) + 5-fold CV 로 단일 split 한계는 점검 완료 — 결론 변화 없음.
 7. **방향성 미해결**: 추론된 skeleton 은 무방향. DAG 화 (방향 있는 PGM) 는 시간 순서 등 추가 가정 필요.
 8. **외부 검증 부분만 완료**: §2.6 KOSIS cross-tab 비교는 보도자료 인용 cell 위주. 완전 외부 검증은 KOSIS Open API 통한 P7 v2 예정.
 9. **시계열 부재**: 정적 스냅샷. 생애주기·이주·세대간 이동 분석 불가.

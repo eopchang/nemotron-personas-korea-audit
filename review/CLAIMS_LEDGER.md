@@ -102,7 +102,6 @@
 baseline (district only) CE = 1.001, full (+ all person attrs) CE = 1.008. Control (family_type) info_added = +0.82 nats (96% share). 
 - Evidence: [`data/processed/decoupling_probe.json`](../data/processed/decoupling_probe.json) (Q1, C1)
 - Caveat: 단일 모델 (HGB) · 단일 random seed (42) 한계. 다른 모델 / seed 에서 결과 robustness 추가 검증 권장 ([ROADMAP.md](../ROADMAP.md) P8).
-- 명칭: 본 분석은 합성 데이터를 train/test split 한 within-synthetic probe (엄밀한 TSTR 아님).
 
 [**C20**] (★★★) `military_status` 의 직접 edge 는 단 1개 — occupation (deterministic, U(military|occupation) = 1.000).
 - Evidence: [`data/processed/cmi/skeleton.json`](../data/processed/cmi/skeleton.json)
