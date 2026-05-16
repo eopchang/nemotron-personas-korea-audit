@@ -54,15 +54,21 @@ NVIDIA가 공개한 [Nemotron-Personas-Korea](https://huggingface.co/datasets/nv
 | **2** 이변량 결합 | 55개 변수 쌍의 결합이 어떤 모양인가? | 인구학 chain (age→marital→family, age→edu→field→occupation) 견고. 성별×전공 분리 패턴 한국 현실과 부합 |
 | **3** 의존 구조 추정 | 데이터에 어떤 조건부 의존 skeleton이 남아있나? | **23 direct + 14 mediated + 18 no-edge** (ε=0.005 nats, \|Z\|≤2 조건 하; ε 100배 변동 시 direct 수 32–13 범위, 핵심 결론은 ε-stable; permutation null 로 bias 보정 시 12개만 ratio>2 로 견고). **Housing은 사람 속성과 분리, military는 occupation 함수** |
 
-### ⭐ 5개 결정적 발견
+### ⭐ 7개 결정적 발견
 
 1. ✅ **시도/시군구별 인구 분포는 KOSIS 와 매우 가까움** — TVD = 0.005, 17개 시도 모두 ±0.24pp 이내.
 2. ✅ **인구학 chain (나이→결혼→가족, 나이→학력) 한국 현실과 정량적으로 부합** — 20-50대 미혼 비율이 2020 census 와 8/8 cell 모두 ±4pp 이내 (P7 외부 검증). 25-34 4년제 51.6%, 75-84 사별 42.6% 등 KOSIS 와 일치.
 3. ✅ **성별×전공 분리 패턴 한국 현실과 부합** — 공학 86% 남성, 보건·복지 28% 남성.
 4. ⚠️ **`housing_type` 이 사람 속성과 통계적으로 분리됨** — 1인 가구도 4인 가족도 청년도 노년도 모두 아파트 ~62%. 예측 기반 conditional-independence probe 로 이중 확인 (info_added = −0.008 nats).
 5. ⚠️ **`military_status` 는 occupation 라벨에서 거의 결정적으로 파생되는 부수 변수** (정보 중복). 단 변수 의미는 *의무복무 이행* 이 아니라 *현역 군 인력 신분 (직업군인 + 의무복무 통합)* 으로 한국군 인력 구성과 부합 (병사 평균 25세, 부사관 41세, 장교 47세, 여성 11%).
+6. ⚠️ **`occupation` 의 "무직" 카테고리가 36.7% 로 거대** — 가정주부·학생·은퇴자·실업자가 한 라벨에 통합. 세분화된 노동시장 분석에는 한계 (단 큰 그림 — 학력→직업, 성별→직업 분리 등은 잘 작동).
+7. ⚠️ **23개 'direct edge' 중 12개만 bias-corrected 견고** — 나머지 11개 (모두 occupation/district 같은 high-cardinality 변수 포함) 는 plug-in MI 의 카디널리티 bias 일 가능성 (P4 permutation null 결과). occupation·district 가 들어가는 fine-grained 결합 의존성 주장은 신중하게 인용 필요.
 
-→ **결론**: LLM 학습용 페르소나로는 우수. **개인 속성별 주거 분석·의무복무 흐름 분석에는 부적합**, **지역 단위 시뮬레이션·인구학 chain·현역 군 인력 구성 분석에는 사용 가능**.
+→ **결론**: 본 데이터셋은 분석 종류에 따라 다음 3가지로 분류 가능:
+
+- ✅ **사용 가능**: LLM 학습용 페르소나 (본 용도), 지역 단위 시뮬레이션 (시도/시군구 인구), 인구학 chain 분석 (`age × marital × family`, `age × education`), 노동시장 성분리 (`sex × field × occupation`), 현역 군 인력 cross-section 구성 (계급별 연령·성비)
+- 🤔 **신중하게 사용**: `occupation`·`district` 가 들어가는 fine-grained 결합 분석 (high-card bias 가능성), 직업 분포 세분화 분석 ("무직" 36.7% 통합 카테고리 주의), housing 지역 단위 시뮬레이션 (단독주택만 약한 격차)
+- ❌ **부적합**: 개인 속성별 주거 분석 (1인가구 주거·청년 주거 빈곤 등), 의무복무 흐름·동학 분석, 시계열·생애주기 분석, 별거·기러기 가족 등 결혼-가구 구성의 다양성 분석 (PGM 의 결정론적 매핑이 이 다양성을 제거)
 
 ---
 
